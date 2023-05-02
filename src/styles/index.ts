@@ -1,0 +1,2 @@
+export { GlobalStyle } from "./Global";
+

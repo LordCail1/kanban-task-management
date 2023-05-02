@@ -1,0 +1,46 @@
+.
+├── .dockerignore
+├── .eslintrc.cjs
+├── .gitignore
+├── Dockerfile
+├── compose.yaml
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── resources
+│   ├── README-template.md
+│   ├── README.md
+│   ├── preview.jpg
+│   └── starter-code
+│       ├── .gitignore
+│       ├── assets
+│       └── index.html
+├── src
+│   ├── App.tsx
+│   ├── assets
+│   │   ├── data.json
+│   │   ├── favicon-32x32.png
+│   │   ├── icon-add-task-mobile.svg
+│   │   ├── icon-board.svg
+│   │   ├── icon-check.svg
+│   │   ├── icon-chevron-down.svg
+│   │   ├── icon-chevron-up.svg
+│   │   ├── icon-cross.svg
+│   │   ├── icon-dark-theme.svg
+│   │   ├── icon-hide-sidebar.svg
+│   │   ├── icon-light-theme.svg
+│   │   ├── icon-show-sidebar.svg
+│   │   ├── icon-vertical-ellipsis.svg
+│   │   ├── logo-dark.svg
+│   │   ├── logo-light.svg
+│   │   └── logo-mobile.svg
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── tree_structure.txt
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+770 directories, 6563 files
