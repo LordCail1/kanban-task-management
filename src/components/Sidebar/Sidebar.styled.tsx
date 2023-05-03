@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { theme } from "../../styles/Global"
 
 const StyledSidebar = styled.div<{ themeColor: 'dark' | 'light' }>`
 	width: 300px;
