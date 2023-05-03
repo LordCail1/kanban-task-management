@@ -1,8 +1,8 @@
-import React from 'react'
+import StyledMain from './Main.styled'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <StyledMain>Main</StyledMain>
   )
 }
 

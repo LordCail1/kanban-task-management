@@ -15,24 +15,24 @@ export const GlobalStyle = createGlobalStyle`
     div[id=root]{
         height: 100vh;
         width: 100vw;
+        display: flex;
+        font-family: 'Plus Jakarta Sans', sans-serif;
     }
 `
 
 export const theme: Theme = {
-    colors: {
-        main_purple: '#635FC7',
-        main_purple_hover: '#A8A4FF',
-        black: '#000112',
-        very_dark_grey: '#20212C',
-        dark_grey: '#2B2C37',
-        lines_dark: '#3E3F4E',
-        lines_light: '#E4EBFA',
-        medium_grey: '#828FA3',
-        light_grey: '#F4F7FD',
-        white: '#FFFFFF',
-        red: '#EA5555',
-        red_hover: '#FF9898'
-    }
+	colors: {
+		main_purple: "#635FC7",
+		main_purple_hover: "#A8A4FF",
+		red: "#EA5555",
+		red_hover: "#FF9898",
+		black: "#000112",
+		white: "#FFFFFF",
+		medium_grey: "#828FA3",
+		dark_grey: "#2B2C37",
+		very_dark_grey: "#20212C",
+		lines_light: "#E4EBFA",
+		light_grey: "#F4F7FD",
+		lines_dark: "#3E3F4E",
+	},
 }
-
-

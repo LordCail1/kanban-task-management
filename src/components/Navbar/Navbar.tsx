@@ -1,8 +1,8 @@
-import React from 'react'
+import StyledNavbar from './Navbar.styled'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <StyledNavbar>Navbar</StyledNavbar>
   )
 }
 
