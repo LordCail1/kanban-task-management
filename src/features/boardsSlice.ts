@@ -1,11 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { act } from "react-dom/test-utils"
 
-type board = {
+export type board = {
 	name: string
 	selected: boolean
 }
 
-type initialState = {
+export type initialState = {
 	value: board[]
 }
 
@@ -22,8 +23,8 @@ const boardSlice = createSlice({
 	name: "board_slice",
 	initialState,
 	reducers: {
-		addBoard: (state, action) => {
-			return state
+		addBoard: (state, action: PayloadAction<board>) => {
+			state.value.push(action.payload)
 		},
 	},
 })
