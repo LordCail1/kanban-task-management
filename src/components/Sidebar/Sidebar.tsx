@@ -3,14 +3,12 @@ import StyledSidebar from "./Sidebar.styled"
 import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks"
 import { changeThemeStyle } from "../../features/themeSlice"
 
-const Sidebar: React.FC<{ themeColor: "dark" | "light" }> = ({
-	themeColor,
-}) => {
-	const themeStyle = useAppSelector((state) => state)
+const Sidebar = () => {
+	const themeStyle = useAppSelector((state) => state.value)
 	const dispatch = useAppDispatch()
 	return (
 		<>
-			<StyledSidebar themeColor={themeStyle.value}>
+			<StyledSidebar themeColor={themeStyle}>
 				<button onClick={() => dispatch(changeThemeStyle())}>Change Theme</button>
 			</StyledSidebar>
 		</>
