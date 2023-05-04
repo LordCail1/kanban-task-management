@@ -3,17 +3,17 @@ import { GlobalStyle } from "./styles"
 import Main from "./components/Main/Main"
 import Navbar from "./components/Navbar/Navbar"
 import Sidebar from "./components/Sidebar/Sidebar"
-import { theme } from "./styles/Global"
 import StyledRightSideContainer from "./styles/RightSideContainer.styled"
-import { Provider } from "react-redux"
-import { store } from "./store/configureStore"
-
-export type ThemeColor = "dark" | "light"
+import { useAppSelector } from "./hooks/reduxHooks"
+import { theme } from "./styles/Global"
 
 function App() {
+	const themeStyle = useAppSelector((state) => state.themeSlice)
+
+	const mergedTheme = {...theme, ...themeStyle}
+
 	return (
-		<Provider store={store}>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={mergedTheme}>
 				<GlobalStyle />
 				<Sidebar />
 				<StyledRightSideContainer>
@@ -21,7 +21,6 @@ function App() {
 					<Main />
 				</StyledRightSideContainer>
 			</ThemeProvider>
-		</Provider>
 	)
 }
 

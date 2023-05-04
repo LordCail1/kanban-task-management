@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+
 export type ThemeStyleSlice = {
-	value: "dark" | "light"
+	style: "dark" | "light"
 }
 
 const initialState: ThemeStyleSlice = {
-	value: "dark"
+	style: "dark"
 }
 
 const themeSlice = createSlice({
@@ -13,7 +14,7 @@ const themeSlice = createSlice({
 	initialState,
 	reducers: {
 		changeThemeStyle: (state: ThemeStyleSlice) => {
-			state.value === "dark" ? state.value = 'light' : state.value = 'dark'
+			state.style === "dark" ? state.style = 'light' : state.style = 'dark'
 		},
 	},
 })
