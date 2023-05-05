@@ -1,8 +1,8 @@
-import React from "react"
+import { board, boardSliceReducer } from "../../features"
 import StyledBoardButton from "./BoardButton.styled"
 
-const BoardButton:React.FC<{children: React.ReactNode}> = ({children}) => {
-	return <StyledBoardButton>{children}</StyledBoardButton>
+const BoardButton:React.FC<board> = ({name, selected}) => {
+	return <StyledBoardButton>{name}</StyledBoardButton>
 }
 
 export default BoardButton
