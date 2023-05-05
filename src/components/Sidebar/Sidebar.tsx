@@ -1,14 +1,14 @@
-import Board from "../Board/Board"
+import BoardButton from "../Board/BoardButton"
 import KanbanLogo from "../KanbanLogo/KanbanLogo"
-import NumOfBoards from "../NumOfBoards/NumOfBoards"
+import NumOfBoardsDisplay from "../NumOfBoards/NumOfBoardsDisplay"
 import StyledSidebar from "./Sidebar.styled"
 
 const Sidebar = () => {
 	return (
 		<StyledSidebar>
 			<KanbanLogo />
-			<NumOfBoards />
-			<Board />
+			<NumOfBoardsDisplay />
+			<BoardButton>Platform Launch</BoardButton>
 		</StyledSidebar>
 	)
 }
