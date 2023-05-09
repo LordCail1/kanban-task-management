@@ -1,13 +1,20 @@
-import { board } from "../../features"
+import { Board } from "../../features/types"
+import { selectBoard } from "../../features/boardsSlice"
 import StyledBoardButton from "./BoardButton.styled"
 
 import { theme } from "../../styles/Global"
 import { StyledBoardButtonIcon } from "."
+import { useAppDispatch } from "../../hooks/reduxHooks"
 
-const BoardButton: React.FC<board> = ({ name, selected }) => {
+const BoardButton: React.FC<Board> = ({ name, selected, id }) => {
+	const dispatch = useAppDispatch()
+
 	return (
 		<>
-			<StyledBoardButton selected={selected}>
+			<StyledBoardButton
+				selected={selected}
+				onClick={() => dispatch(selectBoard(id))}
+			>
 				<StyledBoardButtonIcon
 					selected={selected}
 					width={16}
