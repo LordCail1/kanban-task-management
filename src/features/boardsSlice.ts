@@ -39,8 +39,6 @@ const boardSlice = createSlice({
 			state.value.boards.push(action.payload)
 		},
 		selectBoard: (state, action: PayloadAction<string>) => {
-			console.log(state.value.boards)
-			
 			const currentBoard = state.value.boards.find((board) => board.selected === true)
 			if (currentBoard) currentBoard.selected = false
 

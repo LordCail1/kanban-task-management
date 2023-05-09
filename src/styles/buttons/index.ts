@@ -1,1 +1,1 @@
-export {default as StyledGeneralBoardButton} from './GeneralBoardButton.styled'
+export { default as StyledGeneralBoardBtn } from "./GeneralBoardBtn.styled"

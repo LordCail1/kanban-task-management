@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const StyledGeneralBoardButton = styled.button`
+const StyledGeneralBoardBtn = styled.button`
 	padding: 14px 0;
 	padding-left: 32px;
 	border: none;
@@ -12,6 +12,4 @@ const StyledGeneralBoardButton = styled.button`
 	background-color: transparent;
 `
 
-
-
-export default StyledGeneralBoardButton
+export default StyledGeneralBoardBtn

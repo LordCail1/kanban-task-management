@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components"
-import { StyledGeneralBoardButton } from "../../styles/buttons"
+import { StyledGeneralBoardBtn } from "../../styles/buttons"
 
-const StyledBoardButton = styled(StyledGeneralBoardButton)<{
-	selected: boolean}>`
+const StyledBoardBtn = styled(StyledGeneralBoardBtn)<{
+	selected: boolean
+}>`
 	color: ${({ theme }) => theme.colors.medium_grey};
 
 	${({ selected }) =>
@@ -16,4 +17,4 @@ const StyledBoardButton = styled(StyledGeneralBoardButton)<{
 		`}
 `
 
-export default StyledBoardButton
+export default StyledBoardBtn

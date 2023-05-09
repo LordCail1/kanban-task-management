@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components"
 
-const StyledBoardButtonIcon = styled.svg<{ selected: boolean }>`
+const StyledBoardBtnIcon = styled.svg<{ selected?: boolean }>`
 	margin-right: 16px;
-	
+
 	${({ selected }) =>
 		selected &&
 		css`
@@ -10,4 +10,4 @@ const StyledBoardButtonIcon = styled.svg<{ selected: boolean }>`
 		`}
 `
 
-export default StyledBoardButtonIcon
+export default StyledBoardBtnIcon

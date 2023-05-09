@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks/reduxHooks"
-import BoardButton from "../Board/BoardButton"
+import BoardBtn from "../BoardButton/BoardBtn"
 
 const BoardList = () => {
 	const boards = useAppSelector((state) => state.boardSlice.value.boards)
@@ -7,10 +7,10 @@ const BoardList = () => {
 	return (
 		<>
 			{boards.map((board, i) => (
-				<BoardButton
+				<BoardBtn
 					key={i}
 					{...board}
-				></BoardButton>
+				></BoardBtn>
 			))}
 		</>
 	)
