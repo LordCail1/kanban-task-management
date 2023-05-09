@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { themeSliceReducer } from "../features/index"
+import { boardSliceReducer } from "../features/index"
 
 export const store = configureStore({
 	reducer: {
 		themeSlice: themeSliceReducer,
+		boardSlice: boardSliceReducer
 	},
 })
 
