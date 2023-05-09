@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { Board, BoardData } from "./types"
-import React from "react"
 
 export type initialState = {
 	value: BoardData
