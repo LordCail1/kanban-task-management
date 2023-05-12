@@ -1,28 +1,20 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import StyledPopupOverlay from "./PopupOverlay.styled"
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
-import { togglePopup } from "../../features"
-import AddNewBoardPopupWindow from "./AddNewBoardPopupWindow/AddNewBoardPopupWindow"
+import { closePopup } from "../../features"
 
-
-
-
-const PopupOverlay: React.FC<{ active: boolean }> = ({ active }) => {
+const PopupOverlay: React.FC<Active & Content<any>> = ({
+	active,
+	content: Content,
+}) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)
 
-	
-
 	const handleCloseOverlay = (e: React.MouseEvent) => {
 		if (overlayRef.current && e.target === overlayRef.current) {
-			dispatch(togglePopup())
+			dispatch(closePopup())
 		}
 	}
-
-
-
-
-
 
 	return (
 		<>
@@ -31,7 +23,7 @@ const PopupOverlay: React.FC<{ active: boolean }> = ({ active }) => {
 				onClick={handleCloseOverlay}
 				ref={overlayRef}
 			>
-				<AddNewBoardPopupWindow />
+				<Content />
 			</StyledPopupOverlay>
 		</>
 	)

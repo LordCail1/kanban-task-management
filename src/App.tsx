@@ -11,7 +11,8 @@ import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 function App() {
 	const themeStyle = useAppSelector((state) => state.themeSlice)
 	const mergedTheme = { ...theme, ...themeStyle }
-	const isPopUpOpen = useAppSelector((state) => state.popupSlice.value)
+	const isPopupOpne = useAppSelector((state) => state.popupSlice.value)
+	const component = useAppSelector((state) => state.popupSlice.component)
 
 	return (
 		<ThemeProvider theme={mergedTheme}>
@@ -21,7 +22,7 @@ function App() {
 				<Navbar />
 				<Main />
 			</StyledRightSideContainer>
-			<PopupOverlay active={isPopUpOpen} />
+			<PopupOverlay active={isPopupOpne} content={component}/>
 		</ThemeProvider>
 	)
 }

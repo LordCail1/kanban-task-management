@@ -2,13 +2,14 @@ import StyledBoardBtnIcon from "../BoardButton/BoardBtnIcon.styled"
 import StyledCreateNewBoardBtn from "./CreateNewBoardBtn.styled"
 import {theme} from '../../styles/Global'
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
-import { togglePopup } from "../../features"
+import { openPopup } from "../../features"
+
 
 const CreateNewBoardBtn = () => {
 	const dispatch = useAppDispatch()
 	return (
 		<>
-			<StyledCreateNewBoardBtn onClick={() => dispatch(togglePopup())}>
+			<StyledCreateNewBoardBtn onClick={() => dispatch(openPopup(CreateNewBoardBtn))}>
             <StyledBoardBtnIcon
 					width={16}
 					height={16}
