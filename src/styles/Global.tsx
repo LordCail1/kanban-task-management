@@ -35,4 +35,9 @@ export const theme: Theme = {
 		light_grey: "#F4F7FD",
 		lines_dark: "#3E3F4E",
 	},
+    mediaQueries: {
+        desktop: '1440px',
+        tablet: '768px',
+        mobile: '375px',
+    }
 }

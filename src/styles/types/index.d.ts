@@ -12,5 +12,10 @@ export type Theme = {
 		lines_light: string
 		light_grey: string
 		lines_dark: string
+	},
+	mediaQueries: {
+		desktop: string
+		tablet: string
+		mobile: string
 	}
 }
