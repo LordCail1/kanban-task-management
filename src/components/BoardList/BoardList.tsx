@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../hooks/reduxHooks"
+import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import BoardBtn from "../BoardButton/BoardBtn"
 
 const BoardList = () => {

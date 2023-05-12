@@ -4,7 +4,7 @@ import StyledBoardBtn from "./BoardBtn.styled"
 
 import { theme } from "../../styles/Global"
 import StyledBoardBtnIcon from "./BoardBtnIcon.styled"
-import { useAppDispatch } from "../../hooks/reduxHooks"
+import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 
 const BoardBtn: React.FC<Board> = ({ name, selected, id }) => {
 	const dispatch = useAppDispatch()
