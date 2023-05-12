@@ -1,9 +1,14 @@
+import UserInput from "../userInput/UserInput"
+import StyledAddNewBoardPopupTitle from "./AddNewBoardPopupTitle/AddNewBoardPopupTitle.styled"
 import StyledAddNewBoardPopupWindow from "./AddNewBoardPopupWindow.styled"
 
 const AddNewBoardPopupWindow = () => {
 	return (
 		<StyledAddNewBoardPopupWindow>
-			AddNewBoard
+			<StyledAddNewBoardPopupTitle>
+				Add New Board
+			</StyledAddNewBoardPopupTitle>
+			<UserInput title="Board Name" />
 		</StyledAddNewBoardPopupWindow>
 	)
 }

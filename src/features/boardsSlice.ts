@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { Board, BoardData } from "./types"
+import { Board, BoardData } from "./featuresTypes"
 
 export type initialState = {
 	value: BoardData
@@ -38,12 +38,15 @@ const boardSlice = createSlice({
 			state.value.boards.push(action.payload)
 		},
 		selectBoard: (state, action: PayloadAction<string>) => {
-			const currentBoard = state.value.boards.find((board) => board.selected === true)
+			const currentBoard = state.value.boards.find(
+				(board) => board.selected === true
+			)
 			if (currentBoard) currentBoard.selected = false
 
-			const selectedBoard = state.value.boards.find((board) => board.id === action.payload)
+			const selectedBoard = state.value.boards.find(
+				(board) => board.id === action.payload
+			)
 			if (selectedBoard) selectedBoard.selected = true
-
 		},
 	},
 })

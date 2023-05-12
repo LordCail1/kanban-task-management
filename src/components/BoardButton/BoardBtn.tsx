@@ -1,4 +1,4 @@
-import { Board } from "../../features/types"
+import { Board } from "../../features/featuresTypes"
 import { selectBoard } from "../../features/boardsSlice"
 import StyledBoardBtn from "./BoardBtn.styled"
 

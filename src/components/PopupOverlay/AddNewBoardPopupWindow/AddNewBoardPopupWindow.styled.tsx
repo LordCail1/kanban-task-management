@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import StyledGeneralPopupWindow from "../../../styles/Popup/GeneralPopupWindow.styled"
+import StyledGeneralPopupWindow from "../../../styles/popups/GeneralPopupWindow.styled"
 
 const StyledAddNewBoardPopupWindow = styled(StyledGeneralPopupWindow)`
 	bottom: 50%;
-	height: 429px;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%, 50%);

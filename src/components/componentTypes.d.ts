@@ -8,3 +8,7 @@ type Popup = {
 type Active = {
     active: boolean
 }
+
+type UserInputTitle = {
+    title: string
+}
