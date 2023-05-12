@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-const StyledPopupOverlay = styled.div<{ active: boolean }>`
+const StyledPopupOverlay = styled.div<Active>`
 	position: absolute;
 	height: 100%;
 	width: 100%;

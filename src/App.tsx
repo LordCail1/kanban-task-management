@@ -11,8 +11,8 @@ import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 function App() {
 	const themeStyle = useAppSelector((state) => state.themeSlice)
 	const mergedTheme = { ...theme, ...themeStyle }
-	const isPopupOpne = useAppSelector((state) => state.popupSlice.value)
-	const component = useAppSelector((state) => state.popupSlice.component)
+	const isPopupOpne = useAppSelector((state) => state.popupSlice.value.active)
+	const component = useAppSelector((state) => state.popupSlice.value.component)
 
 	return (
 		<ThemeProvider theme={mergedTheme}>

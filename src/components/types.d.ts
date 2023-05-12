@@ -1,7 +1,10 @@
-type Active = {
+
+
+type Popup = {
     active: boolean
+    content: React.ComponentType<any>
 }
 
-type Content<any> = {
-    content: React.ComponentType<any>
+type Active = {
+    active: boolean
 }

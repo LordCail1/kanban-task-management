@@ -1,6 +1,8 @@
 import styled from "styled-components"
+import StyledGeneralPopupWindow from "../../../styles/Popup/GeneralPopupWindow.styled"
 
-const StyledAddNewBoardPopupWindow = styled.div`
+const StyledAddNewBoardPopupWindow = styled(StyledGeneralPopupWindow)`
+	color: white;
 	position: absolute;
 	height: 429px;
 	width: 480px;

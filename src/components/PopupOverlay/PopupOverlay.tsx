@@ -3,7 +3,7 @@ import StyledPopupOverlay from "./PopupOverlay.styled"
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 import { closePopup } from "../../features"
 
-const PopupOverlay: React.FC<Active & Content<any>> = ({
+const PopupOverlay: React.FC<Popup> = ({
 	active,
 	content: Content,
 }) => {
