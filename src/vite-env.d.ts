@@ -4,6 +4,7 @@ type Theme = {
 	colors: {
 		main_purple: string
 		main_purple_hover: string
+		main_purple_hover2: string
 		red: string
 		red_hover: string
 		black: string

@@ -23,6 +23,7 @@ export const theme: Theme = {
 	colors: {
 		main_purple: "#635FC7",
 		main_purple_hover: "#A8A4FF",
+        main_purple_hover2: "#635fc71a",
 		red: "#EA5555",
 		red_hover: "#FF9898",
 		black: "#000112",

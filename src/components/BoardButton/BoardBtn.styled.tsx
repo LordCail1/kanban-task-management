@@ -8,15 +8,15 @@ const StyledBoardBtn = styled(StyledGeneralBoardBtn)<{
 	width: 92%;
 	border-bottom-right-radius: 100px;
 	border-top-right-radius: 100px;
-	transition: background-color 200ms ease-in-out;
+	transition: background-color 100ms ease-in-out;
 	${({ selected }) =>
 		!selected &&
 		css`
 			&:hover {
 				background-color: ${({ theme }) =>
 					theme.style === "dark"
-					? theme.colors.white
-					: theme.colors.main_purple_hover};
+						? theme.colors.white
+						: theme.colors.main_purple_hover2};
 			}
 		`}
 	${({ selected }) =>
