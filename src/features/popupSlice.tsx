@@ -2,17 +2,17 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import React from "react"
 import AddNewBoardPopupWindow from "../components/PopupOverlay/AddNewBoardPopupWindow/AddNewBoardPopupWindow"
 
-export type initialState = {
+export type InitialState = {
 	value: {
 		active: boolean
-		component: React.ComponentType<any>
+		component: "AddNewBoardPopupWindow"
 	}
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
 	value: {
 		active: false,
-		component: AddNewBoardPopupWindow,
+		component: "AddNewBoardPopupWindow"
 	},
 }
 
@@ -22,7 +22,7 @@ const popupSlice = createSlice({
 	reducers: {
 		openPopup: (
 			state,
-			action: PayloadAction<React.ComponentType<any>>
+			action: PayloadAction<HOCComponents>
 		) => {
 			if (!state.value.active) {
 				state.value.active = true

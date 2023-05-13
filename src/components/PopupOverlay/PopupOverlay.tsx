@@ -23,7 +23,7 @@ const PopupOverlay: React.FC<Popup> = ({
 				onClick={handleCloseOverlay}
 				ref={overlayRef}
 			>
-				<Content />
+				{Content && <Content />}
 			</StyledPopupOverlay>
 		</>
 	)

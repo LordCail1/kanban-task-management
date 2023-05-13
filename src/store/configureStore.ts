@@ -1,13 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { themeSliceReducer } from "../features/index"
-import { boardSliceReducer } from "../features/index"
-import { popupSliceReducer } from "../features/index"
+import {
+	themeSliceReducer,
+	boardSliceReducer,
+	popupSliceReducer,
+	sidebarSliceReducer,
+} from "../features/index"
 
 export const store = configureStore({
 	reducer: {
 		themeSlice: themeSliceReducer,
 		boardSlice: boardSliceReducer,
 		popupSlice: popupSliceReducer,
+		sidebarSlice: sidebarSliceReducer
 	},
 })
 

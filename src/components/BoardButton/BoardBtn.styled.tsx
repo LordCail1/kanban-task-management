@@ -5,10 +5,6 @@ const StyledBoardBtn = styled(StyledGeneralBoardBtn)<{
 	selected: boolean
 }>`
 	color: ${({ theme }) => theme.colors.medium_grey};
-	width: 92%;
-	border-bottom-right-radius: 100px;
-	border-top-right-radius: 100px;
-	transition: background-color ${({ theme }) => theme.transitionTimes.fast}
 		ease-in-out;
 	${({ selected }) =>
 		!selected &&
@@ -27,6 +23,9 @@ const StyledBoardBtn = styled(StyledGeneralBoardBtn)<{
 			border-top-right-radius: 100px;
 			background-color: ${({ theme }) => theme.colors.main_purple};
 			color: white;
+			&:hover {
+				background-color: ${({theme}) => theme.colors.main_purple};
+			}
 		`}
 `
 
