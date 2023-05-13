@@ -5,6 +5,7 @@ import KanbanLogo from "../KanbanLogo/KanbanLogo"
 import NumOfBoardsDisplay from "../NumOfBoards/NumOfBoardsDisplay"
 import StyledSidebar from "./Sidebar.styled"
 import { changeThemeStyle } from "../../features"
+import ThemeControl from "../ThemeControl/ThemeControl"
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch()
@@ -19,7 +20,7 @@ const Sidebar = () => {
 			<NumOfBoardsDisplay />
 			<BoardList />
 			<CreateNewBoardBtn/>
-			<button onClick={() => dispatch(changeThemeStyle())}>Change Theme</button>
+			<ThemeControl></ThemeControl>
 			
 		</StyledSidebar>
 	)

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 export type ThemeStyleSlice = {
-	style: "dark" | "light"
+	style: ThemeBoolean
 }
 
 const initialState: ThemeStyleSlice = {

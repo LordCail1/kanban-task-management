@@ -2,23 +2,30 @@
 
 type Theme = {
 	colors: {
-		main_purple: string
-		main_purple_hover: string
-		main_purple_hover2: string
-		red: string
-		red_hover: string
 		black: string
-		white: string
-		medium_grey: string
 		dark_grey: string
-		very_dark_grey: string
-		lines_light: string
 		light_grey: string
 		lines_dark: string
-	},
+		lines_light: string
+		main_purple_hover: string
+		main_purple_hover2: string
+		main_purple: string
+		medium_grey: string
+		red_hover: string
+		red: string
+		very_dark_grey: string
+		white: string
+	}
 	mediaQueries: {
 		desktop: string
 		tablet: string
 		mobile: string
 	}
+	transitionTimes: {
+		slow: string
+		medium: string
+		fast: string
+	}
 }
+
+type ThemeBoolean = "dark" | "light"

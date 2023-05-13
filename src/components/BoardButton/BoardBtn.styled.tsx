@@ -8,7 +8,8 @@ const StyledBoardBtn = styled(StyledGeneralBoardBtn)<{
 	width: 92%;
 	border-bottom-right-radius: 100px;
 	border-top-right-radius: 100px;
-	transition: background-color 100ms ease-in-out;
+	transition: background-color ${({ theme }) => theme.transitionTimes.fast}
+		ease-in-out;
 	${({ selected }) =>
 		!selected &&
 		css`

@@ -21,23 +21,28 @@ export const GlobalStyle = createGlobalStyle`
 
 export const theme: Theme = {
 	colors: {
-		main_purple: "#635FC7",
-		main_purple_hover: "#A8A4FF",
-        main_purple_hover2: "#635fc71a",
-		red: "#EA5555",
-		red_hover: "#FF9898",
 		black: "#000112",
-		white: "#FFFFFF",
-		medium_grey: "#828FA3",
 		dark_grey: "#2B2C37",
-		very_dark_grey: "#20212C",
-		lines_light: "#E4EBFA",
 		light_grey: "#F4F7FD",
 		lines_dark: "#3E3F4E",
+		lines_light: "#E4EBFA",
+		main_purple_hover: "#A8A4FF",
+		main_purple: "#635FC7",
+		medium_grey: "#828FA3",
+		red_hover: "#FF9898",
+		red: "#EA5555",
+		very_dark_grey: "#20212C",
+		white: "#FFFFFF",
+        main_purple_hover2: "#635fc71a",
 	},
     mediaQueries: {
         desktop: '1440px',
         tablet: '768px',
         mobile: '375px',
+    },
+    transitionTimes: {
+        slow: "300ms",
+        medium: "200ms",
+        fast: "100ms"
     }
 }

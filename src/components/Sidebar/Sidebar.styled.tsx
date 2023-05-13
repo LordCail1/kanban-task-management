@@ -6,6 +6,7 @@ const StyledSidebar = styled.div`
 	flex-direction: column;
 	padding-top: 32px;
 	width: 300px;
+	position: relative;
 	border-right: 1px solid ${({theme}) => theme.style === 'dark' ? theme.colors.lines_dark : theme.colors.lines_light}
 `
 

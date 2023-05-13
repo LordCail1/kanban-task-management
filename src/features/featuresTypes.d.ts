@@ -1,27 +1,27 @@
-export type Subtask = {
+type Subtask = {
 	title: string
 	isCompleted: boolean
 }
 
-export type Task = {
+type Task = {
 	title: string
 	description: string
 	status: string
 	subtasks: Subtask[]
 }
 
-export type Column = {
+type Column = {
 	name: string
 	tasks: Task[]
 }
 
-export type Board = {
+type Board = {
 	name: string
 	id: string
 	selected: boolean
 	columns: string[]
 }
 
-export type BoardData = {
+type BoardData = {
 	boards: Board[]
 }
