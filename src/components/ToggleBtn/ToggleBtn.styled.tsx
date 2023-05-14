@@ -18,7 +18,7 @@ const StyledToggleBtn = styled.div<{ checked: ThemeBoolean }>`
 		background-color: white;
 		border-radius: 20px;
 		transform: translateY(-50%);
-		transition: all ${({theme}) => theme.transitionTimes.medium} ease-in-out;
+		transition: all ease-in-out ${({theme}) => theme.transitionTimes.medium};
 	}
 	${({ checked }) =>
 		checked === "light"

@@ -5,18 +5,24 @@ import NumOfBoardsDisplay from "../NumOfBoards/NumOfBoardsDisplay"
 import StyledSidebar from "./Sidebar.styled"
 import ThemeControl from "../ThemeControl/ThemeControl"
 import ToggleSidebar from "../ToggleSidebar/ToggleSidebar"
+import { useAppSelector } from "../../hooks/redux/reduxHooks"
 
 const Sidebar = () => {
+	const sidebarActivated = useAppSelector(
+		(state) => state.sidebarSlice.active
+	)
 
 	return (
-		<StyledSidebar>
-			<KanbanLogo />
-			<NumOfBoardsDisplay />
-			<BoardList />
-			<CreateNewBoardBtn />
-			<ThemeControl></ThemeControl>
+		<>
+			<StyledSidebar activated={sidebarActivated}>
+				<KanbanLogo />
+				<NumOfBoardsDisplay />
+				<BoardList />
+				<CreateNewBoardBtn />
+				<ThemeControl></ThemeControl>
+			</StyledSidebar>
 			<ToggleSidebar />
-		</StyledSidebar>
+		</>
 	)
 }
 

@@ -8,21 +8,19 @@ import { useAppSelector } from "./hooks/redux/reduxHooks"
 import { theme } from "./styles/Global"
 import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 import AddNewBoardPopupWindow from "./components/PopupOverlay/AddNewBoardPopupWindow/AddNewBoardPopupWindow"
+import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
 
 function App() {
 	const themeStyle = useAppSelector((state) => state.themeSlice)
 	const mergedTheme = { ...theme, ...themeStyle }
-	const isPopupOpne = useAppSelector(
+	const isPopupOpen = useAppSelector(
 		(state) => state.popupSlice.value.active
 	)
-	const component = useAppSelector((state) => state.popupSlice.value.component)
+	const componentString = useAppSelector(
+		(state) => state.popupSlice.value.component
+	)
 
-	const getCurrentComponent = (component: HOCComponents) => {
-		if (component === "AddNewBoardPopupWindow") return AddNewBoardPopupWindow
-	}
-
-	const currentComponent = getCurrentComponent(component)
-
+	const currentComponent = useGetComponentFromString(componentString)
 
 	return (
 		<ThemeProvider theme={mergedTheme}>
@@ -33,7 +31,7 @@ function App() {
 				<Main />
 			</StyledRightSideContainer>
 			<PopupOverlay
-				active={isPopupOpne}
+				active={isPopupOpen}
 				content={currentComponent}
 			/>
 		</ThemeProvider>
