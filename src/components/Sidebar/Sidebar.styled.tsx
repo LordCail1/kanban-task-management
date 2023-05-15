@@ -6,7 +6,6 @@ const StyledSidebar = styled.div<{activated: boolean}>`
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
-	padding-top: 32px;
 	position: absolute;
 	top: 0;
 	transition: transform ease-in-out ${({theme}) => theme.transitionTimes.medium};

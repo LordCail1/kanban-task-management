@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { Board, BoardData } from "./featuresTypes"
 
 export type initialState = {
 	value: BoardData

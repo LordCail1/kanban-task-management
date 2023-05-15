@@ -5,7 +5,7 @@ type InitialState = {
 }
 
 const initialState: InitialState = {
-	active: false
+	active: true
 }
 
 const sidebarSlice = createSlice({
