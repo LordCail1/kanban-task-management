@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-export type initialState = {
+export type InitialState = {
 	value: BoardData
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
 	value: {
 		boards: [
 			{

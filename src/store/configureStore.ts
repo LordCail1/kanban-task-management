@@ -4,6 +4,7 @@ import {
 	boardSliceReducer,
 	popupSliceReducer,
 	sidebarSliceReducer,
+	addNewBoardSliceReducer
 } from "../features/index"
 
 export const store = configureStore({
@@ -11,7 +12,8 @@ export const store = configureStore({
 		themeSlice: themeSliceReducer,
 		boardSlice: boardSliceReducer,
 		popupSlice: popupSliceReducer,
-		sidebarSlice: sidebarSliceReducer
+		sidebarSlice: sidebarSliceReducer,
+		addNewBoardSlice: addNewBoardSliceReducer
 	},
 })
 

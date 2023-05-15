@@ -30,9 +30,19 @@ type Theme = {
 
 type ThemeBoolean = "dark" | "light"
 
+type PopupBtn = {
+	text?: string
+	handleClick: () => void
+
+}
+
+type UserInput = {
+	title?: string
+	placeHolder?: string
+}
+
 
 /**
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
 type HOCComponents = "AddNewBoardPopupWindow"
-

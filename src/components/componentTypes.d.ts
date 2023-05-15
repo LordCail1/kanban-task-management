@@ -11,7 +11,4 @@ type UserInputTitle = {
 	title: string
 }
 
-type UserInput = {
-	title?: string
-	placeHolder?: string
-}
+

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-export type InitialState = {
+type InitialState = {
 	value: {
 		active: boolean
 		component: HOCComponents

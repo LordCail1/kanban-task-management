@@ -20,7 +20,7 @@ const PopupOverlay: React.FC<Popup> = ({
 		<>
 			<StyledPopupOverlay
 				active={active}
-				onClick={handleCloseOverlay}
+				onMouseDown={handleCloseOverlay}
 				ref={overlayRef}
 			>
 				{Content && <Content />}
