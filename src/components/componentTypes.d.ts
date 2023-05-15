@@ -1,25 +1,17 @@
-
-
 type Popup = {
-    active: boolean
-    content: React.ComponentType<any> | undefined
+	active: boolean
+	content: React.ComponentType<any> | undefined
 }
 
 type Active = {
-    active: boolean
+	active: boolean
 }
 
 type UserInputTitle = {
-    title: string
+	title: string
 }
 
-
-/**
- * To find corresponding component with given string
- */
-
-type HOCPopupComponent = {
-    [key: string]: React.ComponentType<any>
+type UserInput = {
+	title?: string
+	placeHolder?: string
 }
-
-

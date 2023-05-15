@@ -1,6 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import React from "react"
-import AddNewBoardPopupWindow from "../components/PopupOverlay/AddNewBoardPopupWindow/AddNewBoardPopupWindow"
 
 export type InitialState = {
 	value: {
@@ -11,7 +9,7 @@ export type InitialState = {
 
 const initialState: InitialState = {
 	value: {
-		active: false,
+		active: true,
 		component: "AddNewBoardPopupWindow",
 	},
 }

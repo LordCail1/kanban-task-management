@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import StyledGeneralPopupTitles from "../../../../styles/popups/titles/GeneralPopupTitles.styled"
+import StyledGeneralPopupTitle from "../../../../styles/popups/titles/GeneralPopupTitle.styled"
 
-const StyledAddNewBoardPopupTitle = styled(StyledGeneralPopupTitles)`
-
-    
+const StyledAddNewBoardPopupTitle = styled(StyledGeneralPopupTitle)`
+	font-size: 1.125rem;
+	margin-bottom: 24px;
 `
 
 export default StyledAddNewBoardPopupTitle

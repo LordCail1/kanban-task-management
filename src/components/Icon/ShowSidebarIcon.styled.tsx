@@ -1,12 +1,6 @@
 import styled from "styled-components"
-import StyledSidebarIcon from "../../styles/sidebarIcon/sidebarIcon.styled"
+import StyledGeneralSidebarIcon from "../../styles/sidebarIcon/sidebarIcon.styled"
 
-
-
-const StyledShowSidebarIcon = styled(StyledSidebarIcon)`
-	
-
-`
+const StyledShowSidebarIcon = styled(StyledGeneralSidebarIcon)``
 
 export default StyledShowSidebarIcon
-
