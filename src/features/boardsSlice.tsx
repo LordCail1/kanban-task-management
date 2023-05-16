@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { CreateBoardColumnName } from "./popupWindows/addNewBoardSlice"
 
 export type InitialState = {
 	value: BoardData
@@ -33,8 +34,15 @@ const boardSlice = createSlice({
 	name: "board_slice",
 	initialState,
 	reducers: {
-		addBoard: (state, action: PayloadAction<Board>) => {
-			state.value.boards.push(action.payload)
+		addBoard: (
+			state,
+			action: PayloadAction<{
+				boardName: string
+				boardColumns: CreateBoardColumnName[]
+			}>
+		) => {
+			console.log("board columns", action.payload.boardColumns)
+			console.log("board name", action.payload.boardName)
 		},
 		selectBoard: (state, action: PayloadAction<string>) => {
 			const currentBoard = state.value.boards.find(

@@ -7,7 +7,6 @@ import StyledRightSideContainer from "./styles/RightSideContainer.styled"
 import { useAppSelector } from "./hooks/redux/reduxHooks"
 import { theme } from "./styles/Global"
 import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
-import AddNewBoardPopupWindow from "./components/PopupOverlay/AddNewBoardPopupWindow/AddNewBoardPopupWindow"
 import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
 
 function App() {

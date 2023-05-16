@@ -1,14 +1,31 @@
-import { removeColumnRow, setColumnRowName } from "../../features"
-import { useAppDispatch } from "../../hooks/redux/reduxHooks"
+import {
+	removeColumnRow,
+	setColumnRowName,
+	validateFields,
+} from "../../features"
+import {
+	useAppDispatch,
+	useAppSelector,
+} from "../../hooks/redux/reduxHooks"
 import StyledCrossIcon from "../Icon/CrossIcon.styled"
 import StyledUserInputBoxShort from "./UserInputBoxShort.styled"
-import StyledUserInputItemContainer from "./UserInputItemContainer.styled"
+import StyledUserInputItem from "./UserInputItem.styled"
 
-const UserInputItem = ({ placeHolder, id }: UserInput & { id: string }) => {
+const UserInputItem = ({
+	placeHolder,
+	id,
+}: UserInput & { id: string }) => {
 	const dispatch = useAppDispatch()
+	const createBoardInfo = useAppSelector((state) => state.addNewBoardSlice)
 	return (
-		<StyledUserInputItemContainer>
-			<StyledUserInputBoxShort placeholder={placeHolder} onBlur={(e) => dispatch(setColumnRowName({id: id, name: e.target.value}))}/>
+		<StyledUserInputItem>
+			<StyledUserInputBoxShort
+				placeholder={placeHolder}
+				onBlur={(e) => {
+					dispatch(setColumnRowName({ id: id, name: e.target.value }))
+					dispatch(validateFields(createBoardInfo))
+				}}
+			/>
 			<StyledCrossIcon
 				onClick={() => dispatch(removeColumnRow(id))}
 				width="15"
@@ -20,7 +37,7 @@ const UserInputItem = ({ placeHolder, id }: UserInput & { id: string }) => {
 					<path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
 				</g>
 			</StyledCrossIcon>
-		</StyledUserInputItemContainer>
+		</StyledUserInputItem>
 	)
 }
 

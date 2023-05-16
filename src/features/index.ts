@@ -15,5 +15,6 @@ export {
 	setColumnRowName,
 	addNewColumnRow,
 	removeColumnRow,
+	validateFields
 } from "./popupWindows/addNewBoardSlice"
-export { default as addNewBoardSliceReducer } from "./popupWindows/addNewBoardSlice"
+export { default as createNewBoardSliceReducer } from "./popupWindows/addNewBoardSlice"

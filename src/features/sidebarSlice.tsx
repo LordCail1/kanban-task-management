@@ -13,11 +13,9 @@ const sidebarSlice = createSlice({
 	initialState,
 	reducers: {
 		activateSidebar: (state) => {
-			console.log("you activated")
 			state.active = true
 		},
 		deActivateSidebar: (state) => {
-			console.log("you deactivated")
 			state.active = false
 		},
 	},
