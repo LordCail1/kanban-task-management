@@ -1,5 +1,5 @@
-import { addNewColumnRow, validateFields } from "../../../features/popupWindows/addNewBoardSlice"
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
+import { addNewColumnRow } from "../../../features/popupWindows/addNewBoardSlice"
+import { useAppDispatch } from "../../../hooks/redux/reduxHooks"
 import AddNewColumnPopupBtn from "../../PopupButton/AddNewColumnPopupBtn"
 import CreateNewBoardPopupBtn from "../../PopupButton/CreateNewBoardPopupBtn"
 import UserInputItemList from "../../UserInput/UserInputItemList"
@@ -8,7 +8,6 @@ import StyledAddNewBoardPopupTitle from "./AddNewBoardPopupTitle/AddNewBoardPopu
 import StyledAddNewBoardPopupWindow from "./AddNewBoardPopupWindow.styled"
 
 const AddNewBoardPopupWindow = () => {
-	const createBoardInfo = useAppSelector(state => state.addNewBoardSlice)
 	const dispatch = useAppDispatch()
 
 	const handleAddNewColumnRow = () => {
