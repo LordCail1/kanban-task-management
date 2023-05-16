@@ -21,7 +21,7 @@ const UserInputItem = ({
 		<StyledUserInputItem>
 			<StyledUserInputBoxShort
 				placeholder={placeHolder}
-				onChange={(e) => {
+				onBlur={(e) => {
 					dispatch(setColumnRowName({ id: id, name: e.target.value }))
 					dispatch(validateFields(createBoardInfo))
 				}}

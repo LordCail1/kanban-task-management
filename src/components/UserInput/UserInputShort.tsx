@@ -16,7 +16,7 @@ const UserInputShort = ({ title, placeHolder }: UserInput) => {
 			<StyledUserInputTitle>{title}</StyledUserInputTitle>
 			<StyledUserInputBoxShort
 				placeholder={placeHolder}
-				onChange={(e) => {
+				onBlur={(e) => {
 					dispatch(setBoardName(e.target.value))
 					dispatch(validateFields(createBoardInfo))
 				}}
