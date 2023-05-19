@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const StyledGeneralUserInputTitle = styled.h3`
+const StyledGeneralUserInputTitle = styled.label`
 	color: ${({ theme }) =>
 		theme.style === "dark"
 			? theme.colors.white

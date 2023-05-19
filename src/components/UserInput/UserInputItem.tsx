@@ -1,30 +1,28 @@
-import {
-	removeColumnRow,
-	setColumnRowName,
-	validateFields,
-} from "../../features"
+import { removeColumnRow } from "../../features"
 import {
 	useAppDispatch,
-	useAppSelector,
 } from "../../hooks/redux/reduxHooks"
 import StyledCrossIcon from "../Icon/CrossIcon.styled"
 import StyledUserInputBoxShort from "./UserInputBoxShort.styled"
 import StyledUserInputItem from "./UserInputItem.styled"
+import { UseFormRegister } from "react-hook-form"
 
 const UserInputItem = ({
 	placeHolder,
 	id,
-}: UserInput & { id: string }) => {
+	register,
+	index
+	
+}: UserInput & { id: string, index: number, register: UseFormRegister<MyFormData> }) => {
 	const dispatch = useAppDispatch()
-	const createBoardInfo = useAppSelector((state) => state.addNewBoardSlice)
+
 	return (
 		<StyledUserInputItem>
 			<StyledUserInputBoxShort
 				placeholder={placeHolder}
-				onBlur={(e) => {
-					dispatch(setColumnRowName({ id: id, name: e.target.value }))
-					dispatch(validateFields(createBoardInfo))
-				}}
+				valid={true}
+				type="text"
+				{...register(`columns.${index}.columnName`)}
 			/>
 			<StyledCrossIcon
 				onClick={() => dispatch(removeColumnRow(id))}

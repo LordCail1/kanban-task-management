@@ -51,5 +51,4 @@ type CreateNewBoardFields = {
 type CreateItemName = {
 	id: string
 	name: string
-	valid?: boolean
 }

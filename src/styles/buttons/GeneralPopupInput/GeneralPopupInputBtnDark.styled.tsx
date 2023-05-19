@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import StyledGeneralPopupBtn from "./GeneralPopupBtn.styled"
+import StyledGeneralPopupInput from "./GeneralPopupInputBtn.styled"
 
-const StyledGeneralPopupBtnDark = styled(StyledGeneralPopupBtn)`
+const StyledGeneralPopupInputBtnDark = styled(StyledGeneralPopupInput)`
 	background-color: ${({ theme }) => theme.colors.main_purple};
 	color: ${({ theme }) => theme.colors.white};
 	&:hover {
@@ -9,4 +9,4 @@ const StyledGeneralPopupBtnDark = styled(StyledGeneralPopupBtn)`
 	}
 `
 
-export default StyledGeneralPopupBtnDark
+export default StyledGeneralPopupInputBtnDark

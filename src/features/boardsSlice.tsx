@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { CreateBoardColumnName } from "./popupWindows/addNewBoardSlice"
+import trimmingStrings from "../utils/trimmingStrings"
+import { nanoid } from "nanoid"
 
 export type InitialState = {
 	value: BoardData
@@ -34,15 +35,28 @@ const boardSlice = createSlice({
 	name: "board_slice",
 	initialState,
 	reducers: {
-		addBoard: (
-			state,
-			action: PayloadAction<{
-				boardName: string
-				boardColumns: CreateBoardColumnName[]
-			}>
-		) => {
-			console.log("board columns", action.payload.boardColumns)
-			console.log("board name", action.payload.boardName)
+		addBoard: (state, action: PayloadAction<CreateNewBoardFields>) => {
+			//setting up the fields of the new board that is about to be created
+			const { name: boardName } = action.payload.value.createBoardName
+			const columnIds: string[] = []
+			action.payload.value.createBoardColumnNames.forEach((column) =>
+				columnIds.push(column.id)
+			)
+
+			//setting the last board that was selected to false
+			const currentBoard = state.value.boards.find(board => board.selected === true)
+			if (currentBoard) currentBoard.selected = false
+
+			// Create a new board with the provided data
+			const newBoard: Board = {
+				name: trimmingStrings(boardName),
+				id: nanoid(10),
+				selected: true,
+				columns: columnIds
+			}
+
+			state.value.boards.push(newBoard)
+
 		},
 		selectBoard: (state, action: PayloadAction<string>) => {
 			const currentBoard = state.value.boards.find(

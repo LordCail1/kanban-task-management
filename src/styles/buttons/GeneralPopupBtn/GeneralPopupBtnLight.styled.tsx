@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import StyledGeneralPopupInput from "../GeneralPopupInput/GeneralPopupInputBtn.styled"
 import StyledGeneralPopupBtn from "./GeneralPopupBtn.styled"
 
 const StyledGeneralPopupBtnLight = styled(StyledGeneralPopupBtn)`

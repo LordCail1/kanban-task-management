@@ -1,5 +1,11 @@
 /// <reference types="vite/client" />
 
+type Active = {
+	active: boolean
+}
+
+
+
 type Theme = {
 	colors: {
 		black: string
@@ -30,19 +36,46 @@ type Theme = {
 
 type ThemeBoolean = "dark" | "light"
 
-type PopupBtn = {
-	text?: string
-	handleClick: () => void
 
-}
 
 type UserInput = {
 	title?: string
 	placeHolder?: string
 }
 
+type UserInputTitle = {
+	title: string
+}
+
+
+
 
 /**
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
 type HOCComponents = "AddNewBoardPopupWindow"
+
+type Popup = {
+	active: boolean
+	content: React.ComponentType<any> | undefined
+}
+
+
+/**
+ * Buttons that belong inside pop-up windows
+ */
+
+type PopupBtn = {
+	text?: string
+	handleClick?: () => void
+}
+
+
+type InputFieldValidation = {
+	valid: boolean
+}
+
+
+
+
+

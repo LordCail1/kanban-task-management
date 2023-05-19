@@ -1,25 +1,21 @@
 import StyledUserInputBoxShort from "./UserInputBoxShort.styled"
 import StyledUserInputTitle from "./UserInputTitle.styled"
 import StyledUserInputContainer from "./UserInputContainer.styled"
-import {
-	useAppDispatch,
-	useAppSelector,
-} from "../../hooks/redux/reduxHooks"
-import { setBoardName, validateFields } from "../../features"
+import { UseFormRegister, FieldValues } from "react-hook-form"
 
-const UserInputShort = ({ title, placeHolder }: UserInput) => {
-	const dispatch = useAppDispatch()
-	const createBoardInfo = useAppSelector((state) => state.addNewBoardSlice)
-
+const UserInputShort = ({
+	title,
+	placeHolder,
+	register,
+}: UserInput & { register: UseFormRegister<MyFormData> }) => {
 	return (
 		<StyledUserInputContainer>
 			<StyledUserInputTitle>{title}</StyledUserInputTitle>
 			<StyledUserInputBoxShort
 				placeholder={placeHolder}
-				onBlur={(e) => {
-					dispatch(setBoardName(e.target.value))
-					dispatch(validateFields(createBoardInfo))
-				}}
+				valid={true}
+				type="text"
+				{...register("boardName")}
 			/>
 		</StyledUserInputContainer>
 	)

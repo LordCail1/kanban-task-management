@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const StyledGeneralPopupWindow = styled.div`
+const StyledGeneralPopupWindow = styled.form`
     background-color: ${({theme}) => theme.style === 'dark' ? theme.colors.dark_grey : theme.colors.white};
     padding: 32px;
 `

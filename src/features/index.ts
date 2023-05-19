@@ -11,10 +11,10 @@ export { activateSidebar, deActivateSidebar } from "./sidebarSlice"
 export { default as sidebarSliceReducer } from "./sidebarSlice"
 
 export {
-	setBoardName,
-	setColumnRowName,
+	// setBoardName,
+	// setColumnRowName,
 	addNewColumnRow,
 	removeColumnRow,
-	validateFields
+	// validateFields
 } from "./popupWindows/addNewBoardSlice"
 export { default as createNewBoardSliceReducer } from "./popupWindows/addNewBoardSlice"
