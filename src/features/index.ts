@@ -10,11 +10,5 @@ export { default as popupSliceReducer } from "./popupSlice"
 export { activateSidebar, deActivateSidebar } from "./sidebarSlice"
 export { default as sidebarSliceReducer } from "./sidebarSlice"
 
-export {
-	// setBoardName,
-	// setColumnRowName,
-	addNewColumnRow,
-	removeColumnRow,
-	// validateFields
-} from "./popupWindows/addNewBoardSlice"
-export { default as createNewBoardSliceReducer } from "./popupWindows/addNewBoardSlice"
+export { addColumn, addColumns } from "./columnSlice"
+export { default as columnSliceReducer } from "./columnSlice"

@@ -1,31 +1,48 @@
-import { removeColumnRow } from "../../features"
-import {
-	useAppDispatch,
-} from "../../hooks/redux/reduxHooks"
+import useValidateField from "../../hooks/react-form-hook/useValidateField"
 import StyledCrossIcon from "../Icon/CrossIcon.styled"
 import StyledUserInputBoxShort from "./UserInputBoxShort.styled"
 import StyledUserInputItem from "./UserInputItem.styled"
-import { UseFormRegister } from "react-hook-form"
+import {
+	UseFormRegister,
+	FieldErrors,
+	UseFieldArrayRemove,
+	FieldArrayWithId,
+} from "react-hook-form"
 
 const UserInputItem = ({
+	errors,
+	index,
 	placeHolder,
-	id,
 	register,
-	index
+	remove,
+	field,
+	fields
+}: UserInput & {
+	index: number
+	register: UseFormRegister<MyFormData>
+	errors: FieldErrors<MyFormData>
+	remove: UseFieldArrayRemove
+	field: FieldArrayWithId<MyFormData>
+	fields: FieldArrayWithId<MyFormData>[]
+}) => {
+
+	const { isFieldValid } = useValidateField(
+		errors.columns?.[index]?.columnName?.message
+	)
+
 	
-}: UserInput & { id: string, index: number, register: UseFormRegister<MyFormData> }) => {
-	const dispatch = useAppDispatch()
 
 	return (
 		<StyledUserInputItem>
 			<StyledUserInputBoxShort
 				placeholder={placeHolder}
-				valid={true}
+				valid={isFieldValid}
 				type="text"
 				{...register(`columns.${index}.columnName`)}
+				defaultValue={field.columnName}
 			/>
 			<StyledCrossIcon
-				onClick={() => dispatch(removeColumnRow(id))}
+				onClick={() => fields.length > 1 && remove(index)}
 				width="15"
 				height="15"
 				xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,9 @@
 type MyFormData = {
     boardName: string
-    columns: {
-        columnName: string
-    }[]
+    columns: ColumnFormData[]
 }
+
+type ColumnFormData = {
+    columnName: string
+}
+

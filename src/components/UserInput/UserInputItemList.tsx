@@ -1,25 +1,39 @@
-import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import UserInputItem from "./UserInputItem"
 import StyledUserInputItemList from "./UserInputItemList.styled"
 import StyledUserInputTitle from "./UserInputTitle.styled"
-import { UseFormRegister } from "react-hook-form"
+import {
+	UseFormRegister,
+	FieldArrayWithId,
+	FieldErrors,
+	UseFieldArrayRemove,
+} from "react-hook-form"
 
-const UserInputItemList = ({ title, register }: UserInput & { register: UseFormRegister<MyFormData> }) => {
-	const columnRows = useAppSelector(
-		(state) => state.addNewBoardSlice.value.createBoardColumnNames
-	)
-
+const UserInputItemList = ({
+	errors,
+	fields,
+	register,
+	remove,
+	title,
+}: UserInput & {
+	register: UseFormRegister<MyFormData>
+	fields: FieldArrayWithId<MyFormData>[]
+	errors: FieldErrors<MyFormData>
+	remove: UseFieldArrayRemove
+}) => {
 	return (
 		<StyledUserInputItemList>
 			<StyledUserInputTitle>{title}</StyledUserInputTitle>
 
-			{columnRows.map((column, index) => (
+			{fields.map((field, index) => (
 				<UserInputItem
 					placeHolder="e.g Todo"
-					key={column.id}
-					id={column.id}
+					key={field.id}
 					register={register}
 					index={index}
+					errors={errors}
+					remove={remove}
+					field={field}
+					fields={fields}
 				/>
 			))}
 		</StyledUserInputItemList>
