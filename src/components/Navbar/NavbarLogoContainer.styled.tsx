@@ -4,6 +4,7 @@ const StyledNavbarLogoContainer = styled.div`
     border-right: 1px solid ${({theme}) => theme.style === 'dark' ? theme.colors.lines_dark : theme.colors.lines_light};
     width: 300px;
     align-self: stretch;
+    display: flex;
 `
 
 export default StyledNavbarLogoContainer

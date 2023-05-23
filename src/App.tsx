@@ -24,10 +24,10 @@ function App() {
 	return (
 		<ThemeProvider theme={mergedTheme}>
 			<GlobalStyle />
-			<Sidebar />
 			<StyledRightSideContainer>
 				<Navbar />
 				<Main />
+				<Sidebar />
 			</StyledRightSideContainer>
 			<PopupOverlay
 				active={isPopupOpen}

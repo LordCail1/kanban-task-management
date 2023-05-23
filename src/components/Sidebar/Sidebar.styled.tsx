@@ -6,10 +6,10 @@ const StyledSidebar = styled.div<{activated: boolean}>`
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	transition: transform ease-in-out ${({theme}) => theme.transitionTimes.medium};
-	width: 300px;
+	width: ${({theme}) => theme.standards.sidebarWidth};
 	${({activated}) => !activated && css`
 	transform: translateX(-300px);
 	`}

@@ -1,6 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import trimmingStrings from "../utils/trimmingStrings"
-import { nanoid } from "nanoid"
 
 type InitialState = {
 	value: BoardData
@@ -31,8 +29,8 @@ const initialState: InitialState = {
 	},
 }
 
-const boardSlice = createSlice({
-	name: "board_slice",
+const boardsSlice = createSlice({
+	name: "boards_slice",
 	initialState,
 	reducers: {
 		addBoard: (state, action: PayloadAction<Board>) => {
@@ -57,5 +55,5 @@ const boardSlice = createSlice({
 	},
 })
 
-export const { addBoard, selectBoard } = boardSlice.actions
-export default boardSlice.reducer
+export const { addBoard, selectBoard } = boardsSlice.actions
+export default boardsSlice.reducer

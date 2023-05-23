@@ -2,7 +2,7 @@ import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import BoardBtn from "../BoardButton/BoardBtn"
 
 const BoardList = () => {
-	const boards = useAppSelector((state) => state.boardSlice.value.boards)
+	const boards = useAppSelector((state) => state.boardsSlice.value.boards)
 
 	return (
 		<>

@@ -9,7 +9,7 @@ type InitialState = {
 
 const initialState: InitialState = {
 	value: {
-		active: true,
+		active: false,
 		component: "AddNewBoardPopupWindow",
 	},
 }
@@ -23,7 +23,7 @@ const popupSlice = createSlice({
 			state.value.component = action.payload
 		},
 		closePopup: (state) => {
-			state.value.active = false
+			state.value.active = false 
 		},
 	},
 })

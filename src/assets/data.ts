@@ -203,16 +203,19 @@ const value = {
 							subtasks: [
 								{
 									title: "Research competitor pricing and business models",
+									id: 'JjwEVAvL6l',
 									isCompleted: true,
 								},
 								{
 									title:
 										"Outline a business model that works for our solution",
+										id: '43PcAZIjo2',
 									isCompleted: false,
 								},
 								{
 									title:
 										"Talk to potential customers about our proposed solution and ask for fair price expectancy",
+										id: 'ZPoGinxY1D',
 									isCompleted: false,
 								},
 							],
@@ -533,4 +536,5 @@ const value = {
 		},
 	],
 }
+
 

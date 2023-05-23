@@ -31,18 +31,21 @@ export const theme: Theme = {
 		medium_grey: "#828FA3",
 		red_hover: "#FF9898",
 		red: "#EA5555",
-		very_dark_grey: "#20212C", 
+		very_dark_grey: "#20212C",
 		white: "#FFFFFF",
-        main_purple_hover2: "#635fc71a",
+		main_purple_hover2: "#635fc71a",
 	},
-    mediaQueries: {
-        desktop: '1440px',
-        tablet: '768px',
-        mobile: '375px',
-    },
-    transitionTimes: {
-        slow: "300ms",
-        medium: "200ms",
-        fast: "100ms"
-    }
+	mediaQueries: {
+		desktop: "1440px",
+		tablet: "768px",
+		mobile: "375px",
+	},
+	transitionTimes: {
+		slow: "300ms",
+		medium: "200ms",
+		fast: "100ms",
+	},
+	standards: {
+		sidebarWidth: "300px",
+	},
 }

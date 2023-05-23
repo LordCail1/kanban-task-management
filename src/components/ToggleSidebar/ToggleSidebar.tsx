@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux"
 import ToggleSidebarIcon from "../Icon/ToggleSidebarIcon"
 import StyledToggleSidebar from "./ToggleSidebar.styled"
 import { activateSidebar, deActivateSidebar } from "../../features"
-import { useAppSelector } from "../../hooks/redux/reduxHooks"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
 import StyledToggleSidebarText from "./ToggleSidbarText.styled"
+import { useDispatch } from "react-redux"
 
 const ToggleSidebar = () => {
 	const dispatch = useDispatch()

@@ -6,6 +6,7 @@ const StyledNavbar = styled.div`
 	height: 97px;
 	display: flex;
 	align-items: center;
+	width: 100% ;
 `
 
 export default StyledNavbar

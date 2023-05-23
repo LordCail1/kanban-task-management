@@ -73,18 +73,19 @@ const initialState: InitialState = {
 	},
 }
 
-const columnSlice = createSlice({
-	name: "column_slice",
+const columnsSlice = createSlice({
+	name: "columns_slice",
 	initialState,
 	reducers: {
 		addColumn: (state) => {
 			return state
 		},
+
 		addColumns: (state, action: PayloadAction<Column[]>) => {
 			state.value.columns.push(...action.payload)
 		},
 	},
 })
 
-export default columnSlice.reducer
-export const { addColumn, addColumns } = columnSlice.actions
+export default columnsSlice.reducer
+export const { addColumn, addColumns } = columnsSlice.actions
