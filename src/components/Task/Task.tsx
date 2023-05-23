@@ -1,9 +1,7 @@
-import StyledTask from './Task.styled'
+import StyledTask from "./Task.styled"
 
-const Task = () => {
-  return (
-    <StyledTask>Task</StyledTask>
-  )
+const Task = ({ title }: { title: string }) => {
+	return <StyledTask>{title}</StyledTask>
 }
 
 export default Task
