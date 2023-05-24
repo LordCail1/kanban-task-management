@@ -7,7 +7,7 @@ const Main = () => {
 	const sidebarActivated = useAppSelector(
 		(state) => state.sidebarSlice.active
 	)
-	
+
 	// Retrieves all columns from the Redux store
 	const allColumns = useAppSelector(
 		(state) => state.columnsSlice.value.columns
@@ -20,6 +20,7 @@ const Main = () => {
 	// Filters the columns based on the selected board
 	const selectedColumns: Column[] = []
 
+
 	if (selectedBoard) {
 		allColumns.forEach((column) => {
 			selectedBoard.columns.forEach((boardColumn) => {
@@ -28,10 +29,17 @@ const Main = () => {
 		})
 	}
 
+
 	return (
 		<StyledMainContainer activated={sidebarActivated}>
-			{selectedColumns &&
-				selectedColumns.map((column) => <Column key={column.id} id={column.id} />)}
+			{selectedColumns
+				? selectedColumns.map((column) => (
+						<Column
+							key={column.id}
+							id={column.id}
+						/>
+				  ))
+				: null}
 		</StyledMainContainer>
 	)
 }

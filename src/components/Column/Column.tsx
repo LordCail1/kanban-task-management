@@ -2,7 +2,6 @@ import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import Task from "../Task/Task"
 import StyledColumn from "./Column.styled"
 import ColumnTitle from "./ColumnTitle/ColumnTitle"
-import randomColor from "randomcolor"
 
 const Column = ({ id }: { id: string }) => {
   // Get the current column from the Redux store
@@ -22,9 +21,6 @@ const Column = ({ id }: { id: string }) => {
 			})
 		})
 	}
-
-  // If there are no tasks in this column, return null
-  if (thisColumnTasks.length === 0) return null
 
   // Render the column with its title and tasks
 	return (

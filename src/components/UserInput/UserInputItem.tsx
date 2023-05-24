@@ -19,11 +19,11 @@ const UserInputItem = ({
 	fields,
 }: UserInput & {
 	index: number
-	register: UseFormRegister<fe>
-	errors: FieldErrors<fe>
+	register: UseFormRegister<AddNewBoardPopupWindowFormData>
+	errors: FieldErrors<AddNewBoardPopupWindowFormData>
 	remove: UseFieldArrayRemove
-	field: FieldArrayWithId<fe>
-	fields: FieldArrayWithId<fe>[]
+	field: FieldArrayWithId<AddNewBoardPopupWindowFormData>
+	fields: FieldArrayWithId<AddNewBoardPopupWindowFormData>[]
 }) => {
 	const { isFieldValid } = useValidateField(
 		errors.columns?.[index]?.columnName?.message
@@ -39,7 +39,7 @@ const UserInputItem = ({
 				defaultValue={field.columnName}
 			/>
 			<StyledCrossIcon
-				onClick={() => fields.length > 1 && remove(index)}
+				onClick={() => remove(index)}
 				width="15"
 				height="15"
 				xmlns="http://www.w3.org/2000/svg"

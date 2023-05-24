@@ -12,12 +12,13 @@ import { useDispatch } from "react-redux"
 import { addBoard, addColumns, closePopup } from "../../../features"
 import { nanoid } from "nanoid"
 import randomColor from "randomcolor"
+import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 
 const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 	boardName: z.string().min(3).max(30),
 	columns: z.array(
 		z.object({
-			columnName: z.string().min(3).max(30),
+			columnName: z.string().max(30),
 		})
 	),
 })
@@ -45,25 +46,39 @@ const AddNewBoardPopupWindow = () => {
 	})
 
 	const submitData = (data: AddNewBoardPopupWindowFormData) => {
-		console.log("IT WORKED", data)
+		// Reset the form and close the popup
 		reset({ boardName: "", columns: [{ columnName: "" }] })
 		dispatch(closePopup())
-		const { boardName, columns } = data
 
-		//setting up columns
-		const structuredColumns: Column[] = columns.map((column): Column => {
-			return {
-				name: column.columnName,
-				id: nanoid(10),
-				color: randomColor(),
-				tasks: [],
+		// Extract the board name and columns from the form data
+		const { boardName, columns: rawColumns } = data
+
+		// Map the raw columns to a structured format
+		const preStructuredColumns: Column[] = rawColumns.map(
+			(column): Column => {
+				// Capitalize and trim the column name
+				const columnName = capitalizeAndTrim(column.columnName)
+				// Generate a random color for the column
+				return {
+					name: columnName,
+					id: nanoid(10),
+					color: randomColor(),
+					tasks: [],
+				}
 			}
-		})
+		)
 
+		// Remove any empty columns
+		const removeEmptyOnes = (columnArray: Column[]) => {
+			return columnArray.filter((column) => column.name !== "")
+		}
+		const structuredColumns = removeEmptyOnes(preStructuredColumns)
+
+		// Extract the IDs of the columns
 		const columnIds: string[] = []
-
 		structuredColumns.forEach((column) => columnIds.push(column.id))
 
+		// Create a structured board object
 		const structuredBoard: Board = {
 			name: boardName,
 			id: nanoid(10),
@@ -71,6 +86,8 @@ const AddNewBoardPopupWindow = () => {
 			columns: columnIds,
 		}
 
+		console.log(structuredColumns)
+		// Dispatch actions to add the board and columns to the store
 		dispatch(addBoard(structuredBoard))
 		dispatch(addColumns(structuredColumns))
 	}
