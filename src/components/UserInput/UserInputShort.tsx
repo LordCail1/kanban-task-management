@@ -10,8 +10,8 @@ const UserInputShort = ({
 	register,
 	errors,
 }: UserInput & {
-	register: UseFormRegister<MyFormData>
-	errors: FieldErrors<MyFormData>
+	register: UseFormRegister<fe>
+	errors: FieldErrors<fe>
 }) => {
 	const { isFieldValid } = useValidateField(errors.boardName?.message)
 

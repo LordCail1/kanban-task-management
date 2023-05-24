@@ -8,6 +8,7 @@ const value = {
 				{
 					name: "Todo",
 					id: "z8UHNIXCKV",
+					color: "#23fcc6",
 					tasks: [
 						{
 							title: "Build UI for onboarding flow",
@@ -87,6 +88,7 @@ const value = {
 				{
 					name: "Doing",
 					id: "nLgowJGVMG",
+					color: "#e2afff",
 					tasks: [
 						{
 							title: "Design settings and search pages",
@@ -203,19 +205,19 @@ const value = {
 							subtasks: [
 								{
 									title: "Research competitor pricing and business models",
-									id: 'JjwEVAvL6l',
+									id: "JjwEVAvL6l",
 									isCompleted: true,
 								},
 								{
 									title:
 										"Outline a business model that works for our solution",
-										id: '43PcAZIjo2',
+									id: "43PcAZIjo2",
 									isCompleted: false,
 								},
 								{
 									title:
 										"Talk to potential customers about our proposed solution and ask for fair price expectancy",
-										id: 'ZPoGinxY1D',
+									id: "ZPoGinxY1D",
 									isCompleted: false,
 								},
 							],
@@ -225,24 +227,25 @@ const value = {
 				{
 					name: "Done",
 					id: "fxLoDxr5No",
+					color: "#2cb259",
 					tasks: [
 						{
 							title: "Conduct 5 wireframe tests",
-                            id: 'TX1c_s04fa',
+							id: "TX1c_s04fa",
 							description:
 								"Ensure the layout continues to make sense and we have strong buy-in from potential users.",
 							status: "Done",
 							subtasks: [
 								{
 									title: "Complete 5 wireframe prototype tests",
-                                    id: 'K0UEEDiGWM',
+									id: "K0UEEDiGWM",
 									isCompleted: true,
 								},
 							],
 						},
 						{
 							title: "Create wireframe prototype",
-                            id: 'FLFIcNw00k',
+							id: "FLFIcNw00k",
 							description:
 								"Create a greyscale clickable wireframe prototype to test our asssumptions so far.",
 							status: "Done",
@@ -250,14 +253,14 @@ const value = {
 								{
 									title:
 										"Create clickable wireframe prototype in Balsamiq",
-                                    id: 'JGB8F5gKaq',
+									id: "JGB8F5gKaq",
 									isCompleted: true,
 								},
 							],
 						},
 						{
 							title: "Review results of usability tests and iterate",
-                            id: 'D2QNHgiWI6',
+							id: "D2QNHgiWI6",
 							description:
 								"Keep iterating through the subtasks until we're clear on the core concepts for the app.",
 							status: "Done",
@@ -265,17 +268,17 @@ const value = {
 								{
 									title:
 										"Meet to review notes from previous tests and plan changes",
-                                    id: 'D2QNHgiWI6',
+									id: "D2QNHgiWI6",
 									isCompleted: true,
 								},
 								{
 									title: "Make changes to paper prototypes",
-                                    id: 'allAAfQJQi',
+									id: "allAAfQJQi",
 									isCompleted: true,
 								},
 								{
 									title: "Conduct 5 usability tests",
-                                    id: 'vlbk_eqUJH',
+									id: "vlbk_eqUJH",
 									isCompleted: true,
 								},
 							],
@@ -283,69 +286,69 @@ const value = {
 						{
 							title:
 								"Create paper prototypes and conduct 10 usability tests with potential customers",
-                            id: 'Tbtv9x4ZWa',
+							id: "Tbtv9x4ZWa",
 							description: "",
 							status: "Done",
 							subtasks: [
 								{
 									title: "Create paper prototypes for version one",
-                                    id: '-gPc6xMiGT',
+									id: "-gPc6xMiGT",
 									isCompleted: true,
 								},
 								{
 									title: "Complete 10 usability tests",
-                                    id: 'u8-_FntkT1',
+									id: "u8-_FntkT1",
 									isCompleted: true,
 								},
 							],
 						},
 						{
 							title: "Market discovery",
-                            id: 'YDkzGoB53X',
+							id: "YDkzGoB53X",
 							description:
 								"We need to define and refine our core product. Interviews will help us learn common pain points and help us define the strongest MVP.",
 							status: "Done",
 							subtasks: [
 								{
 									title: "Interview 10 prospective customers",
-                                    id: 'VcXQD9e-CO',
+									id: "VcXQD9e-CO",
 									isCompleted: true,
 								},
 							],
 						},
 						{
 							title: "Competitor analysis",
-                            id: '3jyh7xM48e',
+							id: "3jyh7xM48e",
 							description: "",
 							status: "Done",
 							subtasks: [
 								{
 									title: "Find direct and indirect competitors",
-                                    id: 'w6AY-F-hA6',
+									id: "w6AY-F-hA6",
 									isCompleted: true,
 								},
 								{
 									title: "SWOT analysis for each competitor",
-                                    id: '9lNNR4bOyF',
+									id: "9lNNR4bOyF",
 									isCompleted: true,
 								},
 							],
 						},
 						{
 							title: "Research the market",
-                            id: 'opZz1bnspA',
+							id: "opZz1bnspA",
 							description:
 								"We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
 							status: "Done",
 							subtasks: [
 								{
 									title: "Write up research analysis",
-                                    id: 'dSG7hY-nNR',
+									id: "dSG7hY-nNR",
 									isCompleted: true,
 								},
 								{
 									title: "Calculate TAM",
-                                    id: 'ghMuzBbQn4',
+									id: "ghMuzBbQn4",
 									isCompleted: true,
 								},
 							],
@@ -361,65 +364,66 @@ const value = {
 			columns: [
 				{
 					name: "Todo",
-                    id: 'W-LqSiiKad',
+					id: "W-LqSiiKad",
+					color: "#1b23c4",
 					tasks: [
 						{
 							title: "Plan Product Hunt launch",
-                            id: 'NpqasglnII',
+							id: "NpqasglnII",
 							description: "",
 							status: "Todo",
 							subtasks: [
 								{
 									title: "Find hunter",
-                                    id: 'P3YeKEOcFD',
+									id: "P3YeKEOcFD",
 									isCompleted: false,
 								},
 								{
 									title: "Gather assets",
-                                    id: '-X8QB_5HKT',
+									id: "-X8QB_5HKT",
 									isCompleted: false,
 								},
 								{
 									title: "Draft product page",
-                                    id: 'N0Ws5TbLtz',
+									id: "N0Ws5TbLtz",
 									isCompleted: false,
 								},
 								{
 									title: "Notify customers",
-                                    id: 'Lr3k-xtDrm',
+									id: "Lr3k-xtDrm",
 									isCompleted: false,
 								},
 								{
 									title: "Notify network",
-                                    id: 'gfOlpPFoqv',
+									id: "gfOlpPFoqv",
 									isCompleted: false,
 								},
 								{
 									title: "Launch!",
-                                    id: 'I_aZM7ufwx',
+									id: "I_aZM7ufwx",
 									isCompleted: false,
 								},
 							],
 						},
 						{
 							title: "Share on Show HN",
-                            id: 'mrH7RocBFX',
+							id: "mrH7RocBFX",
 							description: "",
 							status: "",
 							subtasks: [
 								{
 									title: "Draft out HN post",
-                                    id: 'sQD_tJg3JX',
+									id: "sQD_tJg3JX",
 									isCompleted: false,
 								},
 								{
 									title: "Get feedback and refine",
-                                    id: 'jm8APDx22e',
+									id: "jm8APDx22e",
 									isCompleted: false,
 								},
 								{
 									title: "Publish post",
-                                    id: 'xOEM7tdrBL',
+									id: "xOEM7tdrBL",
 									isCompleted: false,
 								},
 							],
@@ -427,28 +431,28 @@ const value = {
 						{
 							title:
 								"Write launch article to publish on multiple channels",
-                            id: 'm-SVH6K_-i',
+							id: "m-SVH6K_-i",
 							description: "",
 							status: "",
 							subtasks: [
 								{
 									title: "Write article",
-                                    id: 'PrW8CQz3Bq',
+									id: "PrW8CQz3Bq",
 									isCompleted: false,
 								},
 								{
 									title: "Publish on LinkedIn",
-                                    id: 'txi0OYYOn7',
+									id: "txi0OYYOn7",
 									isCompleted: false,
 								},
 								{
 									title: "Publish on Inndie Hackers",
-                                    id: 'yinEsLGYGo',
+									id: "yinEsLGYGo",
 									isCompleted: false,
 								},
 								{
 									title: "Publish on Medium",
-                                    id: 'EUR9_8iEzx',
+									id: "EUR9_8iEzx",
 									isCompleted: false,
 								},
 							],
@@ -457,12 +461,14 @@ const value = {
 				},
 				{
 					name: "Doing",
-                    id: '3UiGitAZWn',
+					id: "3UiGitAZWn",
+					color: "#30c956",
 					tasks: [],
 				},
 				{
 					name: "Done",
-                    id: '8YlbhLSPE8',
+					id: "8YlbhLSPE8",
+					color: "#c8ef75",
 					tasks: [],
 				},
 			],
@@ -474,22 +480,23 @@ const value = {
 			columns: [
 				{
 					name: "Now",
-                    id: 'iT8JB5bqpt',
+					id: "iT8JB5bqpt",
+					color: "#a502e0",
 					tasks: [
 						{
 							title: "Launch version one",
-                            id: '4RzlEt_QMj',
+							id: "4RzlEt_QMj",
 							description: "",
 							status: "",
 							subtasks: [
 								{
 									title: "Launch privately to our waitlist",
-                                    id: 'RNEsmVGQ8n',
+									id: "RNEsmVGQ8n",
 									isCompleted: false,
 								},
 								{
 									title: "Launch publicly on PH, HN, etc.",
-                                    id: 'EDpbXcz60A',
+									id: "EDpbXcz60A",
 									isCompleted: false,
 								},
 							],
@@ -497,25 +504,25 @@ const value = {
 						{
 							title:
 								"Review early feedback and plan next steps for roadmap",
-                            id: 'xrCLqcTcXz',
+							id: "xrCLqcTcXz",
 							description:
 								"Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
 							status: "",
 							subtasks: [
 								{
 									title: "Interview 10 customers",
-                                    id: 'wQYU4Z7DLx',
+									id: "wQYU4Z7DLx",
 									isCompleted: false,
 								},
 								{
 									title:
 										"Review common customer pain points and suggestions",
-                                    id: 'NfR3r86D_O',
+									id: "NfR3r86D_O",
 									isCompleted: false,
 								},
 								{
 									title: "Outline next steps for our roadmap",
-                                    id: 'SyixquakCn',
+									id: "SyixquakCn",
 									isCompleted: false,
 								},
 							],
@@ -524,17 +531,17 @@ const value = {
 				},
 				{
 					name: "Next",
-                    id: '0anclfaunM',
+					id: "0anclfaunM",
+					color: "#64fc7b",
 					tasks: [],
 				},
 				{
 					name: "Later",
-                    id: 'rDWYcYhbuO',
+					id: "rDWYcYhbuO",
+					color: "#69e2ef",
 					tasks: [],
 				},
 			],
 		},
 	],
 }
-
-

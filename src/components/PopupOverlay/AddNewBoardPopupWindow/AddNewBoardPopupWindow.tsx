@@ -11,8 +11,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useDispatch } from "react-redux"
 import { addBoard, addColumns, closePopup } from "../../../features"
 import { nanoid } from "nanoid"
+import randomColor from "randomcolor"
 
-const schema: ZodType<MyFormData> = z.object({
+const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 	boardName: z.string().min(3).max(30),
 	columns: z.array(
 		z.object({
@@ -22,7 +23,6 @@ const schema: ZodType<MyFormData> = z.object({
 })
 
 const AddNewBoardPopupWindow = () => {
-	useState<boolean>(false)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -35,7 +35,7 @@ const AddNewBoardPopupWindow = () => {
 		control,
 		formState: { errors },
 		reset,
-	} = useForm<MyFormData>({
+	} = useForm<AddNewBoardPopupWindowFormData>({
 		resolver: zodResolver(schema),
 	})
 
@@ -44,24 +44,21 @@ const AddNewBoardPopupWindow = () => {
 		name: "columns",
 	})
 
-	const submitData = (data: MyFormData) => {
+	const submitData = (data: AddNewBoardPopupWindowFormData) => {
 		console.log("IT WORKED", data)
 		reset({ boardName: "", columns: [{ columnName: "" }] })
 		dispatch(closePopup())
 		const { boardName, columns } = data
-
-
 
 		//setting up columns
 		const structuredColumns: Column[] = columns.map((column): Column => {
 			return {
 				name: column.columnName,
 				id: nanoid(10),
-				tasks: [""],
+				color: randomColor(),
+				tasks: [],
 			}
 		})
-
-
 
 		const columnIds: string[] = []
 

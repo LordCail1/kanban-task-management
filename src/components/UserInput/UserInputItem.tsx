@@ -16,21 +16,18 @@ const UserInputItem = ({
 	register,
 	remove,
 	field,
-	fields
+	fields,
 }: UserInput & {
 	index: number
-	register: UseFormRegister<MyFormData>
-	errors: FieldErrors<MyFormData>
+	register: UseFormRegister<fe>
+	errors: FieldErrors<fe>
 	remove: UseFieldArrayRemove
-	field: FieldArrayWithId<MyFormData>
-	fields: FieldArrayWithId<MyFormData>[]
+	field: FieldArrayWithId<fe>
+	fields: FieldArrayWithId<fe>[]
 }) => {
-
 	const { isFieldValid } = useValidateField(
 		errors.columns?.[index]?.columnName?.message
 	)
-
-	
 
 	return (
 		<StyledUserInputItem>

@@ -12,11 +12,13 @@ const initialState: InitialState = {
 			{
 				name: "Todo",
 				id: "z8UHNIXCKV",
+				color: "#23fcc6",
 				tasks: ["m2HltGANwc", "INkx9CCoeX", "t-Z_mnC_gs", "zzsBAge26I"],
 			},
 			{
 				name: "Doing",
 				id: "nLgowJGVMG",
+				color: "#e2afff",
 				tasks: [
 					"Xx4nI8E7gx",
 					"wLvI5rzULs",
@@ -29,6 +31,7 @@ const initialState: InitialState = {
 			{
 				name: "Done",
 				id: "fxLoDxr5No",
+				color: "#2cb259",
 				tasks: [
 					"TX1c_s04fa",
 					"FLFIcNw00k",
@@ -42,32 +45,38 @@ const initialState: InitialState = {
 			{
 				name: "Todo",
 				id: "W-LqSiiKad",
+				color: "#1b23c4",
 				tasks: ["NpqasglnII", "mrH7RocBFX", "m-SVH6K_-i"],
 			},
 			{
 				name: "Doing",
 				id: "3UiGitAZWn",
-				tasks: [""],
+				color: "#30c956",
+				tasks: [],
 			},
 			{
 				name: "Done",
 				id: "8YlbhLSPE8",
-				tasks: [""],
+				color: "#c8ef75",
+				tasks: [],
 			},
 			{
 				name: "Now",
 				id: "iT8JB5bqpt",
+				color: "#a502e0",
 				tasks: ["4RzlEt_QMj", "xrCLqcTcXz"],
 			},
 			{
 				name: "Next",
 				id: "0anclfaunM",
-				tasks: [""],
+				color: "#64fc7b",
+				tasks: [],
 			},
 			{
 				name: "Later",
 				id: "rDWYcYhbuO",
-				tasks: [""],
+				color: "#69e2ef",
+				tasks: [],
 			},
 		],
 	},

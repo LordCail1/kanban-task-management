@@ -8,7 +8,7 @@ const ColumnTitle = ({
 	quantity
 }: {
 	name: string | undefined
-	color: string
+	color: string | undefined
 	quantity: number
 }) => {
 	return (

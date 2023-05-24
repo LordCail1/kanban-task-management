@@ -103,6 +103,7 @@ type Task = {
 type Column = {
 	name: string
 	id: string
+	color: string
 	tasks: string[]
 }
 
@@ -129,4 +130,24 @@ type Board = {
 
 type BoardData = {
 	boards: Board[]
+}
+
+
+
+/**
+ * Form structure for creating a new board
+ * @params {boardName} name of the board that will be created
+ * @params {columns} array of column names when creating a new board
+ */
+type AddNewBoardPopupWindowFormData = {
+	boardName: string
+	columns: ColumnFormData[]
+}
+
+/**
+ * Form structure for creating a new column in a board
+ * @params {columnName} name of the column that will be created
+ */
+type ColumnFormData = {
+    columnName: string
 }

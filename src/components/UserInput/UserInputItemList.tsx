@@ -15,9 +15,9 @@ const UserInputItemList = ({
 	remove,
 	title,
 }: UserInput & {
-	register: UseFormRegister<MyFormData>
-	fields: FieldArrayWithId<MyFormData>[]
-	errors: FieldErrors<MyFormData>
+	register: UseFormRegister<fe>
+	fields: FieldArrayWithId<fe>[]
+	errors: FieldErrors<fe>
 	remove: UseFieldArrayRemove
 }) => {
 	return (
