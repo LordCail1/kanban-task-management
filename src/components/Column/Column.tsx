@@ -48,7 +48,7 @@ const Column = ({ id }: { id: string }) => {
 					/>
 				))
 			) : (
-				<StyledEmptyColumnWarning>+ create task</StyledEmptyColumnWarning>
+				<StyledEmptyColumnWarning>+ Add Task</StyledEmptyColumnWarning>
 			)}
 		</StyledColumn>
 	)

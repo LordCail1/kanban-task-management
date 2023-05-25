@@ -18,8 +18,12 @@ const StyledGeneralStyledTask = styled.div`
 	position: relative;
 	border: 1px solid transparent;
 	:hover {
-		border: 1px solid ${({ theme }) => theme.style === 'dark' ? theme.colors.main_purple : theme.colors.black};
-		box-shadow: 0 0 30px -10px ${({ theme }) => theme.style === 'dark' ? theme.colors.main_purple : theme.colors.black};
+		border: 1px solid
+			${({ theme }) =>
+				theme.style === "dark"
+					? theme.colors.main_purple
+					: theme.colors.black};
+		box-shadow: 0 0 30px -10px ${({ theme }) => (theme.style === "dark" ? theme.colors.main_purple : theme.colors.black)};
 		transform: scale(1.01);
 	}
 `
