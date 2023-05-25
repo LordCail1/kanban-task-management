@@ -1,2 +1,1 @@
-export { GlobalStyle } from "./Global";
-
+export { GlobalStyle } from "./Global.styled"

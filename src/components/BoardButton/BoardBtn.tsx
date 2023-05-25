@@ -1,7 +1,7 @@
 import { selectBoard } from "../../features/boardsSlice"
 import StyledBoardBtn from "./BoardBtn.styled"
 
-import { theme } from "../../styles/Global"
+import { theme } from "../../styles/Global.styled"
 import StyledBoardBtnIcon from "./BoardBtnIcon.styled"
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 

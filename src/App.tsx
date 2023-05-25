@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar/Navbar"
 import Sidebar from "./components/Sidebar/Sidebar"
 import StyledRightSideContainer from "./styles/RightSideContainer.styled"
 import { useAppSelector } from "./hooks/redux/reduxHooks"
-import { theme } from "./styles/Global"
+import { theme } from "./styles/Global.styled"
 import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
 
@@ -24,11 +24,11 @@ function App() {
 	return (
 		<ThemeProvider theme={mergedTheme}>
 			<GlobalStyle />
-				<StyledRightSideContainer>
-					<Navbar />
-					<Main />
-					<Sidebar />
-				</StyledRightSideContainer>
+			<StyledRightSideContainer>
+				<Navbar />
+				<Main />
+				<Sidebar />
+			</StyledRightSideContainer>
 			<PopupOverlay
 				active={isPopupOpen}
 				content={currentComponent}

@@ -1,16 +1,17 @@
 import StyledBoardBtnIcon from "../BoardButton/BoardBtnIcon.styled"
 import StyledCreateNewBoardBtn from "./CreateNewBoardBtn.styled"
-import {theme} from '../../styles/Global'
+import { theme } from "../../styles/Global.styled"
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 import { openPopup } from "../../features"
-
 
 const CreateNewBoardBtn = () => {
 	const dispatch = useAppDispatch()
 	return (
 		<>
-			<StyledCreateNewBoardBtn onClick={() => dispatch(openPopup("AddNewBoardPopupWindow"))}>
-            <StyledBoardBtnIcon
+			<StyledCreateNewBoardBtn
+				onClick={() => dispatch(openPopup("AddNewBoardPopupWindow"))}
+			>
+				<StyledBoardBtnIcon
 					width={16}
 					height={16}
 					xmlns="http://www.w3.org/2000/svg"
@@ -20,9 +21,8 @@ const CreateNewBoardBtn = () => {
 						fill={theme.colors.main_purple}
 					/>
 				</StyledBoardBtnIcon>
-
-                + Create New Board
-            </StyledCreateNewBoardBtn>
+				+ Create New Board
+			</StyledCreateNewBoardBtn>
 		</>
 	)
 }
