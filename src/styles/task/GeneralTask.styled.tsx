@@ -17,7 +17,7 @@ const StyledGeneralStyledTask = styled.div`
 	padding: 23px 16px;
 	position: relative;
 	border: 1px solid transparent;
-	:hover {
+	&:hover {
 		border: 1px solid
 			${({ theme }) =>
 				theme.style === "dark"
