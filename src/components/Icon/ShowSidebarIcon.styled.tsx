@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import StyledGeneralSidebarIcon from "../../styles/sidebarIcon/sidebarIcon.styled"
+import StyledGeneralSidebarIcon from "../../styles/sidebarIcon/SidebarIcon.styled"
 
 const StyledShowSidebarIcon = styled(StyledGeneralSidebarIcon)``
 
