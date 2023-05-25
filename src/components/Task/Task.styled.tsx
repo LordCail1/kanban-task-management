@@ -1,11 +1,14 @@
 import styled from "styled-components"
-import StyledGeneralStyledTask from "../../styles/task/GeneralTask.styled"
+import StyledGeneralTask from "../../styles/task/GeneralTask.styled"
 import StyledTaskTitle from "./TaskTitle.styled"
 
-const StyledTask = styled(StyledGeneralStyledTask)`
+const StyledTask = styled(StyledGeneralTask)`
 	margin-bottom: 20px;
 	&:hover ${StyledTaskTitle} {
-		color: ${({theme}) => theme.style === 'dark' ? theme.colors.main_purple : theme.colors.black};
+		color: ${({ theme }) =>
+			theme.style === "dark"
+				? theme.colors.main_purple
+				: theme.colors.black};
 	}
 `
 

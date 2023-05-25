@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import Column from "../Column/Column"
+import NewColumnBtn from "../NewColumnBtn/NewColumnBtn"
 import StyledMainContainer from "./MainContainer.styled"
 
 const Main = () => {
@@ -38,6 +39,7 @@ const Main = () => {
 						/>
 				  ))
 				: null}
+				<NewColumnBtn />
 		</StyledMainContainer>
 	)
 }

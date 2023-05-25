@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { theme } from "../../styles/Global.styled"
 
 const StyledMainContainer = styled.div<{ activated: boolean }>`
 	flex-grow: 1;
@@ -15,6 +16,18 @@ const StyledMainContainer = styled.div<{ activated: boolean }>`
 		width ease-in-out ${({ theme }) => theme.transitionTimes.medium};
 	display: flex;
 	overflow: scroll;
+	::-webkit-scrollbar-track {
+		background-color: ${({ theme }) =>
+			theme.style === "dark"
+				? theme.colors.dark_grey
+				: theme.colors.white};
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: ${({ theme }) =>
+			theme.style === "dark"
+				? theme.colors.white
+				: theme.colors.main_purple};
+	}
 `
 
 export default StyledMainContainer
