@@ -13,9 +13,8 @@ const StyledMainContainer = styled.div<{ activated: boolean }>`
 	transition: left ease-in-out
 			${({ theme }) => theme.transitionTimes.medium},
 		width ease-in-out ${({ theme }) => theme.transitionTimes.medium};
-	/* padding-left: ${({ activated }) => (activated ? "300px" : "0px")}; */
 	display: flex;
-	overflow-x: scroll;
+	overflow: scroll;
 `
 
 export default StyledMainContainer

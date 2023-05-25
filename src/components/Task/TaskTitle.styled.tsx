@@ -6,7 +6,7 @@ const StyledTaskTitle = styled.h4`
 	transition: color ease-in-out ${({theme}) => theme.transitionTimes.fast};
 
 	${StyledTask}:hover & {
-		color: ${({ theme }) => theme.colors.main_purple};
+		color: ${({ theme }) => theme.style === 'dark' ? theme.colors.main_purple : theme.colors.black};
 	}
 `
 

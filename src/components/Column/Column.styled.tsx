@@ -7,7 +7,7 @@ const StyledColumn = styled.div`
     min-width: 280px;
     display: flex;
     flex-direction: column;
-    margin: 0 24px;
+    margin: 0 24px 50px 24px;
 `
 
 export default StyledColumn

@@ -38,12 +38,10 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
     body {
-        height: 100vh;
         width: 100vw;
         
     }
     div[id=root]{
-        height: 100vh;
         width: 100vw;
         display: flex;
         font-family: 'Plus Jakarta Sans', sans-serif;
