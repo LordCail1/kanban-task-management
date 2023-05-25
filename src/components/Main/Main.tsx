@@ -20,7 +20,6 @@ const Main = () => {
 	// Filters the columns based on the selected board
 	const selectedColumns: Column[] = []
 
-
 	if (selectedBoard) {
 		allColumns.forEach((column) => {
 			selectedBoard.columns.forEach((boardColumn) => {
@@ -28,7 +27,6 @@ const Main = () => {
 			})
 		})
 	}
-
 
 	return (
 		<StyledMainContainer activated={sidebarActivated}>

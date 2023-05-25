@@ -24,11 +24,11 @@ function App() {
 	return (
 		<ThemeProvider theme={mergedTheme}>
 			<GlobalStyle />
-			<StyledRightSideContainer>
-				<Navbar />
-				<Main />
-				<Sidebar />
-			</StyledRightSideContainer>
+				<StyledRightSideContainer>
+					<Navbar />
+					<Main />
+					<Sidebar />
+				</StyledRightSideContainer>
 			<PopupOverlay
 				active={isPopupOpen}
 				content={currentComponent}

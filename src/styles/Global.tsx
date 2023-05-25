@@ -1,24 +1,5 @@
 import { createGlobalStyle } from "styled-components"
 
-export const GlobalStyle = createGlobalStyle`
-    *, *::before, *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        height: 100vh;
-        width: 100vw;
-        
-    }
-    div[id=root]{
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-`
-
 export const theme: Theme = {
 	colors: {
 		black: "#000112",
@@ -49,3 +30,36 @@ export const theme: Theme = {
 		sidebarWidth: "300px",
 	},
 }
+
+export const GlobalStyle = createGlobalStyle`
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        height: 100vh;
+        width: 100vw;
+        
+    }
+    div[id=root]{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+	::-webkit-scrollbar {
+  		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+  		background-color: ${theme.colors.dark_grey};
+	}
+
+	::-webkit-scrollbar-thumb {
+  		background-color: white;
+  		border-radius: 20px;
+  		width: 9px;
+	}
+	
+`
