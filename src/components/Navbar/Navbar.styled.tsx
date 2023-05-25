@@ -7,6 +7,7 @@ const StyledNavbar = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100% ;
+	position: relative;
 `
 
 export default StyledNavbar

@@ -1,4 +1,5 @@
 import KanbanLogo from "../KanbanLogo/KanbanLogo"
+import AddNewTaskNavbarGroup from "../Task/AddNewTaskNavbarGroup/AddNewTaskNavbarGroup"
 import StyledNavbar from "./Navbar.styled"
 import StyledNavbarLogoContainer from "./NavbarLogoContainer.styled"
 import StyledPlatformLaunch from "./NavbarPlatformLaunch.styled"
@@ -12,6 +13,7 @@ const Navbar = () => {
 			<StyledPlatformLaunch>
 				Platform Launch
 			</StyledPlatformLaunch>
+			<AddNewTaskNavbarGroup />
 		</StyledNavbar>
 	)
 }
