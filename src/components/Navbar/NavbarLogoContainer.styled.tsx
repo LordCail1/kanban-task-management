@@ -8,6 +8,9 @@ const StyledNavbarLogoContainer = styled.div`
     @media screen and (max-width: ${({theme}) => theme.mediaQueries.desktop}) {
         width: ${({theme}) => theme.standards.tabletSidebarWidth};
     }
+    @media screen and (max-width: ${({theme}) => theme.mediaQueries.tablet}) {
+        display: none;
+    }
 `
 
 export default StyledNavbarLogoContainer
