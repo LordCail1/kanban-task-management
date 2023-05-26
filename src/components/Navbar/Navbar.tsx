@@ -1,3 +1,4 @@
+import DropDownArrow from "../Icon/DropDownArrow/DropDownArrow"
 import KanbanLogo from "../KanbanLogo/KanbanLogo"
 import AddNewTaskNavbarGroup from "../Task/AddNewTaskNavbarGroup/AddNewTaskNavbarGroup"
 import StyledNavbar from "./Navbar.styled"
@@ -13,6 +14,7 @@ const Navbar = () => {
 			<StyledPlatformLaunch>
 				Platform Launch
 			</StyledPlatformLaunch>
+			<DropDownArrow />
 			<AddNewTaskNavbarGroup />
 		</StyledNavbar>
 	)
