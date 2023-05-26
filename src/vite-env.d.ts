@@ -31,7 +31,8 @@ type Theme = {
 		fast: string
 	}
 	standards: {
-		sidebarWidth: string
+		desktopSidebarWidth: string
+		tabletSidebarWidth: string
 	}
 }
 
@@ -132,8 +133,6 @@ type BoardData = {
 	boards: Board[]
 }
 
-
-
 /**
  * Form structure for creating a new board
  * @params {boardName} name of the board that will be created
@@ -149,5 +148,5 @@ type AddNewBoardPopupWindowFormData = {
  * @params {columnName} name of the column that will be created
  */
 type ColumnFormData = {
-    columnName: string
+	columnName: string
 }

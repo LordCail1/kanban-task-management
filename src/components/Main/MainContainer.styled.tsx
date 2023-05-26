@@ -1,12 +1,14 @@
 import styled from "styled-components"
-import { theme } from "../../styles/Global.styled"
 
 const StyledMainContainer = styled.div<{ activated: boolean }>`
 	flex-grow: 1;
 	width: ${({ theme, activated }) =>
-		activated ? `calc(100% - ${theme.standards.sidebarWidth})` : "100%"};
+		activated
+			? `calc(100% - ${theme.standards.desktopSidebarWidth})`
+			: "100%"};
 	position: relative;
-	left: ${({ activated }) => (activated ? "300px" : "0px")};
+	left: ${({ activated, theme }) =>
+		activated ? `${theme.standards.desktopSidebarWidth}` : "0px"};
 	background-color: ${({ theme }) =>
 		theme.style === "dark"
 			? theme.colors.very_dark_grey
@@ -27,6 +29,14 @@ const StyledMainContainer = styled.div<{ activated: boolean }>`
 			theme.style === "dark"
 				? theme.colors.white
 				: theme.colors.main_purple};
+	}
+	@media screen and (max-width: ${({ theme }) => theme.mediaQueries.desktop}) {
+		width: ${({ theme, activated }) =>
+			activated
+				? `calc(100% - ${theme.standards.tabletSidebarWidth})`
+				: "100%"};
+		left: ${({ activated, theme }) =>
+			activated ? `${theme.standards.tabletSidebarWidth}` : "0px"};
 	}
 `
 

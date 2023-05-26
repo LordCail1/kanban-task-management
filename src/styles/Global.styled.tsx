@@ -27,7 +27,8 @@ export const theme: Theme = {
 		fast: "100ms",
 	},
 	standards: {
-		sidebarWidth: "300px",
+		desktopSidebarWidth: "300px",
+		tabletSidebarWidth: '260px'
 	},
 }
 

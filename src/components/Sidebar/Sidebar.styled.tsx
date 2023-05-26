@@ -9,10 +9,14 @@ const StyledSidebar = styled.div<{activated: boolean}>`
 	position: fixed;
 	top: 0;
 	transition: transform ease-in-out ${({theme}) => theme.transitionTimes.medium};
-	width: ${({theme}) => theme.standards.sidebarWidth};
+	width: ${({theme}) => theme.standards.desktopSidebarWidth};
 	${({activated}) => !activated && css`
 	transform: translateX(-300px);
 	`}
+	@media screen and (max-width: ${({theme}) => theme.mediaQueries.desktop}) {
+		width: ${({theme}) => theme.standards.tabletSidebarWidth};
+	}
+	
 `
 
 export default StyledSidebar

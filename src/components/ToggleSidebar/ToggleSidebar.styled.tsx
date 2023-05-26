@@ -20,6 +20,17 @@ const StyledToggleSidebar = styled(StyledGeneralBoardBtn)<{activated: boolean}>`
     &:hover {
         color: ${({theme})=> theme.colors.main_purple};
     }
+    @media screen and (max-width: ${({theme}) => theme.mediaQueries.desktop}) {
+        width: 240px;
+        ${({activated}) => !activated && css`
+            background-color: ${({theme}) => theme.colors.main_purple};
+            padding: 14px 0;
+            width: 50px;
+            &:hover {
+                background-color: ${({theme}) => theme.colors.main_purple_hover};
+            }
+        `}
+    }
 `
 
 export default StyledToggleSidebar
