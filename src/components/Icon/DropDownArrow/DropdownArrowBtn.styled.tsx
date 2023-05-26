@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const StyledDropDownArrowBtn = styled.button`
+const StyledDropdownArrowBtn = styled.button`
     padding: 8px;
     align-items: center;
     justify-content: center;
@@ -14,4 +14,4 @@ const StyledDropDownArrowBtn = styled.button`
     }
 `
 
-export default StyledDropDownArrowBtn
+export default StyledDropdownArrowBtn

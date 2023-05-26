@@ -38,6 +38,10 @@ const StyledMainContainer = styled.div<{ activated: boolean }>`
 		left: ${({ activated, theme }) =>
 			activated ? `${theme.standards.tabletSidebarWidth}` : "0px"};
 	}
+	@media screen and (max-width: ${({theme}) => theme.mediaQueries.tablet}) {
+		left: 0;
+		width: 100%;
+	}
 `
 
 export default StyledMainContainer

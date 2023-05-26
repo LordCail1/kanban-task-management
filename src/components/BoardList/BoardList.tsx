@@ -8,7 +8,7 @@ const BoardList = () => {
 		<>
 			{boards.map((board, i) => (
 				<BoardBtn
-					key={i}
+					key={board.id}
 					{...board}
 				></BoardBtn>
 			))}
