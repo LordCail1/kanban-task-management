@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import Column from "../Column/Column"
+import EmptyBoardWarningContainer from "../EmptyBoardWarningContainer/EmptyBoardWarningContainer"
 import NewColumnBtn from "../NewColumnBtn/NewColumnBtn"
 import StyledMainContainer from "./MainContainer.styled"
 
@@ -15,31 +16,33 @@ const Main = () => {
 	)
 	// Retrieves the selected board from the Redux store
 	const selectedBoard = useAppSelector((state) =>
-		state.boardsSlice.value.boards.find((board) => board.selected === true)
+		state.boardsSlice.value.boards.find(
+			(board) => board.selected === true
+		)
 	)
 
 	// Filters the columns based on the selected board
-	const selectedColumns: Column[] = []
+	const filteredColumn: Column[] = []
 
 	if (selectedBoard) {
 		allColumns.forEach((column) => {
 			selectedBoard.columns.forEach((boardColumn) => {
-				if (boardColumn === column.id) selectedColumns.push(column)
+				if (boardColumn === column.id) filteredColumn.push(column)
 			})
 		})
 	}
 
 	return (
 		<StyledMainContainer activated={sidebarActivated}>
-			{selectedColumns
-				? selectedColumns.map((column) => (
+			{filteredColumn
+				? filteredColumn.map((column) => (
 						<Column
 							key={column.id}
 							id={column.id}
 						/>
 				  ))
 				: null}
-				<NewColumnBtn />
+			{filteredColumn.length > 1 ? <NewColumnBtn /> : <EmptyBoardWarningContainer/>}
 		</StyledMainContainer>
 	)
 }
