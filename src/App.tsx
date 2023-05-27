@@ -8,6 +8,7 @@ import { useAppSelector } from "./hooks/redux/reduxHooks"
 import { theme } from "./styles/Global.styled"
 import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
+import DropdownMenu from "./components/DropdownMenu/DropdownMenu"
 
 function App() {
 	const themeStyle = useAppSelector((state) => state.themeSlice)
@@ -33,6 +34,7 @@ function App() {
 				active={isPopupOpen}
 				content={currentComponent}
 			/>
+			<DropdownMenu/>
 		</ThemeProvider>
 	)
 }

@@ -19,7 +19,7 @@ const Sidebar = () => {
 				<NumOfBoardsDisplay />
 				<BoardList />
 				<CreateNewBoardBtn />
-				<ThemeControl></ThemeControl>
+				<ThemeControl/>
 			</StyledSidebar>
 			<ToggleSidebar />
 		</>
