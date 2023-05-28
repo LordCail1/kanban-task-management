@@ -19,7 +19,6 @@ function App() {
 	const componentString = useAppSelector(
 		(state) => state.popupSlice.value.component
 	)
-	const isDropdownMenuActive = useAppSelector(state => state.dropdownSlice.active)
 
 	const currentComponent = useGetComponentFromString(componentString)
 
@@ -35,7 +34,7 @@ function App() {
 				active={isPopupOpen}
 				content={currentComponent}
 			/>
-			<DropdownMenu active={isDropdownMenuActive}/>
+			<DropdownMenu/>
 		</ThemeProvider>
 	)
 }
