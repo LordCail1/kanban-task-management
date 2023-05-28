@@ -15,3 +15,6 @@ export { default as columnsSliceReducer } from "./columnsSlice"
 
 export { addTask, deleteTask } from "./tasksSlice"
 export { default as tasksSliceReducer } from "./tasksSlice"
+
+export { activateDropdown, deActivateDropdown } from "./dropdownMenuSlice"
+export { default as dropDownSliceReducer } from "./dropdownMenuSlice"

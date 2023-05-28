@@ -3,12 +3,11 @@ import SunIcon from "../Icon/SunIcon"
 import ToggleBtn from "../ToggleBtn/ToggleBtn"
 import StyledThemeControl from "./ThemeControl.styled"
 
-const ThemeControl = () => {
-	
+const ThemeControl = ({ menuArea }: MenuArea) => {
 	return (
-		<StyledThemeControl>
+		<StyledThemeControl menuArea={menuArea}>
 			<SunIcon />
-			<ToggleBtn/>
+			<ToggleBtn />
 			<MoonIcon />
 		</StyledThemeControl>
 	)

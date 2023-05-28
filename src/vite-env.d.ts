@@ -150,3 +150,7 @@ type AddNewBoardPopupWindowFormData = {
 type ColumnFormData = {
 	columnName: string
 }
+
+type MenuArea = {
+	menuArea: "sidebar" | "dropdown"
+}

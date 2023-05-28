@@ -5,7 +5,8 @@ import {
 	popupSliceReducer,
 	sidebarSliceReducer,
 	columnsSliceReducer,
-	tasksSliceReducer
+	tasksSliceReducer, 
+	dropDownSliceReducer
 } from "../features/index"
 
 export const store = configureStore({
@@ -15,7 +16,8 @@ export const store = configureStore({
 		popupSlice: popupSliceReducer,
 		sidebarSlice: sidebarSliceReducer,
 		columnsSlice: columnsSliceReducer,
-		tasksSlice: tasksSliceReducer
+		tasksSlice: tasksSliceReducer, 
+		dropdownSlice: dropDownSliceReducer
 	},
 })
 

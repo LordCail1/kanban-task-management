@@ -16,10 +16,10 @@ const Sidebar = () => {
 		<>
 			<StyledSidebar activated={sidebarActivated}>
 				<KanbanLogo />
-				<NumOfBoardsDisplay />
-				<BoardList />
-				<CreateNewBoardBtn />
-				<ThemeControl/>
+				<NumOfBoardsDisplay menuArea="sidebar"/>
+				<BoardList menuArea="sidebar"/>
+				<CreateNewBoardBtn menuArea="sidebar"/>
+				<ThemeControl menuArea="sidebar"/>
 			</StyledSidebar>
 			<ToggleSidebar />
 		</>
