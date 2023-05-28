@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-const StyledDropdownMenu = styled.div<Active>`
+const StyledDropdownMenu = styled.div`
 	display: none;
 	left: 50%;
 	transform: translateX(-50%);
@@ -19,13 +19,7 @@ const StyledDropdownMenu = styled.div<Active>`
 		transition: transform ease-in-out
 				${({ theme }) => theme.transitionTimes.medium},
 			opacity ease-in-out ${({ theme }) => theme.transitionTimes.medium};
-		${({ active }) =>
-			!active &&
-			css`
-				transform: translateX(-20%);
-				opacity: 0;
-				pointer-events: none;
-			`}
+		
 	}
 `
 export default StyledDropdownMenu

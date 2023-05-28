@@ -32,9 +32,7 @@ function App() {
 			</StyledRightSideContainer>
 			<PopupOverlay
 				active={isPopupOpen}
-				content={currentComponent}
 			/>
-			<DropdownMenu/>
 		</ThemeProvider>
 	)
 }

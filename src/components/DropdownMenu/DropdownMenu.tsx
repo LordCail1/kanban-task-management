@@ -10,7 +10,7 @@ const DropdownMenu = () => {
 		(state) => state.dropdownSlice.active
 	)
 	return (
-		<StyledDropdownMenu active={isDropdownActive}>
+		<StyledDropdownMenu>
 			<NumOfBoardsDisplay menuArea="dropdown" />
 			<BoardList menuArea="dropdown" />
 			<CreateNewBoardBtn menuArea="dropdown" />

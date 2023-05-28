@@ -8,6 +8,7 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from "../../../hooks/redux/reduxHooks"
+import { openPopup } from "../../../features"
 
 const DropdownArrow = () => {
 	const dispatch = useAppDispatch()
@@ -18,9 +19,7 @@ const DropdownArrow = () => {
 	return (
 		<StyledDropdownArrowBtn
 			onClick={() =>
-				isDropdownActive
-					? dispatch(deActivateDropdown())
-					: dispatch(activateDropdown())
+				dispatch(openPopup("DropdownMenu"))
 			}
 		>
 			<StyledDropdownArrow
