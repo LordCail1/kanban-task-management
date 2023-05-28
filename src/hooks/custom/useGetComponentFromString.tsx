@@ -3,7 +3,7 @@ import AddNewBoardPopupWindow from "../../components/PopupOverlay/AddNewBoardPop
 
 //default component is 'AddNewBoardPopupWindow'
 
-const useGetComponentFromString= (component: HOCComponents): ComponentType<any> => {
+const useGetComponentFromString = (component: HOCComponents): ComponentType<any> => {
     
     switch(component) {
         case "AddNewBoardPopupWindow":
