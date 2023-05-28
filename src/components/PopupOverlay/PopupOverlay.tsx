@@ -3,10 +3,7 @@ import StyledPopupOverlay from "./PopupOverlay.styled"
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 import { closePopup } from "../../features"
 
-const PopupOverlay: React.FC<Popup> = ({
-	active,
-	content: Content,
-}) => {
+const PopupOverlay = ({ active, content: Content }: Popup) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)
 
