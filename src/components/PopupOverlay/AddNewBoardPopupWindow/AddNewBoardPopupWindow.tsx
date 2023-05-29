@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import AddNewColumnPopupBtn from "../../PopupButton/AddNewColumnPopupBtn"
 import CreateNewBoardPopupInputBtn from "../../PopupButton/CreateNewBoardPopupInputBtn"
 import UserInputItemList from "../../UserInput/UserInputItemList"
@@ -8,11 +8,11 @@ import StyledAddNewBoardPopupWindow from "./AddNewBoardPopupWindow.styled"
 import { ZodType, z } from "zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useDispatch } from "react-redux"
 import { addBoard, addColumns, closePopup } from "../../../features"
 import { nanoid } from "nanoid"
 import randomColor from "randomcolor"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
+import { useAppDispatch } from "../../../hooks/redux/reduxHooks"
 
 const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 	boardName: z.string().min(3).max(30),
@@ -24,7 +24,7 @@ const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 })
 
 const AddNewBoardPopupWindow = () => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	useEffect(() => {
 		append({ columnName: "" })
@@ -54,19 +54,17 @@ const AddNewBoardPopupWindow = () => {
 		const { boardName, columns: rawColumns } = data
 
 		// Map the raw columns to a structured format
-		const preStructuredColumns: Column[] = rawColumns.map(
-			(column): Column => {
-				// Capitalize and trim the column name
-				const columnName = capitalizeAndTrim(column.columnName)
-				// Generate a random color for the column
-				return {
-					name: columnName,
-					id: nanoid(10),
-					color: randomColor(),
-					tasks: [],
-				}
+		const preStructuredColumns: Column[] = rawColumns.map((column): Column => {
+			// Capitalize and trim the column name
+			const columnName = capitalizeAndTrim(column.columnName)
+			// Generate a random color for the column
+			return {
+				name: columnName,
+				id: nanoid(10),
+				color: randomColor(),
+				tasks: [],
 			}
-		)
+		})
 
 		// Remove any empty columns
 		const removeEmptyOnes = (columnArray: Column[]) => {
@@ -97,9 +95,7 @@ const AddNewBoardPopupWindow = () => {
 
 	return (
 		<StyledAddNewBoardPopupWindow onSubmit={handleSubmit(submitData)}>
-			<StyledAddNewBoardPopupTitle>
-				Add New Board
-			</StyledAddNewBoardPopupTitle>
+			<StyledAddNewBoardPopupTitle>Add New Board</StyledAddNewBoardPopupTitle>
 			<UserInputShort
 				title="Board Name"
 				placeHolder="e.g Web Design"

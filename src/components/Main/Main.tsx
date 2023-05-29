@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect } from "react"
 import { useAppSelector } from "../../hooks/redux/reduxHooks"
 import Column from "../Column/Column"
@@ -20,7 +21,6 @@ const Main = ({
 		state.boardsSlice.value.boards.find((board) => board.selected === true)
 	)
 
-
 	useEffect(() => {
 		setIsColumnsEmpty(filteredColumn.length < 1)
 	})
@@ -36,7 +36,6 @@ const Main = ({
 		})
 	}
 
-	
 
 	return (
 		<StyledMainContainer activated={sidebarActivated}>
@@ -48,7 +47,7 @@ const Main = ({
 						/>
 				  ))
 				: null}
-			{filteredColumn.length > 1 ? <NewColumnBtn /> : <EmptyBoardWarningContainer />}
+			{filteredColumn.length < 1 ? <EmptyBoardWarningContainer /> : <NewColumnBtn /> }
 		</StyledMainContainer>
 	)
 }
