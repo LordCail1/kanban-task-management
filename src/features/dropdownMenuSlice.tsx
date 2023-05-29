@@ -13,11 +13,9 @@ const dropdownMenuSlice = createSlice({
 	initialState,
 	reducers: {
 		activateDropdown: (state) => {
-            console.log('you activated the dropdown')
 			state.active = true
 		},
 		deActivateDropdown: (state) => {
-            console.log('You deActibated the dropdown')
 			state.active = false
 		},
 	},

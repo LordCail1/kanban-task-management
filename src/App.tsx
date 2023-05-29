@@ -7,8 +7,7 @@ import StyledRightSideContainer from "./styles/RightSideContainer.styled"
 import { useAppSelector } from "./hooks/redux/reduxHooks"
 import { theme } from "./styles/Global.styled"
 import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
-import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
-import DropdownMenu from "./components/DropdownMenu/DropdownMenu"
+import { useState } from "react"
 
 function App() {
 	const themeStyle = useAppSelector((state) => state.themeSlice)
@@ -16,18 +15,17 @@ function App() {
 	const isPopupOpen = useAppSelector(
 		(state) => state.popupSlice.value.active
 	)
-	const componentString = useAppSelector(
-		(state) => state.popupSlice.value.component
-	)
+	const [isColumnsEmpty, setIsColumnsEmpty] = useState<boolean>(false);
+	
 
-	const currentComponent = useGetComponentFromString(componentString)
+
 
 	return (
 		<ThemeProvider theme={mergedTheme}>
 			<GlobalStyle />
 			<StyledRightSideContainer>
-				<Navbar />
-				<Main />
+				<Navbar isColumnsEmpty={isColumnsEmpty}/>
+				<Main setIsColumnsEmpty={setIsColumnsEmpty}/>
 				<Sidebar />
 			</StyledRightSideContainer>
 			<PopupOverlay

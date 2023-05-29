@@ -8,7 +8,6 @@ const PopupOverlay = ({ active }: { active: boolean }) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)
 	const currentComponentString = useAppSelector((state) => state.popupSlice.value.component)
-	console.log(currentComponentString)
 	const Content = useGetComponentFromString(currentComponentString)
 
 	const handleCloseOverlay = (e: React.MouseEvent) => {

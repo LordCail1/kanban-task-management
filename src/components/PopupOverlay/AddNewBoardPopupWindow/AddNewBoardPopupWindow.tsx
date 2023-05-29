@@ -86,7 +86,6 @@ const AddNewBoardPopupWindow = () => {
 			columns: columnIds,
 		}
 
-		console.log(structuredColumns)
 		// Dispatch actions to add the board and columns to the store
 		dispatch(addBoard(structuredBoard))
 		dispatch(addColumns(structuredColumns))

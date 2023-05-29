@@ -5,7 +5,7 @@ import StyledNavbar from "./Navbar.styled"
 import StyledNavbarLogoContainer from "./NavbarLogoContainer.styled"
 import StyledPlatformLaunch from "./NavbarPlatformLaunch.styled"
 
-const Navbar = () => {
+const Navbar = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) => {
 	return (
 		<StyledNavbar>
 			<StyledNavbarLogoContainer>
@@ -13,7 +13,7 @@ const Navbar = () => {
 			</StyledNavbarLogoContainer>
 			<StyledPlatformLaunch>Platform Launch</StyledPlatformLaunch>
 			<DropdownArrow />
-			<AddNewTaskNavbarGroup />
+			<AddNewTaskNavbarGroup isColumnsEmpty={isColumnsEmpty}/>
 		</StyledNavbar>
 	)
 }
