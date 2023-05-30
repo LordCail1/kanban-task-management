@@ -1,3 +1,4 @@
+import { openPopup } from "../../features"
 import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 import StyledNewColumnBtn from "./NewColumnBtn.styled"
 
@@ -6,7 +7,7 @@ const NewColumnBtn = () => {
 	return (
 		<StyledNewColumnBtn
 			onClick={() => {
-				console.log("you clicked to add a new Column")
+				dispatch(openPopup({HOCComponent: "AddNewBoardPopupWindow", editing: true}))
 			}}
 		>
 			+ New Column

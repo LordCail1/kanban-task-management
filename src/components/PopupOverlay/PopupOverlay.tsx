@@ -3,11 +3,14 @@ import StyledPopupOverlay from "./PopupOverlay.styled"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
 import { closePopup } from "../../features"
 import useGetComponentFromString from "../../hooks/custom/useGetComponentFromString"
+import { nanoid } from "nanoid"
 
 const PopupOverlay = ({ active }: { active: boolean }) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)
-	const currentComponentString = useAppSelector((state) => state.popupSlice.value.component)
+	const { component: currentComponentString, editing } = useAppSelector(
+		(state) => state.popupSlice.value
+	)
 	const Content = useGetComponentFromString(currentComponentString)
 
 	const handleCloseOverlay = (e: React.MouseEvent) => {
@@ -22,7 +25,7 @@ const PopupOverlay = ({ active }: { active: boolean }) => {
 			onMouseDown={handleCloseOverlay}
 			ref={overlayRef}
 		>
-			<Content />
+			<Content editing={editing} key={nanoid()}/>
 		</StyledPopupOverlay>
 	)
 }

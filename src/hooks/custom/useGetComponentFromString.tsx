@@ -4,7 +4,7 @@ import DropdownMenu from "../../components/DropdownMenu/DropdownMenu"
 
 //default component is 'AddNewBoardPopupWindow'
 
-const useGetComponentFromString = (component: HOCComponents): ComponentType<any> => {
+const useGetComponentFromString = (component: HOCComponents): ComponentType<{editing: boolean}> => {
     
     switch(component) {
         case "AddNewBoardPopupWindow":

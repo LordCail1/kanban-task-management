@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+/* eslint-disable no-mixed-spaces-and-tabs */
+import { useEffect, useState } from "react"
 import AddNewColumnPopupBtn from "../../PopupButton/AddNewColumnPopupBtn"
 import CreateNewBoardPopupInputBtn from "../../PopupButton/CreateNewBoardPopupInputBtn"
 import UserInputItemList from "../../UserInput/UserInputItemList"
@@ -12,7 +13,7 @@ import { addBoard, addColumns, closePopup } from "../../../features"
 import { nanoid } from "nanoid"
 import randomColor from "randomcolor"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
-import { useAppDispatch } from "../../../hooks/redux/reduxHooks"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 
 const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 	boardName: z.string().min(3).max(30),
@@ -23,12 +24,36 @@ const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 	),
 })
 
-const AddNewBoardPopupWindow = () => {
+const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 	const dispatch = useAppDispatch()
+	const state = useAppSelector(state => state.boardsSlice.value.boards)
+	const { boardName, columns } = useAppSelector((state) => state.editingBoardSlice.value)
+	const [defaultValues, setDefaultValues] = useState({})
+
+
+
+
+	useEffect(() => {
+		console.log('you changed edit')
+		if (editing) {
+			reset({
+				boardName,
+				columns: columns.map((column) => {
+					return { columnName: column.columnName }
+				}),
+			})
+		} else {
+			console.log('that was false')
+			reset({boardName: "", columns: [{columnName: ""}]})
+		}
+	},[])
+
 
 	useEffect(() => {
 		append({ columnName: "" })
 	}, [])
+
+
 
 	const {
 		register,
@@ -38,6 +63,7 @@ const AddNewBoardPopupWindow = () => {
 		reset,
 	} = useForm<AddNewBoardPopupWindowFormData>({
 		resolver: zodResolver(schema),
+		defaultValues: defaultValues
 	})
 
 	const { fields, append, remove } = useFieldArray({
@@ -47,7 +73,9 @@ const AddNewBoardPopupWindow = () => {
 
 	const submitData = (data: AddNewBoardPopupWindowFormData) => {
 		// Reset the form and close the popup
-		reset({ boardName: "", columns: [{ columnName: "" }] })
+
+		// reset({ boardName: "", columns: [{ columnName: "" }] })
+		reset(defaultValues)
 		dispatch(closePopup())
 
 		// Extract the board name and columns from the form data

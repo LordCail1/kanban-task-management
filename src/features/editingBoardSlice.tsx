@@ -1,16 +1,22 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
+
+type InitialStateColumns = {
+	columnName: string
+	id: string
+}
 type InitialState = {
 	value: {
 		boardName: string
-		columnNames: ColumnFormData[]
+		columns: InitialStateColumns[]
 	}
 }
+
 
 const initialState: InitialState = {
 	value: {
 		boardName: "",
-		columnNames: [],
+		columns: [],
 	},
 }
 
@@ -20,10 +26,10 @@ const editingBoardSlice = createSlice({
 	reducers: {
 		setEditableBoard: (state, action: PayloadAction<{ boardName: string; columns: Column[] }>) => {
 			state.value.boardName = action.payload.boardName
-			state.value.columnNames = []
+			state.value.columns = []
 			action.payload.columns.forEach((col) => {
-				const column: ColumnFormData = { columnName: col.name }
-				state.value.columnNames.push(column)
+				const column: InitialStateColumns = { columnName: col.name, id: col.id }
+				state.value.columns.push(column)
 			})
 		},
 	},

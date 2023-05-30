@@ -8,7 +8,7 @@ const CreateNewBoardBtn = ({ menuArea }: MenuArea) => {
 	const dispatch = useAppDispatch()
 	return (
 		<StyledCreateNewBoardBtn
-			onClick={() => dispatch(openPopup("AddNewBoardPopupWindow"))}
+			onClick={() => dispatch(openPopup({HOCComponent: "AddNewBoardPopupWindow", editing: false}))}
 			menuArea={menuArea}
 		>
 			<StyledBoardBtnIcon
