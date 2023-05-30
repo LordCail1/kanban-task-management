@@ -30,7 +30,6 @@ const Column = ({ id }: { id: string }) => {
 		})
 	}
 
-
 	// Render the column with its title and tasks
 	return (
 		<StyledColumn>

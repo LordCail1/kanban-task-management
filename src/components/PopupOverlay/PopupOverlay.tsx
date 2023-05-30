@@ -17,15 +17,13 @@ const PopupOverlay = ({ active }: { active: boolean }) => {
 	}
 
 	return (
-		<>
-			<StyledPopupOverlay
-				active={active}
-				onMouseDown={handleCloseOverlay}
-				ref={overlayRef}
-			>
-				<Content />
-			</StyledPopupOverlay>
-		</>
+		<StyledPopupOverlay
+			active={active}
+			onMouseDown={handleCloseOverlay}
+			ref={overlayRef}
+		>
+			<Content />
+		</StyledPopupOverlay>
 	)
 }
 

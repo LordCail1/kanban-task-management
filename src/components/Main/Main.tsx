@@ -1,10 +1,11 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect } from "react"
-import { useAppSelector } from "../../hooks/redux/reduxHooks"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
 import Column from "../Column/Column"
 import EmptyBoardWarningContainer from "../EmptyBoardWarningContainer/EmptyBoardWarningContainer"
 import NewColumnBtn from "../NewColumnBtn/NewColumnBtn"
 import StyledMainContainer from "./MainContainer.styled"
+import { setEditableBoard } from "../../features"
 
 const Main = ({
 	setIsColumnsEmpty,
@@ -20,34 +21,38 @@ const Main = ({
 	const selectedBoard = useAppSelector((state) =>
 		state.boardsSlice.value.boards.find((board) => board.selected === true)
 	)
+	const dispatch = useAppDispatch()
 
+
+
+	// Runs when the component mounts or when the selected board changes
 	useEffect(() => {
-		setIsColumnsEmpty(filteredColumn.length < 1)
+		setIsColumnsEmpty(filteredColumns.length < 1) // Sets whether the columns are empty or not based on the filteredColumn array
+		if (selectedBoard) dispatch(setEditableBoard({boardName: selectedBoard.name, columns: filteredColumns})) // Dispatches the setEditableBoardName action with the selected board's name
 	})
 
 	// Filters the columns based on the selected board
-	const filteredColumn: Column[] = []
+	const filteredColumns: Column[] = []
 
 	if (selectedBoard) {
 		allColumns.forEach((column) => {
 			selectedBoard.columns.forEach((boardColumn) => {
-				if (boardColumn === column.id) filteredColumn.push(column)
+				if (boardColumn === column.id) filteredColumns.push(column)
 			})
 		})
 	}
 
-
 	return (
 		<StyledMainContainer activated={sidebarActivated}>
-			{filteredColumn
-				? filteredColumn.map((column) => (
+			{filteredColumns
+				? filteredColumns.map((column) => (
 						<Column
 							key={column.id}
 							id={column.id}
 						/>
 				  ))
 				: null}
-			{filteredColumn.length < 1 ? <EmptyBoardWarningContainer /> : <NewColumnBtn /> }
+			{filteredColumns.length < 1 ? <EmptyBoardWarningContainer /> : <NewColumnBtn />}
 		</StyledMainContainer>
 	)
 }

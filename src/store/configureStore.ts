@@ -6,7 +6,8 @@ import {
 	sidebarSliceReducer,
 	columnsSliceReducer,
 	tasksSliceReducer, 
-	dropDownSliceReducer
+	dropDownSliceReducer,
+	editingBoardSliceReducer
 } from "../features/index"
 
 export const store = configureStore({
@@ -17,7 +18,8 @@ export const store = configureStore({
 		sidebarSlice: sidebarSliceReducer,
 		columnsSlice: columnsSliceReducer,
 		tasksSlice: tasksSliceReducer, 
-		dropdownSlice: dropDownSliceReducer
+		dropdownSlice: dropDownSliceReducer,
+		editingBoardSlice: editingBoardSliceReducer
 	},
 })
 

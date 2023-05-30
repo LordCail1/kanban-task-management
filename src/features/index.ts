@@ -18,3 +18,6 @@ export { default as tasksSliceReducer } from "./tasksSlice"
 
 export { activateDropdown, deActivateDropdown } from "./dropdownMenuSlice"
 export { default as dropDownSliceReducer } from "./dropdownMenuSlice"
+
+export { setEditableBoard } from "./editingBoardSlice"
+export { default as editingBoardSliceReducer } from "./editingBoardSlice"
