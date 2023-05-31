@@ -82,7 +82,9 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
-			<StyledBoardManagerPopupTitle>Add New Board</StyledBoardManagerPopupTitle>
+			<StyledBoardManagerPopupTitle>
+				{editing ? "Edit Board" : "Add New Board"}
+			</StyledBoardManagerPopupTitle>
 			<UserInputShort
 				title="Board Name"
 				placeHolder="e.g Web Design"
@@ -100,7 +102,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				text="+Add New Column"
 				handleClick={handleAddNewColumnRow}
 			/>
-			<CreateNewBoardPopupInputBtn text="Create New Board" />
+			<CreateNewBoardPopupInputBtn text={editing ? "Save Changes" : "Create New Board"} />
 		</StyledBoardManagerPopupWindow>
 	)
 }
