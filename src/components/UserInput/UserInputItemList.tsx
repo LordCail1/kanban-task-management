@@ -15,9 +15,9 @@ const UserInputItemList = ({
 	remove,
 	title,
 }: UserInput & {
-	register: UseFormRegister<AddNewBoardPopupWindowFormData>
-	fields: FieldArrayWithId<AddNewBoardPopupWindowFormData>[]
-	errors: FieldErrors<AddNewBoardPopupWindowFormData>
+	register: UseFormRegister<BoardManagerPopupWindowFormData>
+	fields: FieldArrayWithId<BoardManagerPopupWindowFormData>[]
+	errors: FieldErrors<BoardManagerPopupWindowFormData>
 	remove: UseFieldArrayRemove
 }) => {
 	return (

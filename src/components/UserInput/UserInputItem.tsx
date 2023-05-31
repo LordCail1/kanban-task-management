@@ -19,15 +19,13 @@ const UserInputItem = ({
 	fields,
 }: UserInput & {
 	index: number
-	register: UseFormRegister<AddNewBoardPopupWindowFormData>
-	errors: FieldErrors<AddNewBoardPopupWindowFormData>
+	register: UseFormRegister<BoardManagerPopupWindowFormData>
+	errors: FieldErrors<BoardManagerPopupWindowFormData>
 	remove: UseFieldArrayRemove
-	field: FieldArrayWithId<AddNewBoardPopupWindowFormData>
-	fields: FieldArrayWithId<AddNewBoardPopupWindowFormData>[]
+	field: FieldArrayWithId<BoardManagerPopupWindowFormData>
+	fields: FieldArrayWithId<BoardManagerPopupWindowFormData>[]
 }) => {
-	const { isFieldValid } = useValidateField(
-		errors.columns?.[index]?.columnName?.message
-	)
+	const { isFieldValid } = useValidateField(errors.columns?.[index]?.columnName?.message)
 
 	return (
 		<StyledUserInputItem>

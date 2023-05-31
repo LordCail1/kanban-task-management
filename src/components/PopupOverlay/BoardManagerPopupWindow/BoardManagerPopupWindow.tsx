@@ -15,7 +15,7 @@ import randomColor from "randomcolor"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 
-const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
+const schema: ZodType<BoardManagerPopupWindowFormData> = z.object({
 	boardName: z.string().min(3).max(30),
 	columns: z.array(
 		z.object({
@@ -27,7 +27,7 @@ const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	const dispatch = useAppDispatch()
 	const { boardName, columns } = useAppSelector((state) => state.editingBoardSlice.value)
-	const [defaultValues, setDefaultValues] = useState<AddNewBoardPopupWindowFormData>({
+	const [defaultValues, setDefaultValues] = useState<BoardManagerPopupWindowFormData>({
 		boardName: "",
 		columns: [{ columnName: "" }],
 	})
@@ -42,37 +42,35 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 			setDefaultValues({ boardName: "", columns: [{ columnName: "" }] })
 		}
 	}, [])
-
+	
 	useEffect(() => {
 		reset(defaultValues)
 	}, [defaultValues])
-
+	
 	const {
 		register,
 		handleSubmit,
 		control,
 		formState: { errors },
 		reset,
-	} = useForm<AddNewBoardPopupWindowFormData>({
+	} = useForm<BoardManagerPopupWindowFormData>({
 		resolver: zodResolver(schema),
 		defaultValues: defaultValues,
 	})
-
+	
 	const { fields, append, remove } = useFieldArray({
 		control,
 		name: "columns",
 	})
+	
+	const submitData = (data: BoardManagerPopupWindowFormData) => {
 
-	const submitData = (data: AddNewBoardPopupWindowFormData) => {
 		// Reset the form and close the popup
-
-		// reset({ boardName: "", columns: [{ columnName: "" }] })
 		reset(defaultValues)
 		dispatch(closePopup())
-
+		
 		// Extract the board name and columns from the form data
 		const { boardName: rawBoardName, columns: rawColumns } = data
-
 		
 		// Map the raw columns to a structured format
 		const preStructuredColumns: Column[] = rawColumns.map((column): Column => {
@@ -86,7 +84,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				tasks: [],
 			}
 		})
-		
+
 		// Remove any empty columns
 		const removeEmptyOnes = (columnArray: Column[]) => {
 			return columnArray.filter((column) => column.name !== "")
@@ -97,8 +95,8 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		const columnIds: string[] = []
 		structuredColumns.forEach((column) => columnIds.push(column.id))
 		
-		// Create a structured board object
-
+		
+		
 		//took the borad name and capitalized the first letter
 		const finalBoardName = capitalizeAndTrim(rawBoardName)
 		const structuredBoard: Board = {
@@ -112,11 +110,10 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		dispatch(addBoard(structuredBoard))
 		dispatch(addColumns(structuredColumns))
 	}
-
-	const handleAddNewColumnRow = () => {
-		append({ columnName: "" })
-	}
-
+	
+	const handleAddNewColumnRow = () => append({ columnName: "" })
+	
+	
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
 			<StyledBoardManagerPopupTitle>Add New Board</StyledBoardManagerPopupTitle>

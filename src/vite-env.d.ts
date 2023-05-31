@@ -139,7 +139,7 @@ type BoardData = {
  * @params {boardName} name of the board that will be created
  * @params {columns} array of column names when creating a new board
  */
-type AddNewBoardPopupWindowFormData = {
+type BoardManagerPopupWindowFormData = {
 	boardName: string
 	columns: ColumnFormData[]
 }
