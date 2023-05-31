@@ -1,14 +1,13 @@
 import { ComponentType } from "react"
-import BoardManagerPopupWindow from "../../components/PopupOverlay/AddNewBoardPopupWindow/BoardManagerPopupWindow"
+import BoardManagerPopupWindow from "../../components/PopupOverlay/BoardManagerPopupWindow/BoardManagerPopupWindow"
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu"
 
-//default component is 'AddNewBoardPopupWindow'
 
 const useGetComponentFromString = (
 	component: HOCComponents
 ): ComponentType<{ editing: boolean }> => {
 	switch (component) {
-		case "AddNewBoardPopupWindow":
+		case "BoardManagerPopupWindow":
 			return BoardManagerPopupWindow
 		case "DropdownMenu":
 			return DropdownMenu

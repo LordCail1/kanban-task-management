@@ -50,7 +50,7 @@ type UserInputTitle = {
 /**
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
-type HOCComponents = "AddNewBoardPopupWindow" | "DropdownMenu"
+type HOCComponents = "BoardManagerPopupWindow" | "DropdownMenu"
 
 type Popup = {
 	active: boolean
@@ -151,10 +151,6 @@ type ColumnFormData = {
 	columnName: string
 	id?: string
 }
-
-
-
-
 
 /**
  * Different places where we can get the menu that is normally visible in the sidebar

@@ -7,7 +7,7 @@ const NewColumnBtn = () => {
 	return (
 		<StyledNewColumnBtn
 			onClick={() => {
-				dispatch(openPopup({HOCComponent: "AddNewBoardPopupWindow", editing: true}))
+				dispatch(openPopup({ HOCComponent: "BoardManagerPopupWindow", editing: true }))
 			}}
 		>
 			+ New Column

@@ -4,8 +4,8 @@ import AddNewColumnPopupBtn from "../../PopupButton/AddNewColumnPopupBtn"
 import CreateNewBoardPopupInputBtn from "../../PopupButton/CreateNewBoardPopupInputBtn"
 import UserInputItemList from "../../UserInput/UserInputItemList"
 import UserInputShort from "../../UserInput/UserInputShort"
-import StyledAddNewBoardPopupTitle from "./BoardManagerPopupTitle/BoardManagerPopupTitle.styled.tsx"
-import StyledBoardManagerPopupTitle from "./BoardManagerPopupWindow.styled.tsx"
+import StyledBoardManagerPopupTitle from "./BoardManagerPopupTitle/BoardManagerPopupTitle.styled.tsx"
+import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
 import { ZodType, z } from "zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -121,8 +121,8 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 
 	console.log("Outside")
 	return (
-		<StyledBoardManagerPopupTitle onSubmit={handleSubmit(submitData)}>
-			<StyledAddNewBoardPopupTitle>Add New Board</StyledAddNewBoardPopupTitle>
+		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
+			<StyledBoardManagerPopupTitle>Add New Board</StyledBoardManagerPopupTitle>
 			<UserInputShort
 				title="Board Name"
 				placeHolder="e.g Web Design"
@@ -141,7 +141,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				handleClick={handleAddNewColumnRow}
 			/>
 			<CreateNewBoardPopupInputBtn text="Create New Board" />
-		</StyledBoardManagerPopupTitle>
+		</StyledBoardManagerPopupWindow>
 	)
 }
 

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
 import { closePopup } from "../../features"
 import useGetComponentFromString from "../../hooks/custom/useGetComponentFromString"
 import { nanoid } from "nanoid"
+import StyledPopupOverlayHOCWrapper from "./PopupOverlayHOCWrapper.styled"
 
 const PopupOverlay = ({ active }: { active: boolean }) => {
 	const dispatch = useAppDispatch()
@@ -25,7 +26,12 @@ const PopupOverlay = ({ active }: { active: boolean }) => {
 			onMouseDown={handleCloseOverlay}
 			ref={overlayRef}
 		>
-			<Content editing={editing} key={nanoid()}/>
+			<StyledPopupOverlayHOCWrapper active={active}>
+				<Content
+					editing={editing}
+					key={nanoid()}
+				/>
+			</StyledPopupOverlayHOCWrapper>
 		</StyledPopupOverlay>
 	)
 }

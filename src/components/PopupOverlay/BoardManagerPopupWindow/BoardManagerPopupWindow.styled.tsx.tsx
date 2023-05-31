@@ -1,18 +1,14 @@
 import styled from "styled-components"
 import StyledGeneralPopupWindow from "../../../styles/popups/GeneralPopupWindow.styled"
 
-const StyledBoardManagerPopupTitle = styled(StyledGeneralPopupWindow)`
-	bottom: 50%;
-	left: 50%;
-	position: absolute;
-	transform: translate(-50%, 50%);
-	width: 480px;
+const StyledBoardManagerPopupWindow = styled(StyledGeneralPopupWindow)`
+	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
-	border-radius: 6px;
+	width: 480px;
 	@media screen and (max-width: ${({ theme }) => theme.mediaQueries.tablet}) {
 		width: 343px;
 	}
 `
 
-export default StyledBoardManagerPopupTitle
+export default StyledBoardManagerPopupWindow

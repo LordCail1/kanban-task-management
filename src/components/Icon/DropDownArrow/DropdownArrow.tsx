@@ -19,7 +19,7 @@ const DropdownArrow = () => {
 	return (
 		<StyledDropdownArrowBtn
 			onClick={() =>
-				dispatch(openPopup("DropdownMenu"))
+				dispatch(openPopup({HOCComponent: "DropdownMenu", editing: false}))
 			}
 		>
 			<StyledDropdownArrow
