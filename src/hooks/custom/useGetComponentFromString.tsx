@@ -3,6 +3,10 @@ import BoardManagerPopupWindow from "../../components/PopupOverlay/BoardManagerP
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu"
 
 
+
+
+
+
 const useGetComponentFromString = (
 	component: HOCComponents
 ): ComponentType<{ editing: boolean }> => {
@@ -17,3 +21,24 @@ const useGetComponentFromString = (
 }
 
 export default useGetComponentFromString
+
+
+
+
+/**
+ * BoardManagerPopupWindow
+ * 
+ * This component allows the user to 
+ * 1-create/delete boards and columns
+ * 2-update/delete boards and columns
+ * 
+ * 
+ * 
+ * 
+ * DropdownMenu
+ * 
+ * This component is a compact version of the sidebar. 
+ * It is used when the screen is smaller than a certain amount,
+ * and is triggered by the dropdown arrow
+ */
+

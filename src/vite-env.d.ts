@@ -50,6 +50,7 @@ type UserInputTitle = {
 /**
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
+
 type HOCComponents = "BoardManagerPopupWindow" | "DropdownMenu"
 
 type Popup = {
