@@ -13,9 +13,7 @@ const StyledBoardBtn = styled(StyledGeneralBoardBtn)<
 		css`
 			&:hover {
 				background-color: ${({ theme }) =>
-					theme.style === "dark"
-						? theme.colors.white
-						: theme.colors.main_purple_hover2};
+					theme.style === "dark" ? theme.colors.white : theme.colors.main_purple_hover2};
 			}
 		`}
 	${({ selected }) =>
