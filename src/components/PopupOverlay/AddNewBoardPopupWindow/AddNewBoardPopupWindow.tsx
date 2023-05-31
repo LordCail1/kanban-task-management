@@ -21,38 +21,41 @@ const schema: ZodType<AddNewBoardPopupWindowFormData> = z.object({
 		z.object({
 			columnName: z.string().max(30),
 		})
+
 	),
 })
 
 const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 	const dispatch = useAppDispatch()
-	const state = useAppSelector(state => state.boardsSlice.value.boards)
 	const { boardName, columns } = useAppSelector((state) => state.editingBoardSlice.value)
-	const [defaultValues, setDefaultValues] = useState({})
-
-
-
+	const [defaultValues, setDefaultValues] = useState<AddNewBoardPopupWindowFormData>({
+		boardName: "",
+		columns: [{ columnName: "" }],
+	})
 
 	useEffect(() => {
-		console.log('you changed edit')
+		console.log('useEffect 1')   
 		if (editing) {
-			reset({
+			setDefaultValues({
 				boardName,
-				columns: columns.map((column) => {
-					return { columnName: column.columnName }
-				}),
+				columns, 
 			})
 		} else {
-			console.log('that was false')
-			reset({boardName: "", columns: [{columnName: ""}]})
+			setDefaultValues({ boardName: "", columns: [{ columnName: "" }] })
 		}
-	},[])
-
-
-	useEffect(() => {
-		append({ columnName: "" })
 	}, [])
 
+	useEffect(() => {
+		console.log('useEffect 2')
+		// append({ columnName: "" })
+	}, [])
+
+
+	
+
+	useEffect(() => {
+		reset(defaultValues)
+	}, [defaultValues])
 
 
 	const {
@@ -63,24 +66,24 @@ const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 		reset,
 	} = useForm<AddNewBoardPopupWindowFormData>({
 		resolver: zodResolver(schema),
-		defaultValues: defaultValues
+		defaultValues: defaultValues,
 	})
-
+	
 	const { fields, append, remove } = useFieldArray({
 		control,
 		name: "columns",
 	})
-
+	
 	const submitData = (data: AddNewBoardPopupWindowFormData) => {
 		// Reset the form and close the popup
-
+		
 		// reset({ boardName: "", columns: [{ columnName: "" }] })
 		reset(defaultValues)
 		dispatch(closePopup())
-
+		
 		// Extract the board name and columns from the form data
 		const { boardName, columns: rawColumns } = data
-
+		
 		// Map the raw columns to a structured format
 		const preStructuredColumns: Column[] = rawColumns.map((column): Column => {
 			// Capitalize and trim the column name
@@ -93,17 +96,17 @@ const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 				tasks: [],
 			}
 		})
-
+		
 		// Remove any empty columns
 		const removeEmptyOnes = (columnArray: Column[]) => {
 			return columnArray.filter((column) => column.name !== "")
 		}
 		const structuredColumns = removeEmptyOnes(preStructuredColumns)
-
+		
 		// Extract the IDs of the columns
 		const columnIds: string[] = []
 		structuredColumns.forEach((column) => columnIds.push(column.id))
-
+		
 		// Create a structured board object
 		const structuredBoard: Board = {
 			name: boardName,
@@ -111,7 +114,7 @@ const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 			selected: true,
 			columns: columnIds,
 		}
-
+		
 		// Dispatch actions to add the board and columns to the store
 		dispatch(addBoard(structuredBoard))
 		dispatch(addColumns(structuredColumns))
@@ -120,7 +123,8 @@ const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 	const handleAddNewColumnRow = () => {
 		append({ columnName: "" })
 	}
-
+	
+	console.log('Outside')
 	return (
 		<StyledAddNewBoardPopupWindow onSubmit={handleSubmit(submitData)}>
 			<StyledAddNewBoardPopupTitle>Add New Board</StyledAddNewBoardPopupTitle>
@@ -129,18 +133,18 @@ const AddNewBoardPopupWindow = ({ editing }: { editing: boolean }) => {
 				placeHolder="e.g Web Design"
 				register={register}
 				errors={errors}
-			/>
+				/>
 			<UserInputItemList
 				title="Board Columns"
 				register={register}
 				fields={fields}
 				errors={errors}
 				remove={remove}
-			/>
+				/>
 			<AddNewColumnPopupBtn
 				text="+Add New Column"
 				handleClick={handleAddNewColumnRow}
-			/>
+				/>
 			<CreateNewBoardPopupInputBtn text="Create New Board" />
 		</StyledAddNewBoardPopupWindow>
 	)

@@ -1,14 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 
-type InitialStateColumns = {
-	columnName: string
-	id: string
-}
+
 type InitialState = {
 	value: {
 		boardName: string
-		columns: InitialStateColumns[]
+		columns: ColumnFormData[]
 	}
 }
 
@@ -28,7 +25,7 @@ const editingBoardSlice = createSlice({
 			state.value.boardName = action.payload.boardName
 			state.value.columns = []
 			action.payload.columns.forEach((col) => {
-				const column: InitialStateColumns = { columnName: col.name, id: col.id }
+				const column: ColumnFormData = { columnName: col.name, id: col.id }
 				state.value.columns.push(column)
 			})
 		},

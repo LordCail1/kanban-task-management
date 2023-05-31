@@ -5,13 +5,17 @@ const StyledPopupOverlay = styled.div<Active>`
 	height: 100%;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
+	transition: opacity ease-in-out ${({theme}) => theme.transitionTimes.medium};
+	display: block;
 	${({ active }) =>
 		active
 			? css`
-					display: block;
+					opacity: 1;
+					visibility: visible;
 			  `
 			: css`
-					display: none;
+					opacity: 0;
+					visibility: hidden;
 			  `};
 `
 

@@ -21,6 +21,7 @@ export const store = configureStore({
 		dropdownSlice: dropDownSliceReducer,
 		editingBoardSlice: editingBoardSliceReducer
 	},
+	
 })
 
 export type RootState = ReturnType<typeof store.getState>

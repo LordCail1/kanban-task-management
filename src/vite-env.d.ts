@@ -149,6 +149,7 @@ type AddNewBoardPopupWindowFormData = {
  */
 type ColumnFormData = {
 	columnName: string
+	id?: string
 }
 
 
