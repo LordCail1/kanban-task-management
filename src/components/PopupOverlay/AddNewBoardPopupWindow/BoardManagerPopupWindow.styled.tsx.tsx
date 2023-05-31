@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import StyledGeneralPopupWindow from "../../../styles/popups/GeneralPopupWindow.styled"
 
-const StyledAddNewBoardPopupWindow = styled(StyledGeneralPopupWindow)`
+const StyledBoardManagerPopupTitle = styled(StyledGeneralPopupWindow)`
 	bottom: 50%;
 	left: 50%;
 	position: absolute;
@@ -15,4 +15,4 @@ const StyledAddNewBoardPopupWindow = styled(StyledGeneralPopupWindow)`
 	}
 `
 
-export default StyledAddNewBoardPopupWindow
+export default StyledBoardManagerPopupTitle
