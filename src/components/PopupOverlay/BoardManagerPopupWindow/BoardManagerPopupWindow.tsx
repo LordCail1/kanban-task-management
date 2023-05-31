@@ -14,6 +14,7 @@ import { nanoid } from "nanoid"
 import randomColor from "randomcolor"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
+import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
 
 const schema: ZodType<BoardManagerPopupWindowFormData> = z.object({
 	boardName: z.string().min(3).max(30),
@@ -42,11 +43,11 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 			setDefaultValues({ boardName: "", columns: [{ columnName: "" }] })
 		}
 	}, [])
-	
+
 	useEffect(() => {
 		reset(defaultValues)
 	}, [defaultValues])
-	
+
 	const {
 		register,
 		handleSubmit,
@@ -57,63 +58,28 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		resolver: zodResolver(schema),
 		defaultValues: defaultValues,
 	})
-	
+
 	const { fields, append, remove } = useFieldArray({
 		control,
 		name: "columns",
 	})
-	
-	const submitData = (data: BoardManagerPopupWindowFormData) => {
 
+	const submitData = (data: BoardManagerPopupWindowFormData) => {
 		// Reset the form and close the popup
 		reset(defaultValues)
 		dispatch(closePopup())
-		
-		// Extract the board name and columns from the form data
-		const { boardName: rawBoardName, columns: rawColumns } = data
-		
-		// Map the raw columns to a structured format
-		const preStructuredColumns: Column[] = rawColumns.map((column): Column => {
-			// Capitalize and trim the column name
-			const columnName = capitalizeAndTrim(column.columnName)
-			// Generate a random color for the column
-			return {
-				name: columnName,
-				id: nanoid(10),
-				color: randomColor(),
-				tasks: [],
-			}
-		})
 
-		// Remove any empty columns
-		const removeEmptyOnes = (columnArray: Column[]) => {
-			return columnArray.filter((column) => column.name !== "")
+		if (editing) {
+			console.log("yo")
+		} else {
+			const { structuredBoard, structuredColumns } = BoardManagerPopupWindowCreaterFormHook(data)
+			dispatch(addBoard(structuredBoard))
+			dispatch(addColumns(structuredColumns))
 		}
-		const structuredColumns = removeEmptyOnes(preStructuredColumns)
-
-		// Extract the IDs of the columns
-		const columnIds: string[] = []
-		structuredColumns.forEach((column) => columnIds.push(column.id))
-		
-		
-		
-		//took the borad name and capitalized the first letter
-		const finalBoardName = capitalizeAndTrim(rawBoardName)
-		const structuredBoard: Board = {
-			name: finalBoardName,
-			id: nanoid(10),
-			selected: true,
-			columns: columnIds,
-		}
-
-		// Dispatch actions to add the board and columns to the store
-		dispatch(addBoard(structuredBoard))
-		dispatch(addColumns(structuredColumns))
 	}
-	
+
 	const handleAddNewColumnRow = () => append({ columnName: "" })
-	
-	
+
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
 			<StyledBoardManagerPopupTitle>Add New Board</StyledBoardManagerPopupTitle>
