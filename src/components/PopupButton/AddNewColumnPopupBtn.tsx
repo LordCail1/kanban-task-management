@@ -1,12 +1,13 @@
 import StyledAddNewColumnPopupBtn from "./AddNewColumnPopupBtn.styled"
 
-const AddNewColumnPopupBtn = ({text, handleClick}: PopupBtn) => {
+const AddNewColumnPopupBtn = ({ text, handleClick }: PopupBtn) => {
 	return (
-		<>
-			<StyledAddNewColumnPopupBtn onClick={handleClick} type="button">
-				{text}
-			</StyledAddNewColumnPopupBtn>
-		</>
+		<StyledAddNewColumnPopupBtn
+			onClick={handleClick}
+			type="button"
+		>
+			{text}
+		</StyledAddNewColumnPopupBtn>
 	)
 }
 

@@ -6,7 +6,6 @@ import StyledDropdownMenu from "./DropdownMenu.styled"
 
 const DropdownMenu = () => {
 
-	console.log('you invoked the DropDown Menu')
 
 	return (
 		<StyledDropdownMenu>

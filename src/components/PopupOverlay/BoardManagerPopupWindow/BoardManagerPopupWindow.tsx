@@ -33,7 +33,6 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	})
 
 	useEffect(() => {
-		console.log("useEffect 1")
 		if (editing) {
 			setDefaultValues({
 				boardName,
@@ -42,11 +41,6 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		} else {
 			setDefaultValues({ boardName: "", columns: [{ columnName: "" }] })
 		}
-	}, [])
-
-	useEffect(() => {
-		console.log("useEffect 2")
-		// append({ columnName: "" })
 	}, [])
 
 	useEffect(() => {
@@ -77,8 +71,9 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		dispatch(closePopup())
 
 		// Extract the board name and columns from the form data
-		const { boardName, columns: rawColumns } = data
+		const { boardName: rawBoardName, columns: rawColumns } = data
 
+		
 		// Map the raw columns to a structured format
 		const preStructuredColumns: Column[] = rawColumns.map((column): Column => {
 			// Capitalize and trim the column name
@@ -91,7 +86,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				tasks: [],
 			}
 		})
-
+		
 		// Remove any empty columns
 		const removeEmptyOnes = (columnArray: Column[]) => {
 			return columnArray.filter((column) => column.name !== "")
@@ -101,10 +96,13 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		// Extract the IDs of the columns
 		const columnIds: string[] = []
 		structuredColumns.forEach((column) => columnIds.push(column.id))
-
+		
 		// Create a structured board object
+
+		//took the borad name and capitalized the first letter
+		const finalBoardName = capitalizeAndTrim(rawBoardName)
 		const structuredBoard: Board = {
-			name: boardName,
+			name: finalBoardName,
 			id: nanoid(10),
 			selected: true,
 			columns: columnIds,
@@ -119,7 +117,6 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		append({ columnName: "" })
 	}
 
-	console.log("Outside")
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
 			<StyledBoardManagerPopupTitle>Add New Board</StyledBoardManagerPopupTitle>
