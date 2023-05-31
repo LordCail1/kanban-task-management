@@ -1,19 +1,21 @@
 import React, { useRef } from "react"
 import StyledPopupOverlay from "./PopupOverlay.styled"
-import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
+import { useAppDispatch } from "../../hooks/redux/reduxHooks"
 import { closePopup } from "../../features"
-import useGetComponentFromString from "../../hooks/custom/useGetComponentFromString"
 import { nanoid } from "nanoid"
 import StyledPopupOverlayHOCWrapper from "./PopupOverlayHOCWrapper.styled"
 
-const PopupOverlay = ({ active }: { active: boolean }) => {
+const PopupOverlay = ({
+	active,
+	component: Component,
+	editing,
+}: {
+	active: boolean
+	component: React.ComponentType<{ editing: boolean }>
+	editing: boolean
+}) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)
-	const { component: currentComponentString, editing } = useAppSelector(
-		(state) => state.popupSlice.value
-	)
-	const Content = useGetComponentFromString(currentComponentString)
-
 	const handleCloseOverlay = (e: React.MouseEvent) => {
 		if (overlayRef.current && e.target === overlayRef.current) {
 			dispatch(closePopup())
@@ -27,7 +29,7 @@ const PopupOverlay = ({ active }: { active: boolean }) => {
 			ref={overlayRef}
 		>
 			<StyledPopupOverlayHOCWrapper active={active}>
-				<Content
+				<Component
 					editing={editing}
 					key={nanoid()}
 				/>
