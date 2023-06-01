@@ -12,13 +12,19 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { addBoard, addColumns, closePopup } from "../../../features"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
+import { nanoid } from "nanoid"
 import BoardManagerPopupWindowEditerFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowEditerFormHook.tsx"
 
 const schema: ZodType<BoardManagerPopupWindowCreateFormData> = z.object({
-	boardName: z.string().min(3).max(30),
+	// boardName: z.string().min(3).max(30),
+	board: z.object({
+		boardName: z.string().min(3).max(30),
+		id: z.string().min(3).max(30),
+	}),
 	columns: z.array(
 		z.object({
-			columnName: z.string().max(30),
+			columnName: z.string().min(3).max(30),
+			id: z.string().min(3).max(30),
 		})
 	),
 })
@@ -31,23 +37,27 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 
 	//settings the default values depending on if editing or not
 	const [defaultValues, setDefaultValues] = useState<BoardManagerPopupWindowCreateFormData>({
-		boardName: "",
-		columns: [{ columnName: "" }],
+		board: {
+			boardName: "",
+			id: "",
+		},
+		columns: [{ columnName: "", id: ""}],
 	})
 
 	useEffect(() => {
 		if (editing) {
-			//only grabbing the 'columnName' property from the editable board redux state
-			const columns = editingBoard.columns.map((column) => {
-				return { columnName: column.columnName }
-			})
-
 			setDefaultValues({
-				boardName: editingBoard.board.boardName,
-				columns,
+				board: {
+					boardName: editingBoard.board.boardName,
+					id: editingBoard.board.id
+				},
+				columns: editingBoard.columns,
 			})
 		} else {
-			setDefaultValues({ boardName: "", columns: [{ columnName: "" }] })
+			setDefaultValues({
+				board: { boardName: "", id: nanoid(10) },
+				columns: [{ columnName: "", id: nanoid(10) }],
+			})
 		}
 	}, [])
 
@@ -76,6 +86,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		reset(defaultValues)
 		dispatch(closePopup())
 
+
 		if (editing) {
 			BoardManagerPopupWindowEditerFormHook(data, editingBoard)
 		} else {
@@ -86,7 +97,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	}
 
 	function handleAddNewColumnRow(): void {
-		return append({ columnName: "" })
+		return append({ columnName: "", id: nanoid(10) })
 	}
 
 	return (

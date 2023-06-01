@@ -159,7 +159,10 @@ type MenuArea = {
  * @params {columns} array of column names when creating a new board
  */
 type BoardManagerPopupWindowCreateFormData = {
-	boardName: string
+	board: {
+		boardName: string
+		id: string
+	}
 	columns: ColumnCreateFormData[]
 }	
 
@@ -169,6 +172,7 @@ type BoardManagerPopupWindowCreateFormData = {
  */
 type ColumnCreateFormData = {
 	columnName: string
+	id: string
 }	
 
 

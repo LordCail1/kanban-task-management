@@ -23,17 +23,23 @@ const Main = ({
 	)
 	const dispatch = useAppDispatch()
 
-	// Runs when the component mounts or when the selected board changes
+	// Sets whether the columns are empty or not based on the filteredColumn array
 	useEffect(() => {
-		setIsColumnsEmpty(filteredColumns.length < 1) // Sets whether the columns are empty or not based on the filteredColumn array
-		if (selectedBoard)
+		setIsColumnsEmpty(filteredColumns.length < 1)
+	})
+
+	//useEffect that makes sure to set the editable board when ever
+	//the selected board changes
+	useEffect(() => {
+		if (selectedBoard) {
 			dispatch(
 				setEditableBoard({
 					board: { boardName: selectedBoard.name, id: selectedBoard.id },
 					columns: filteredColumns,
 				})
 			) // Dispatches the setEditableBoardName action with the selected board's name
-	})
+		}
+	}, [selectedBoard])
 
 	// Filters the columns based on the selected board
 	const filteredColumns: Column[] = []

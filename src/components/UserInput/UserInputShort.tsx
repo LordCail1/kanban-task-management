@@ -13,7 +13,7 @@ const UserInputShort = ({
 	register: UseFormRegister<BoardManagerPopupWindowCreateFormData>
 	errors: FieldErrors<BoardManagerPopupWindowCreateFormData>
 }) => {
-	const { isFieldValid } = useValidateField(errors.boardName?.message)
+	const { isFieldValid } = useValidateField(errors.board?.boardName?.message)
 
 	return (
 		<StyledUserInputContainer>
@@ -22,7 +22,7 @@ const UserInputShort = ({
 				placeholder={placeHolder}
 				valid={isFieldValid}
 				type="text"
-				{...register("boardName")}
+				{...register("board.boardName")}
 			/>
 		</StyledUserInputContainer>
 	)

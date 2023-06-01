@@ -1,19 +1,35 @@
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 
 const BoardManagerPopupWindowEditerFormHook = (
-	{ boardName: rawBoardName, columns: rawColumns }: BoardManagerPopupWindowCreateFormData,
+	{
+		board: { boardName: rawBoardName, id: boardId, },
+		columns: rawColumns,
+	}: BoardManagerPopupWindowCreateFormData,
 	editingBoard: BoardManagerPopupWindowEditFormData
 ) => {
+	const preStructuredColumns: { name: string; id: string }[] = rawColumns.map((column) => {
+		return {
+			name: capitalizeAndTrim(column.columnName),
+			id: column.id,
+		}
+	})
 
-	// const structuredColumns: {name: string, id: string}[] 
+	const removeEmptyOnes = (columnArray: { name: string; id: string }[]) => {
+		return columnArray.filter((column) => column.name !== "")
+	}
+	const structuredColumns = removeEmptyOnes(preStructuredColumns)
 
+	const structuredBoard: Board = {
+		name: capitalizeAndTrim(rawBoardName),
+		id: boardId,
+		selected: true,
+		columns: structuredColumns.map((column) => column.id),
+	}
 
+    // const deletedColumns: ColumnEditFormData = editingBoard.columns.filter(column => column.id !== )
 
-
-
-	console.log("editingBoard", editingBoard)
-	console.log("rawBoardName", rawBoardName)
-	console.log("rawColumns", rawColumns)
+	console.log('editingBoard', editingBoard)
+    console.log("columns that were submited", rawColumns)
 }
 
 export default BoardManagerPopupWindowEditerFormHook

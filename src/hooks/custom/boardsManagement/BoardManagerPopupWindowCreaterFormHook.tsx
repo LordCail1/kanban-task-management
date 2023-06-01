@@ -1,10 +1,9 @@
-import { nanoid } from "nanoid"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 import randomColor from "randomcolor"
 
 // This hook takes in form data for creating a new board and returns a structured board and columns.
 const BoardManagerPopupWindowCreaterFormHook = ({
-	boardName: rawBoardName,
+	board: { boardName: rawBoardName, id: boardId },
 	columns: rawColumns,
 }: BoardManagerPopupWindowCreateFormData): {
 	structuredBoard: Board
@@ -17,7 +16,7 @@ const BoardManagerPopupWindowCreaterFormHook = ({
 		// Generate a random color for the column
 		return {
 			name: columnName,
-			id: nanoid(10),
+			id: column.id,
 			color: randomColor(),
 			tasks: [],
 		}
@@ -37,7 +36,7 @@ const BoardManagerPopupWindowCreaterFormHook = ({
 	const finalBoardName = capitalizeAndTrim(rawBoardName)
 	const structuredBoard: Board = {
 		name: finalBoardName,
-		id: nanoid(10),
+		id: boardId,
 		selected: true,
 		columns: columnIds,
 	}
