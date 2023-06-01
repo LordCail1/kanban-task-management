@@ -134,24 +134,6 @@ type BoardData = {
 	boards: Board[]
 }
 
-/**
- * Form structure for creating a new board
- * @params {boardName} name of the board that will be created
- * @params {columns} array of column names when creating a new board
- */
-type BoardManagerPopupWindowFormData = {
-	boardName: string
-	columns: ColumnFormData[]
-}
-
-/**
- * Form structure for creating a new column in a board
- * @params {columnName} name of the column that will be created
- */
-type ColumnFormData = {
-	columnName: string
-	id?: string
-}
 
 /**
  * Different places where we can get the menu that is normally visible in the sidebar
@@ -159,4 +141,52 @@ type ColumnFormData = {
  */
 type MenuArea = {
 	menuArea: "sidebar" | "dropdown"
+}
+
+
+
+
+
+
+
+
+
+//form types for creating boards
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Form structure for creating a new board 
+ * @params {boardName} name of the board that will be created
+ * @params {columns} array of column names when creating a new board
+ */
+type BoardManagerPopupWindowCreateFormData = {
+	boardName: string
+	columns: ColumnCreateFormData[]
+}	
+
+/**
+ * Form structure for creating a new column in a board 
+ * @params {columnName} name of the column that will be created
+ */
+type ColumnCreateFormData = {
+	columnName: string
+}	
+
+
+
+
+//form types for editing boards
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+type BoardManagerPopupWindowEditFormData = {
+	board: {
+		boardName: string
+		id: string
+	}
+	columns: ColumnEditFormData[]
+}
+
+type ColumnEditFormData = {
+	columnName: string
+	id: string
 }

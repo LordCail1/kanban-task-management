@@ -2,17 +2,18 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 
 
-type InitialState = {
-	value: {
-		boardName: string
-		columns: ColumnFormData[]
-	}
-}
 
+
+type InitialState = {
+	value: BoardManagerPopupWindowEditFormData
+}
 
 const initialState: InitialState = {
 	value: {
-		boardName: "",
+		board: {
+			boardName: "",
+			id: ""
+		},
 		columns: [],
 	},
 }
@@ -21,11 +22,15 @@ const editingBoardSlice = createSlice({
 	name: "editingBoard_slice",
 	initialState,
 	reducers: {
-		setEditableBoard: (state, action: PayloadAction<{ boardName: string; columns: Column[] }>) => {
-			state.value.boardName = action.payload.boardName
+		setEditableBoard: (
+			state,
+			action: PayloadAction<{ board: { boardName: string; id: string }; columns: Column[] }>
+		) => {
+			state.value.board.boardName = action.payload.board.boardName
+			state.value.board.id = action.payload.board.id
 			state.value.columns = []
 			action.payload.columns.forEach((col) => {
-				const column: ColumnFormData = { columnName: col.name, id: col.id }
+				const column: ColumnEditFormData = { columnName: col.name, id: col.id }
 				state.value.columns.push(column)
 			})
 		},

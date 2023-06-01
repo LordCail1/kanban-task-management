@@ -86,15 +86,15 @@ const columnsSlice = createSlice({
 	name: "columns_slice",
 	initialState,
 	reducers: {
-		addColumn: (state) => {
-			return state
-		},
 
 		addColumns: (state, action: PayloadAction<Column[]>) => {
 			state.value.columns.push(...action.payload)
 		},
+		updateColumns: (state, action: PayloadAction<{name: string, id: string}[]>) =>  {
+			return state
+		}
 	},
 })
 
 export default columnsSlice.reducer
-export const { addColumn, addColumns } = columnsSlice.actions
+export const { addColumns, updateColumns } = columnsSlice.actions

@@ -2,14 +2,14 @@ import { nanoid } from "nanoid"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 import randomColor from "randomcolor"
 
-
-
-
 // This hook takes in form data for creating a new board and returns a structured board and columns.
 const BoardManagerPopupWindowCreaterFormHook = ({
 	boardName: rawBoardName,
 	columns: rawColumns,
-}: BoardManagerPopupWindowFormData): { structuredBoard: Board; structuredColumns: Column[] } => {
+}: BoardManagerPopupWindowCreateFormData): {
+	structuredBoard: Board
+	structuredColumns: Column[]
+} => {
 	// Map the raw columns to a structured format
 	const preStructuredColumns: Column[] = rawColumns.map((column): Column => {
 		// Capitalize and trim the column name

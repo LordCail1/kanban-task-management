@@ -52,7 +52,7 @@ const boardsSlice = createSlice({
 			)
 			if (selectedBoard) selectedBoard.selected = true
 		},
-		updateBoard: (state) => {
+		updateBoard: (state, action: PayloadAction<Board>) => {
 			return state
 		}
 	},
