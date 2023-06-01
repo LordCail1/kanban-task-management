@@ -1,7 +1,7 @@
 export { changeThemeStyle } from "./themeSlice"
 export { default as themeSliceReducer } from "./themeSlice"
 
-export { addBoard } from "./boardsSlice"
+export { addBoard, selectBoard, updateBoard } from "./boardsSlice"
 export { default as boardsSliceReducer } from "./boardsSlice"
 
 export { openPopup, closePopup } from "./popupSlice"

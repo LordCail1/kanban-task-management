@@ -52,8 +52,11 @@ const boardsSlice = createSlice({
 			)
 			if (selectedBoard) selectedBoard.selected = true
 		},
+		updateBoard: (state) => {
+			return state
+		}
 	},
 })
 
-export const { addBoard, selectBoard } = boardsSlice.actions
+export const { addBoard, selectBoard, updateBoard } = boardsSlice.actions
 export default boardsSlice.reducer

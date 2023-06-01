@@ -2,6 +2,10 @@ import { nanoid } from "nanoid"
 import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 import randomColor from "randomcolor"
 
+
+
+
+// This hook takes in form data for creating a new board and returns a structured board and columns.
 const BoardManagerPopupWindowCreaterFormHook = ({
 	boardName: rawBoardName,
 	columns: rawColumns,

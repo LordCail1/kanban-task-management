@@ -10,9 +10,6 @@ import { ZodType, z } from "zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { addBoard, addColumns, closePopup } from "../../../features"
-import { nanoid } from "nanoid"
-import randomColor from "randomcolor"
-import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
 
@@ -64,9 +61,10 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		name: "columns",
 	})
 
-	const submitData = (data: BoardManagerPopupWindowFormData) => {
+	function submitData(data: BoardManagerPopupWindowFormData): void {
 		// Reset the form and close the popup
 		reset(defaultValues)
+
 		dispatch(closePopup())
 
 		if (editing) {
@@ -78,7 +76,9 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		}
 	}
 
-	const handleAddNewColumnRow = () => append({ columnName: "" })
+	function handleAddNewColumnRow(): void {
+		return append({ columnName: "" })
+	}
 
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>

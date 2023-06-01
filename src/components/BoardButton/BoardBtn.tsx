@@ -1,4 +1,4 @@
-import { selectBoard } from "../../features/boardsSlice"
+import { selectBoard } from "../../features"
 import StyledBoardBtn from "./BoardBtn.styled"
 
 import { theme } from "../../styles/Global.styled"
