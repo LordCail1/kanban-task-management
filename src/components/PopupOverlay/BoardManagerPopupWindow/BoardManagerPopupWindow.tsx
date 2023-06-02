@@ -41,7 +41,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 			boardName: "",
 			id: "",
 		},
-		columns: [{ columnName: "", id: ""}],
+		columns: [{ columnName: "", id: "" }],
 	})
 
 	useEffect(() => {
@@ -49,7 +49,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 			setDefaultValues({
 				board: {
 					boardName: editingBoard.board.boardName,
-					id: editingBoard.board.id
+					id: editingBoard.board.id,
 				},
 				columns: editingBoard.columns,
 			})
@@ -81,11 +81,10 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		name: "columns",
 	})
 
-	function submitData(data: BoardManagerPopupWindowCreateFormData): void {
+	function submitData(data: BoardManagerPopupWindowCreateFormData) {
 		// Reset the form and close the popup
 		reset(defaultValues)
 		dispatch(closePopup())
-
 
 		if (editing) {
 			BoardManagerPopupWindowEditerFormHook(data, editingBoard)
@@ -96,9 +95,12 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		}
 	}
 
-	function handleAddNewColumnRow(): void {
+	function handleAddNewColumnRow() {
 		return append({ columnName: "", id: nanoid(10) })
 	}
+
+
+
 
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
@@ -112,7 +114,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				errors={errors}
 			/>
 			<UserInputItemList
-				title="Board Columns"
+				title={fields.length !== 0 ? "Board Columns" : ""}
 				register={register}
 				fields={fields}
 				errors={errors}
