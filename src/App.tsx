@@ -11,9 +11,7 @@ import { useState } from "react"
 import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
 
 function App() {
-	const { component: currentComponentString, editing } = useAppSelector(
-		(state) => state.popupSlice.value
-	)
+	const { component: currentComponentString, editing } = useAppSelector((state) => state.popupSlice.value)
 	const component = useGetComponentFromString(currentComponentString)
 
 	const themeStyle = useAppSelector((state) => state.themeSlice)

@@ -10,7 +10,7 @@ export { default as popupSliceReducer } from "./popupSlice"
 export { activateSidebar, deActivateSidebar } from "./sidebarSlice"
 export { default as sidebarSliceReducer } from "./sidebarSlice"
 
-export { addColumns, updateColumns } from "./columnsSlice"
+export { addColumnsEdit as addColumns, updateColumns, deleteColumns, addColumnsCreate } from "./columnsSlice"
 export { default as columnsSliceReducer } from "./columnsSlice"
 
 export { addTask, deleteTask } from "./tasksSlice"

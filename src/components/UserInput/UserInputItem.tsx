@@ -2,12 +2,7 @@ import useValidateField from "../../hooks/react-form-hook/useValidateField"
 import StyledCrossIcon from "../Icon/CrossIcon.styled"
 import StyledUserInputBoxShort from "./UserInputBoxShort.styled"
 import StyledUserInputItem from "./UserInputItem.styled"
-import {
-	UseFormRegister,
-	FieldErrors,
-	UseFieldArrayRemove,
-	FieldArrayWithId,
-} from "react-hook-form"
+import { UseFormRegister, FieldErrors, UseFieldArrayRemove, FieldArrayWithId } from "react-hook-form"
 
 const UserInputItem = ({
 	errors,

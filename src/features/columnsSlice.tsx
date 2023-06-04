@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import randomColor from "randomcolor"
 
 type InitialState = {
 	value: {
@@ -19,28 +20,13 @@ const initialState: InitialState = {
 				name: "Doing",
 				id: "nLgowJGVMG",
 				color: "#e2afff",
-				tasks: [
-					"Xx4nI8E7gx",
-					"wLvI5rzULs",
-					"_GVTTYCfpY",
-					"x3vwsAZgF7",
-					"YQ5eGXNmaw",
-					"bv1PgtRCIh",
-				],
+				tasks: ["Xx4nI8E7gx", "wLvI5rzULs", "_GVTTYCfpY", "x3vwsAZgF7", "YQ5eGXNmaw", "bv1PgtRCIh"],
 			},
 			{
 				name: "Done",
 				id: "fxLoDxr5No",
 				color: "#2cb259",
-				tasks: [
-					"TX1c_s04fa",
-					"FLFIcNw00k",
-					"D2QNHgiWI6",
-					"Tbtv9x4ZWa",
-					"YDkzGoB53X",
-					"3jyh7xM48e",
-					"opZz1bnspA",
-				],
+				tasks: ["TX1c_s04fa", "FLFIcNw00k", "D2QNHgiWI6", "Tbtv9x4ZWa", "YDkzGoB53X", "3jyh7xM48e", "opZz1bnspA"],
 			},
 			{
 				name: "Todo",
@@ -86,15 +72,59 @@ const columnsSlice = createSlice({
 	name: "columns_slice",
 	initialState,
 	reducers: {
+		
 
-		addColumns: (state, action: PayloadAction<Column[]>) => {
+		/**
+		 * reducer to add a columns when user is on 'edit' mode
+		 */
+		addColumnsEdit: (state, action: PayloadAction<UpdatingColumnsType>) => {
+			const { newColumns } = action.payload
+			const newColumnArray: Column[] = newColumns.map((column) => {
+				return {
+					name: column.columnName,
+					id: column.id,
+					color: randomColor(),
+					tasks: [],
+				}
+			})
+
+			state.value.columns.push(...newColumnArray)
+		},
+		/**
+		 * reducer to add a columns when user is creating a board opposed to if he was editing it 
+		 */
+		addColumnsCreate: (state, action: PayloadAction<Column[]>) => {
 			state.value.columns.push(...action.payload)
 		},
-		updateColumns: (state, action: PayloadAction<{name: string, id: string}[]>) =>  {
-			return state
-		}
+
+		updateColumns: (state, action: PayloadAction<UpdatingColumnsType>) => {
+			const { columnsToUpdate } = action.payload
+
+			updateColumns(columnsToUpdate, state.value.columns)
+
+			/**
+			 * Updates the names of columns in the Redux store based on the data provided in the ColumnEditFormData array.
+			 * @param colsFromPayloadToUpdate the columns that come from the payload that we need to update
+			 * @param allColsFromState all of the columns from the redux store
+			 */
+			function updateColumns(colsFromPayloadToUpdate: ColumnEditFormData[], allColsFromState: Column[]) {
+				for (let i = 0; i < allColsFromState.length; i++) {
+					for (let j = 0; j < colsFromPayloadToUpdate.length; j++) {
+						if (allColsFromState[i].id === colsFromPayloadToUpdate[j].id) {
+							allColsFromState[i].name = colsFromPayloadToUpdate[j].columnName
+						}
+					}
+				}
+			}
+		},
+		deleteColumns: (state, action: PayloadAction<UpdatingColumnsType>) => {
+			const { deletedColumns } = action.payload
+
+			const deletedColumnIds = new Set(deletedColumns.map((column) => column.id))
+			state.value.columns = state.value.columns.filter((column) => !deletedColumnIds.has(column.id))
+		},
 	},
 })
 
 export default columnsSlice.reducer
-export const { addColumns, updateColumns } = columnsSlice.actions
+export const { addColumnsEdit, deleteColumns, updateColumns, addColumnsCreate } = columnsSlice.actions

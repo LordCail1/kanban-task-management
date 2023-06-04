@@ -3,10 +3,15 @@ import ThreeDots from "../../ThreeDots/ThreeDots"
 import StyledAddNewTaskBtn from "../AddNewTaskBtn/AddNewTaskBtn.styled"
 import StyledAddNewTaskNavbarGroup from "./AddNewTaskNavbarGroup.styled"
 
-//This component is a group of buttons in the navbar at the top of the screen that allows to add a task if needed.
+
+/**
+ * This component is a group of buttons in the navbar at the top of the screen that allows to add a task if needed.
+ */
 const AddNewTaskNavbarGroup = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) => {
 	const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
 
+
+	
 	//This effect sets the viewport width state when the window is resized.
 	useEffect(() => {
 		function getViewPortWidth() {

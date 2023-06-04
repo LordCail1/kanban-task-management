@@ -34,27 +34,26 @@ const boardsSlice = createSlice({
 	initialState,
 	reducers: {
 		addBoard: (state, action: PayloadAction<Board>) => {
-			const currentBoard = state.value.boards.find(board => board.selected === true)
+			const currentBoard = state.value.boards.find((board) => board.selected === true)
 			if (currentBoard) {
 				currentBoard.selected = false
 			}
 			state.value.boards.push(action.payload)
-
 		},
 		selectBoard: (state, action: PayloadAction<string>) => {
-			const currentBoard = state.value.boards.find(
-				(board) => board.selected === true
-			)
+			const currentBoard = state.value.boards.find((board) => board.selected === true)
 			if (currentBoard) currentBoard.selected = false
 
-			const selectedBoard = state.value.boards.find(
-				(board) => board.id === action.payload
-			)
+			const selectedBoard = state.value.boards.find((board) => board.id === action.payload)
 			if (selectedBoard) selectedBoard.selected = true
 		},
 		updateBoard: (state, action: PayloadAction<Board>) => {
-			return state
-		}
+			const boardToUpdate = state.value.boards.find((board) => board.id === action.payload.id)
+			if (boardToUpdate) {
+				boardToUpdate.name = action.payload.name
+				boardToUpdate.columns = action.payload.columns
+			}
+		},
 	},
 })
 

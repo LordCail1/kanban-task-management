@@ -51,7 +51,7 @@ type UserInputTitle = {
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
 
-type HOCComponents = "BoardManagerPopupWindow" | "DropdownMenu"
+type HOCComponents = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerPopupWindow"
 
 type Popup = {
 	active: boolean
@@ -99,8 +99,11 @@ type Task = {
 
 /**
  * individual columns
- * @params {name} name of the column
- * @params {tasks} IDs of all the tasks belonging to this column
+ * @param name name of the column
+ * @param id id of the column
+ * @param color hex color assigned to the column
+ * @param tasks IDs of all the tasks belonging to this column
+ * 
  */
 type Column = {
 	name: string
@@ -113,10 +116,10 @@ type Column = {
 
 /**
  * individual boards
- * @params {name} name of the board
- * @params {id} id of the board
- * @params {selected} if this is the currently selected board
- * @params {columns} IDs of all the columns belonging to this board
+ * @param name name the board
+ * @param id id of the board
+ * @param selected this is the currently selected board
+ * @param columns IDs of all the columns belonging to this board
  */
 type Board = {
 	name: string
@@ -151,13 +154,10 @@ type MenuArea = {
 
 
 
+
 //form types for creating boards
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Form structure for creating a new board 
- * @params {boardName} name of the board that will be created
- * @params {columns} array of column names when creating a new board
- */
+
 type BoardManagerPopupWindowCreateFormData = {
 	board: {
 		boardName: string
@@ -194,3 +194,42 @@ type ColumnEditFormData = {
 	columnName: string
 	id: string
 }
+
+
+
+
+
+
+
+
+//Payload types
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////
+
+type BoardManagerEditingPayload = {
+	columnsInfo: UpdatingColumnsType
+	boardInfo: Board
+}
+
+
+
+/**
+ * object containing the most used properties needed to update, delete or create columns when editing a form
+ * @param deletedColumns array of columns that were deleted during the editing
+ * @param newColumns array of columns that were created during the editing
+ * @param columnsToUpdate array of columns that were there before the editing started, and are still there. this array
+ * shows the list of columsn that simply need to be edited
+ */
+type UpdatingColumnsType = {
+	deletedColumns: ColumnEditFormData[]
+	newColumns: ColumnEditFormData[]
+	columnsToUpdate: ColumnEditFormData[]
+}
+
+
+
+

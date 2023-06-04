@@ -9,11 +9,14 @@ import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
 import { ZodType, z } from "zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { addBoard, addColumns, closePopup } from "../../../features"
+import { addBoard, addColumns, addColumnsCreate, closePopup, deleteColumns, updateBoard, updateColumns } from "../../../features"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
 import { nanoid } from "nanoid"
 import BoardManagerPopupWindowEditerFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowEditerFormHook.tsx"
+
+
+
 
 const schema: ZodType<BoardManagerPopupWindowCreateFormData> = z.object({
 	// boardName: z.string().min(3).max(30),
@@ -28,6 +31,8 @@ const schema: ZodType<BoardManagerPopupWindowCreateFormData> = z.object({
 		})
 	),
 })
+
+
 
 const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	const dispatch = useAppDispatch()
@@ -65,6 +70,8 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		reset(defaultValues)
 	}, [defaultValues])
 
+
+
 	const {
 		register,
 		handleSubmit,
@@ -87,11 +94,15 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		dispatch(closePopup())
 
 		if (editing) {
-			BoardManagerPopupWindowEditerFormHook(data, editingBoard)
+			const {boardInfo, columnsInfo} = BoardManagerPopupWindowEditerFormHook(data, editingBoard)
+			dispatch(updateColumns(columnsInfo))
+			dispatch(updateBoard(boardInfo))
+			dispatch(deleteColumns(columnsInfo))
+			dispatch(addColumns(columnsInfo))
 		} else {
 			const { structuredBoard, structuredColumns } = BoardManagerPopupWindowCreaterFormHook(data)
 			dispatch(addBoard(structuredBoard))
-			dispatch(addColumns(structuredColumns))
+			dispatch(addColumnsCreate(structuredColumns))
 		}
 	}
 
