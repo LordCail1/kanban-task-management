@@ -1,6 +1,7 @@
 import { ComponentType } from "react"
 import BoardManagerPopupWindow from "../../components/PopupOverlay/BoardManagerPopupWindow/BoardManagerPopupWindow"
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu"
+import TaskManagerPopupWindow from "../../components/PopupOverlay/TaskManagerPopupWindow/TaskManagerPopupWindow"
 
 /**
  * this custom hook takes in a string that represents the name of a possible component and returns the component itself
@@ -13,6 +14,8 @@ const useGetComponentFromString = (component: HOCComponents): ComponentType<{ ed
 			return BoardManagerPopupWindow
 		case "DropdownMenu":
 			return DropdownMenu
+		case "TaskManagerPopupWindow": 
+			return TaskManagerPopupWindow
 		default:
 			return BoardManagerPopupWindow
 	}

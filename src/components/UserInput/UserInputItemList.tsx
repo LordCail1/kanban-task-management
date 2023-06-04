@@ -3,12 +3,6 @@ import StyledUserInputItemList from "./UserInputItemList.styled"
 import StyledUserInputTitle from "./UserInputTitle.styled"
 import { UseFormRegister, FieldArrayWithId, FieldErrors, UseFieldArrayRemove } from "react-hook-form"
 
-
-
-
-
-
-
 const UserInputItemList = ({
 	errors,
 	fields,

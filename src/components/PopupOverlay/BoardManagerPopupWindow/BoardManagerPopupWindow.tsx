@@ -6,7 +6,6 @@ import UserInputItemList from "../../UserInput/UserInputItemList"
 import UserInputShort from "../../UserInput/UserInputShort"
 import StyledBoardManagerPopupTitle from "./BoardManagerPopupTitle/BoardManagerPopupTitle.styled.tsx"
 import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
-import { ZodType, z } from "zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { addBoard, addColumns, addColumnsCreate, closePopup, deleteColumns, updateBoard, updateColumns } from "../../../features"
@@ -14,23 +13,8 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
 import { nanoid } from "nanoid"
 import BoardManagerPopupWindowEditerFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowEditerFormHook.tsx"
+import BoardManagerSchema from "../../../forms/BoardManager/BoardManagerSchema.ts"
 
-
-
-
-const schema: ZodType<BoardManagerPopupWindowCreateFormData> = z.object({
-	// boardName: z.string().min(3).max(30),
-	board: z.object({
-		boardName: z.string().min(3).max(30),
-		id: z.string().min(3).max(30),
-	}),
-	columns: z.array(
-		z.object({
-			columnName: z.string().min(3).max(30),
-			id: z.string().min(3).max(30),
-		})
-	),
-})
 
 
 
@@ -79,7 +63,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		formState: { errors },
 		reset,
 	} = useForm<BoardManagerPopupWindowCreateFormData>({
-		resolver: zodResolver(schema),
+		resolver: zodResolver(BoardManagerSchema),
 		defaultValues,
 	})
 

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import ThreeDots from "../../ThreeDots/ThreeDots"
 import StyledAddNewTaskBtn from "../AddNewTaskBtn/AddNewTaskBtn.styled"
 import StyledAddNewTaskNavbarGroup from "./AddNewTaskNavbarGroup.styled"
+import { useDispatch } from "react-redux"
+import { openPopup } from "../../../features"
 
 
 /**
@@ -9,6 +11,7 @@ import StyledAddNewTaskNavbarGroup from "./AddNewTaskNavbarGroup.styled"
  */
 const AddNewTaskNavbarGroup = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) => {
 	const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
+	const dispatch = useDispatch()
 
 
 	
@@ -27,7 +30,7 @@ const AddNewTaskNavbarGroup = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) 
 	return (
 		<StyledAddNewTaskNavbarGroup>
 			<StyledAddNewTaskBtn
-				onClick={() => console.log("clicked to add a new task")}
+				onClick={() => dispatch(openPopup({HOCComponent: "TaskManagerPopupWindow", editing: false}))}
 				disabled={isColumnsEmpty}
 				disabledBtn={isColumnsEmpty}
 			>
