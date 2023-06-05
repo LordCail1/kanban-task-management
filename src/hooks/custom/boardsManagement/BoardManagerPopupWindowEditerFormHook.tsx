@@ -10,26 +10,22 @@ import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
  * can be used as payload for updating the redux store
  */
 const BoardManagerPopupWindowEditerFormHook = (
-	{ board: { boardName: rawBoardName, id: boardId }, columns: rawColumns }: BoardManagerPopupWindowCreateFormData,
-	editingBoard: BoardManagerPopupWindowEditFormData
+	{ board: { boardName: rawBoardName, id: boardId }, columns: rawColumns }: BoardManagerPopupWindowFormData,
+	editingBoard: BoardManagerPopupWindowFormData
 ): BoardManagerEditingPayload => {
-
-
-	
-	const preStructuredColumns: ColumnEditFormData[] = rawColumns.map((column) => ({
+	const preStructuredColumns: ColumnFormData[] = rawColumns.map((column) => ({
 		columnName: capitalizeAndTrim(column.columnName),
 		id: column.id,
 	}))
 
-
 	/**
-	 * 
+	 *
 	 * @param columnArray array of columns
 	 * @returns array of columns that are not empty
 	 */
-	const removeEmptyOnes = (columnArray: ColumnEditFormData[]) => columnArray.filter((column) => column.columnName !== "")
+	const removeEmptyOnes = (columnArray: ColumnFormData[]) => columnArray.filter((column) => column.columnName !== "")
 
-	const structuredColumns: ColumnEditFormData[] = removeEmptyOnes(preStructuredColumns)
+	const structuredColumns: ColumnFormData[] = removeEmptyOnes(preStructuredColumns)
 
 	const structuredBoard: Board = {
 		name: capitalizeAndTrim(rawBoardName),
@@ -38,10 +34,9 @@ const BoardManagerPopupWindowEditerFormHook = (
 		columns: structuredColumns.map((column) => column.id),
 	}
 
-
-	const deletedColumns: ColumnEditFormData[] = findDeletedColumns(editingBoard.columns, structuredColumns)
-	const newColumns: ColumnEditFormData[] = findNewColumns(editingBoard.columns, structuredColumns)
-	const columnsToUpdate: ColumnEditFormData[] = findColumnsToUpdate(structuredColumns, newColumns)
+	const deletedColumns: ColumnFormData[] = findDeletedColumns(editingBoard.columns, structuredColumns)
+	const newColumns: ColumnFormData[] = findNewColumns(editingBoard.columns, structuredColumns)
+	const columnsToUpdate: ColumnFormData[] = findColumnsToUpdate(structuredColumns, newColumns)
 
 	return {
 		boardInfo: structuredBoard,
@@ -57,12 +52,12 @@ export default BoardManagerPopupWindowEditerFormHook
 
 /**
  *  Finds deleted columns between two arrays of columns.
- * @param {ColumnEditFormData[]} originalArr The original array of columns that was pulled from the selected form that is being edited
- * @param {ColumnEditFormData[]} newArr This is the current array of columns after the user has added or deleted some columns from the form
- * @returns {ColumnEditFormData[]} An array of columns that were deleted from the original array.
+ * @param {ColumnFormData[]} originalArr The original array of columns that was pulled from the selected form that is being edited
+ * @param {ColumnFormData[]} newArr This is the current array of columns after the user has added or deleted some columns from the form
+ * @returns {ColumnFormData[]} An array of columns that were deleted from the original array.
  */
-function findDeletedColumns(originalArr: ColumnEditFormData[], newArr: ColumnEditFormData[]): ColumnEditFormData[] {
-	const deletedColumns: ColumnEditFormData[] = []
+function findDeletedColumns(originalArr: ColumnFormData[], newArr: ColumnFormData[]): ColumnFormData[] {
+	const deletedColumns: ColumnFormData[] = []
 	for (let i = 0; i < originalArr.length; i++) {
 		let found = false
 		for (let j = 0; j < newArr.length; j++) {
@@ -77,12 +72,12 @@ function findDeletedColumns(originalArr: ColumnEditFormData[], newArr: ColumnEdi
 }
 /**
  * Finds new columns between two arrays of columns.
- * @param {ColumnEditFormData[]} originalArr The original array of columns that was pulled from the selected form that is being edited
- * @param {ColumnEditFormData[]} newArr This is the current array of columns after the user has added or deleted some columns from the form
- * @returns {ColumnEditFormData[]} An array of columns that were added to the new array.
+ * @param {ColumnFormData[]} originalArr The original array of columns that was pulled from the selected form that is being edited
+ * @param {ColumnFormData[]} newArr This is the current array of columns after the user has added or deleted some columns from the form
+ * @returns {ColumnFormData[]} An array of columns that were added to the new array.
  */
-function findNewColumns(originalArr: ColumnEditFormData[], newArr: ColumnEditFormData[]): ColumnEditFormData[] {
-	const newColumns: ColumnEditFormData[] = []
+function findNewColumns(originalArr: ColumnFormData[], newArr: ColumnFormData[]): ColumnFormData[] {
+	const newColumns: ColumnFormData[] = []
 	for (let i = 0; i < newArr.length; i++) {
 		let found = false
 		for (let j = 0; j < originalArr.length; j++) {
@@ -98,12 +93,12 @@ function findNewColumns(originalArr: ColumnEditFormData[], newArr: ColumnEditFor
 
 /**
  * Finds columns that need to be updated between two arrays of columns.
- * @param {ColumnEditFormData[]} structuredCols This is the current array of columns after the user has added or deleted some columns from the form
- * @param {ColumnEditFormData[]} newCols This is the columns that the user has added while editing
- * @returns {ColumnEditFormData[]} An array of columns that need to be updated. those are the ones that have not been added, but simply saved again or modified.
+ * @param {ColumnFormData[]} structuredCols This is the current array of columns after the user has added or deleted some columns from the form
+ * @param {ColumnFormData[]} newCols This is the columns that the user has added while editing
+ * @returns {ColumnFormData[]} An array of columns that need to be updated. those are the ones that have not been added, but simply saved again or modified.
  */
-function findColumnsToUpdate(structuredCols: ColumnEditFormData[], newCols: ColumnEditFormData[]): ColumnEditFormData[] {
-	const columnsToUpdate: ColumnEditFormData[] = []
+function findColumnsToUpdate(structuredCols: ColumnFormData[], newCols: ColumnFormData[]): ColumnFormData[] {
+	const columnsToUpdate: ColumnFormData[] = []
 
 	for (let i = 0; i < structuredCols.length; i++) {
 		let isColToUpdate = true

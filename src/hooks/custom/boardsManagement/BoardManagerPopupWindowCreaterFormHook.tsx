@@ -5,7 +5,7 @@ import randomColor from "randomcolor"
 const BoardManagerPopupWindowCreaterFormHook = ({
 	board: { boardName: rawBoardName, id: boardId },
 	columns: rawColumns,
-}: BoardManagerPopupWindowCreateFormData): {
+}: BoardManagerPopupWindowFormData): {
 	structuredBoard: Board
 	structuredColumns: Column[]
 } => {

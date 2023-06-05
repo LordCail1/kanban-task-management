@@ -1,66 +1,42 @@
 
-//form types for creating boards
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-type BoardManagerPopupWindowCreateFormData = {
-	board: {
-		boardName: string
-		id: string
-	}
-	columns: ColumnCreateFormData[]
-}	
 
 /**
- * Form structure for creating a new column in a board 
- * @params {columnName} name of the column that will be created
+ * object representing the structure needed for managing boards and their columns
+ * @param board.boardName name of the board 
+ * @param board.id id of the board
+ * @param columns array of columns 
  */
-type ColumnCreateFormData = {
-	columnName: string
-	id: string
-}	
-
-
-
-
-
-//form types for editing boards
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-type BoardManagerPopupWindowEditFormData = {
+type BoardManagerPopupWindowFormData = {
 	board: {
 		boardName: string
 		id: string
 	}
-	columns: ColumnEditFormData[]
+	columns: ColumnFormData[]
 }
 
-type ColumnEditFormData = {
+/**
+ * Form structure for creating a new column in a board
+ * @param columnName name of the column that will be created
+ */
+type ColumnFormData = {
 	columnName: string
 	id: string
 }
-
-
-
-
-
-
-
-
-//Payload types
-/////////////////////////////////////////////////////////////////////////////
-
 
 
 
 //////////////////////////////
 
+/**
+ * an object that provides the proper structure to send the information to a redux reducer. what is inside this object can be used as payload for updating the redux store
+ * @param columnsInfo object containing the most used properties needed to update, delete or create columns when editing a form
+ * @param boardInfo board object used to create or update a board in the redux store
+ */
 type BoardManagerEditingPayload = {
 	columnsInfo: UpdatingColumnsType
 	boardInfo: Board
 }
-
-
 
 /**
  * object containing the most used properties needed to update, delete or create columns when editing a form
@@ -70,15 +46,13 @@ type BoardManagerEditingPayload = {
  * shows the list of columsn that simply need to be edited
  */
 type UpdatingColumnsType = {
-	deletedColumns: ColumnEditFormData[]
-	newColumns: ColumnEditFormData[]
-	columnsToUpdate: ColumnEditFormData[]
+	deletedColumns: ColumnFormData[]
+	newColumns: ColumnFormData[]
+	columnsToUpdate: ColumnFormData[]
 }
 
-
-
 /**
- * individual boards
+ * structure of the boards in the redux store
  * @param name name the board
  * @param id id of the board
  * @param selected this is the currently selected board
@@ -90,6 +64,3 @@ type Board = {
 	selected: boolean
 	columns: string[]
 }
-
-
-

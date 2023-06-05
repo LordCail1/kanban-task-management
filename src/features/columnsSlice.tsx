@@ -72,8 +72,6 @@ const columnsSlice = createSlice({
 	name: "columns_slice",
 	initialState,
 	reducers: {
-		
-
 		/**
 		 * reducer to add a columns when user is on 'edit' mode
 		 */
@@ -91,7 +89,7 @@ const columnsSlice = createSlice({
 			state.value.columns.push(...newColumnArray)
 		},
 		/**
-		 * reducer to add a columns when user is creating a board opposed to if he was editing it 
+		 * reducer to add a columns when user is creating a board opposed to if he was editing it
 		 */
 		addColumnsCreate: (state, action: PayloadAction<Column[]>) => {
 			state.value.columns.push(...action.payload)
@@ -107,7 +105,7 @@ const columnsSlice = createSlice({
 			 * @param colsFromPayloadToUpdate the columns that come from the payload that we need to update
 			 * @param allColsFromState all of the columns from the redux store
 			 */
-			function updateColumns(colsFromPayloadToUpdate: ColumnEditFormData[], allColsFromState: Column[]) {
+			function updateColumns(colsFromPayloadToUpdate: ColumnFormData[], allColsFromState: Column[]) {
 				for (let i = 0; i < allColsFromState.length; i++) {
 					for (let j = 0; j < colsFromPayloadToUpdate.length; j++) {
 						if (allColsFromState[i].id === colsFromPayloadToUpdate[j].id) {

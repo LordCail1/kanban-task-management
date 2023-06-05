@@ -1,30 +1,28 @@
-import useValidateField from "../../hooks/react-form-hook/useValidateField"
-import StyledCrossIcon from "../Icon/CrossIcon.styled"
-import StyledUserInputBoxShort from "./UserInputBoxShort.styled"
-import StyledUserInputItem from "./UserInputItem.styled"
+import useValidateField from "../../../hooks/react-form-hook/useValidateField"
+import StyledCrossIcon from "../../Icon/CrossIcon.styled"
+import StyledBoardManagerUserInputBoxShort from "./BoardManagerUserInputBoxShort.styled"
+import StyledBoardManagerUserInputItem from "./BoardManagerUserInputItem.styled"
 import { UseFormRegister, FieldErrors, UseFieldArrayRemove, FieldArrayWithId } from "react-hook-form"
 
-const UserInputItem = ({
+const BoardManagerUserInputItem = ({
 	errors,
 	index,
 	placeHolder,
 	register,
 	remove,
 	field,
-	fields,
 }: UserInput & {
 	index: number
-	register: UseFormRegister<BoardManagerPopupWindowCreateFormData>
-	errors: FieldErrors<BoardManagerPopupWindowCreateFormData>
+	register: UseFormRegister<BoardManagerPopupWindowFormData>
+	errors: FieldErrors<BoardManagerPopupWindowFormData>
 	remove: UseFieldArrayRemove
-	field: FieldArrayWithId<BoardManagerPopupWindowCreateFormData>
-	fields: FieldArrayWithId<BoardManagerPopupWindowCreateFormData>[]
+	field: FieldArrayWithId<BoardManagerPopupWindowFormData>
 }) => {
 	const { isFieldValid } = useValidateField(errors.columns?.[index]?.columnName?.message)
 
 	return (
-		<StyledUserInputItem>
-			<StyledUserInputBoxShort
+		<StyledBoardManagerUserInputItem>
+			<StyledBoardManagerUserInputBoxShort
 				placeholder={placeHolder}
 				valid={isFieldValid}
 				type="text"
@@ -42,8 +40,8 @@ const UserInputItem = ({
 					<path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
 				</g>
 			</StyledCrossIcon>
-		</StyledUserInputItem>
+		</StyledBoardManagerUserInputItem>
 	)
 }
 
-export default UserInputItem
+export default BoardManagerUserInputItem

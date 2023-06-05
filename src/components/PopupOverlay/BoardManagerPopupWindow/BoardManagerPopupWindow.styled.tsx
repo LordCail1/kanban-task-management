@@ -1,6 +1,10 @@
 import styled from "styled-components"
 import StyledGeneralPopupWindow from "../../../styles/popups/GeneralPopupWindow.styled"
 
+
+/**
+ * form container for board management
+ */
 const StyledBoardManagerPopupWindow = styled(StyledGeneralPopupWindow)`
 	border-radius: 6px;
 	display: flex;

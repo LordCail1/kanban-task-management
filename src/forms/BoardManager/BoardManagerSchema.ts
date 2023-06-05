@@ -1,8 +1,6 @@
 import { ZodType, z } from "zod"
 
-
-
-const BoardManagerSchema: ZodType<BoardManagerPopupWindowCreateFormData> = z.object({
+const BoardManagerSchema: ZodType<BoardManagerPopupWindowFormData> = z.object({
 	// boardName: z.string().min(3).max(30),
 	board: z.object({
 		boardName: z.string().min(3).max(30),

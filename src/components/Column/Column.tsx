@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { useAppSelector } from "../../hooks/redux/reduxHooks"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
 import Task from "../Task/Task"
 import StyledColumn from "./Column.styled"
 import ColumnTitle from "./ColumnTitle/ColumnTitle"
 import StyledEmptyColumnWarning from "./EmptyColumnWarning/EmptyColumnWarning.styled"
+import { openPopup } from "../../features"
 
 const Column = ({ id }: { id: string }) => {
 	// Get the current column from the Redux store
@@ -13,6 +14,7 @@ const Column = ({ id }: { id: string }) => {
 	// Get all tasks from the Redux store
 	const allTasks = useAppSelector((state) => state.tasksSlice.value.tasks)
 	const [columnIsEmpty, setColumnIsEmpty] = useState<boolean>(false)
+	const dispatch = useAppDispatch()
 
 	useEffect(() => {
 		if (thisColumnTasks.length === 0) {
@@ -47,7 +49,7 @@ const Column = ({ id }: { id: string }) => {
 					/>
 				))
 			) : (
-				<StyledEmptyColumnWarning>+ Add Task</StyledEmptyColumnWarning>
+				<StyledEmptyColumnWarning onClick={() => dispatch(openPopup({HOCComponent: "TaskManagerPopupWindow", editing: false}))}>+ Add Task</StyledEmptyColumnWarning>
 			)}
 		</StyledColumn>
 	)
