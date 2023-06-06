@@ -8,13 +8,13 @@ import TaskManagerPopupWindow from "../../components/PopupOverlay/TaskManagerPop
  * @param component strings that represent the name of components.
  * @returns a component with the type of {editing: boolean} mataching the string that was passed in the 'component' argument
  */
-const useGetComponentFromString = (component: HOCComponents): ComponentType<{ editing: boolean, id?: string }> => {
+const useGetComponentFromString = (component: HOCComponents): ComponentType<{ editing: boolean}> => {
 	switch (component) {
 		case "BoardManagerPopupWindow":
 			return BoardManagerPopupWindow
 		case "DropdownMenu":
 			return DropdownMenu
-		case "TaskManagerPopupWindow": 
+		case "TaskManagerPopupWindow":
 			return TaskManagerPopupWindow
 		default:
 			return BoardManagerPopupWindow
@@ -22,20 +22,3 @@ const useGetComponentFromString = (component: HOCComponents): ComponentType<{ ed
 }
 
 export default useGetComponentFromString
-
-/**
- * BoardManagerPopupWindow
- *
- * This component allows the user to
- * 1-create/delete boards and columns
- * 2-update/delete boards and columns
- *
- *
- *
- *
- * DropdownMenu
- *
- * This component is a compact version of the sidebar.
- * It is used when the screen is smaller than a certain amount,
- * and is triggered by the dropdown arrow
- */

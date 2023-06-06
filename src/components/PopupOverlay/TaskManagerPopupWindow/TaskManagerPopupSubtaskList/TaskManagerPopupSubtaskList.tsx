@@ -1,9 +1,11 @@
-import StyledTaskManagerPopupSubtaskList from './TaskManagerPopupSubtaskList.styled'
+import StyledTaskManagerPopupSubtaskList from "./TaskManagerPopupSubtaskList.styled"
 
 const TaskManagerPopupSubtaskList = () => {
-  return (
-    <StyledTaskManagerPopupSubtaskList>TaskManagerPopupSubtaskList</StyledTaskManagerPopupSubtaskList>
-  )
+	return (
+		<>
+			<StyledTaskManagerPopupSubtaskList>TaskManagerPopupSubtaskList</StyledTaskManagerPopupSubtaskList>
+		</>
+	)
 }
 
 export default TaskManagerPopupSubtaskList

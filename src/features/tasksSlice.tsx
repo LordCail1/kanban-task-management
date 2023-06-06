@@ -161,8 +161,7 @@ const initialState: InitialState = {
 			{
 				title: "Review early feedback and plan next steps for roadmap",
 				id: "xrCLqcTcXz",
-				description:
-					"Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
+				description: "Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
 				status: "",
 				subtasks: ["wQYU4Z7DLx", "NfR3r86D_O", "SyixquakCn"],
 			},
