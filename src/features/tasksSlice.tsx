@@ -33,8 +33,7 @@ const initialState: InitialState = {
 			{
 				title: "QA and test all major user journeys",
 				id: "zzsBAge26I",
-				description:
-					"Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
+				description: "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
 				status: "Todo",
 				subtasks: ["M2HjJRJkYs", "AU3-251Xpt"],
 			},
@@ -74,8 +73,7 @@ const initialState: InitialState = {
 				subtasks: ["bS6n-cHMlH", "5MBZc5cMvS"],
 			},
 			{
-				title:
-					"Research pricing points of various competitors and trial different business models",
+				title: "Research pricing points of various competitors and trial different business models",
 				id: "bv1PgtRCIh",
 				description:
 					"We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.",
@@ -85,30 +83,26 @@ const initialState: InitialState = {
 			{
 				title: "Conduct 5 wireframe tests",
 				id: "TX1c_s04fa",
-				description:
-					"Ensure the layout continues to make sense and we have strong buy-in from potential users.",
+				description: "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
 				status: "Done",
 				subtasks: ["K0UEEDiGWM"],
 			},
 			{
 				title: "Create wireframe prototype",
 				id: "FLFIcNw00k",
-				description:
-					"Create a greyscale clickable wireframe prototype to test our asssumptions so far.",
+				description: "Create a greyscale clickable wireframe prototype to test our asssumptions so far.",
 				status: "Done",
 				subtasks: ["JGB8F5gKaq"],
 			},
 			{
 				title: "Review results of usability tests and iterate",
 				id: "D2QNHgiWI6",
-				description:
-					"Keep iterating through the subtasks until we're clear on the core concepts for the app.",
+				description: "Keep iterating through the subtasks until we're clear on the core concepts for the app.",
 				status: "Done",
 				subtasks: ["D2QNHgiWI6", "allAAfQJQi", "vlbk_eqUJH"],
 			},
 			{
-				title:
-					"Create paper prototypes and conduct 10 usability tests with potential customers",
+				title: "Create paper prototypes and conduct 10 usability tests with potential customers",
 				id: "Tbtv9x4ZWa",
 				description: "",
 				status: "Done",
@@ -132,8 +126,7 @@ const initialState: InitialState = {
 			{
 				title: "Research the market",
 				id: "opZz1bnspA",
-				description:
-					"We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
+				description: "We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
 				status: "Done",
 				subtasks: ["dSG7hY-nNR", "ghMuzBbQn4"],
 			},
@@ -142,14 +135,7 @@ const initialState: InitialState = {
 				id: "NpqasglnII",
 				description: "",
 				status: "Todo",
-				subtasks: [
-					"P3YeKEOcFD",
-					"-X8QB_5HKT",
-					"N0Ws5TbLtz",
-					"Lr3k-xtDrm",
-					"gfOlpPFoqv",
-					"I_aZM7ufwx",
-				],
+				subtasks: ["P3YeKEOcFD", "-X8QB_5HKT", "N0Ws5TbLtz", "Lr3k-xtDrm", "gfOlpPFoqv", "I_aZM7ufwx"],
 			},
 			{
 				title: "Share on Show HN",

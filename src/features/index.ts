@@ -21,3 +21,6 @@ export { default as dropDownSliceReducer } from "./dropdownMenuSlice"
 
 export { setEditableBoard } from "./editingBoardSlice"
 export { default as editingBoardSliceReducer } from "./editingBoardSlice"
+
+export { addSubtask } from "./subtaskSlice"
+export { default as subtaskSliceReducer } from "./subtaskSlice"
