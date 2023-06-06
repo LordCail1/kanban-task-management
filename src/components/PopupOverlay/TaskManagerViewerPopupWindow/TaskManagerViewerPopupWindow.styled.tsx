@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import StyledGeneralPopupWindow from "../../../styles/popups/GeneralPopupWindow.styled"
 
-const StyledTaskManagerPopupWindow = styled(StyledGeneralPopupWindow)`
+const StyledTaskManagerViewerPopupWindow = styled(StyledGeneralPopupWindow)`
 	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
@@ -11,4 +11,4 @@ const StyledTaskManagerPopupWindow = styled(StyledGeneralPopupWindow)`
 	}
 `
 
-export default StyledTaskManagerPopupWindow
+export default StyledTaskManagerViewerPopupWindow

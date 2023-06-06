@@ -1,21 +1,21 @@
 import { ComponentType } from "react"
 import BoardManagerPopupWindow from "../../components/PopupOverlay/BoardManagerPopupWindow/BoardManagerPopupWindow"
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu"
-import TaskManagerPopupWindow from "../../components/PopupOverlay/TaskManagerPopupWindow/TaskManagerPopupWindow"
+import TaskManagerViewerPopupWindow from "../../components/PopupOverlay/TaskManagerViewerPopupWindow/TaskManagerViewerPopupWindow"
 
 /**
  * this custom hook takes in a string that represents the name of a possible component and returns the component itself
  * @param component strings that represent the name of components.
  * @returns a component with the type of {editing: boolean} mataching the string that was passed in the 'component' argument
  */
-const useGetComponentFromString = (component: HOCComponents): ComponentType<{ editing: boolean}> => {
+const useGetComponentFromString = (component: HOCComponents): ComponentType<any> => {
 	switch (component) {
 		case "BoardManagerPopupWindow":
 			return BoardManagerPopupWindow
 		case "DropdownMenu":
 			return DropdownMenu
 		case "TaskManagerPopupWindow":
-			return TaskManagerPopupWindow
+			return TaskManagerViewerPopupWindow
 		default:
 			return BoardManagerPopupWindow
 	}
