@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 type Subtask = {
 	title: string
@@ -296,8 +296,15 @@ const subtaskSlice = createSlice({
 		addSubtask: (state) => {
 			return state
 		},
+		checkSubtask: (state, action: PayloadAction<string>) => {
+			const id = action.payload
+			const selectedSubtask = state.value.subtasks.find(subtask => subtask.id === id)
+			if (selectedSubtask) {
+				selectedSubtask.isCompleted = !selectedSubtask.isCompleted
+			}
+		},
 	},
 })
 
 export default subtaskSlice.reducer
-export const { addSubtask } = subtaskSlice.actions
+export const { addSubtask, checkSubtask } = subtaskSlice.actions

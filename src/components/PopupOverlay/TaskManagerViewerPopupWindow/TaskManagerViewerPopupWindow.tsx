@@ -2,11 +2,8 @@ import { useAppSelector } from "../../../hooks/redux/reduxHooks"
 import StyledTaskManagerViewerPopupDescription from "./TaskManagerViewerPopupDescription/TaskManagerViewerPopupDescription.styled"
 import StyledTaskManagerViewerPopupStatusDropdown from "./TaskManagerViewerPopupStatusDropdown/TaskManagerViewerPopupStatusDropdown.styled"
 import StyledTaskManagerViewerPopupStatusTitle from "./TaskManagerViewerPopupStatusTitle/TaskManagerViewerPopupStatusTitle.styled"
-import StyledTaskManagerViewerPopupSubtaskCheckbox from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskCheckbox/TaskManagerViewerPopupSubtaskCheckbox.styled"
-import StyledTaskManagerViewerPopupSubtaskLabel from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskLabel/TaskManagerViewerPopupSubtaskLabel.styled"
 import StyledTaskManagerViewerPopupSubtaskList from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskList.styled"
 import TaskManagerViewerPopupSubtaskListItem from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskListItem/TaskManagerViewerPopupSubtaskListItem"
-import StyledTaskManagerViewerPopupSubtaskListItem from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskListItem/TaskManagerViewerPopupSubtaskListItem.styled"
 import StyledTaskManagerViewerPopupSubtasksNum from "./TaskManagerViewerPopupSubtasksNum/TaskManagerViewerPopupSubtasksNum.styled"
 import StyledTaskManagerViewerPopupTitle from "./TaskManagerViewerPopupTitle/TaskManagerViewerPopupTitle.styled"
 import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.styled"
@@ -17,7 +14,6 @@ import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.s
  */
 
 const TaskManagerViewerPopupWindow = ({ id }: { id?: string }) => {
-	crossOriginIsolated
 	//the task that is selected using the ID
 	const thisTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task) => task.id === id))
 
@@ -43,11 +39,13 @@ const TaskManagerViewerPopupWindow = ({ id }: { id?: string }) => {
 		listOfColumns = allColumns.filter((column) => setOfIds.has(column.id))
 	}
 
+	const amountOfCompletedSubtasks = listOfSubtasks.filter(subtask => subtask.isCompleted === true)
+
 	return (
 		<StyledTaskManagerViewerPopupWindow>
 			<StyledTaskManagerViewerPopupTitle>{thisTask?.title}</StyledTaskManagerViewerPopupTitle>
 			<StyledTaskManagerViewerPopupDescription>{thisTask?.description}</StyledTaskManagerViewerPopupDescription>
-			<StyledTaskManagerViewerPopupSubtasksNum>Subtasks (2 of {thisTask?.subtasks.length})</StyledTaskManagerViewerPopupSubtasksNum>
+			<StyledTaskManagerViewerPopupSubtasksNum>Subtasks ({amountOfCompletedSubtasks.length} of {thisTask?.subtasks.length})</StyledTaskManagerViewerPopupSubtasksNum>
 			<StyledTaskManagerViewerPopupSubtaskList>
 				{listOfSubtasks.map((item) => (
 					<TaskManagerViewerPopupSubtaskListItem key={item.id} {...item}/>
