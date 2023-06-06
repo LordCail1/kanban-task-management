@@ -1,27 +1,28 @@
 import { configureStore } from "@reduxjs/toolkit"
 import {
-	themeSliceReducer,
 	boardsSliceReducer,
+	columnsSliceReducer,
+	dropDownSliceReducer,
+	editingBoardSliceReducer,
 	popupSliceReducer,
 	sidebarSliceReducer,
-	columnsSliceReducer,
-	tasksSliceReducer, 
-	dropDownSliceReducer,
-	editingBoardSliceReducer
+	subtaskSliceReducer,
+	tasksSliceReducer,
+	themeSliceReducer,
 } from "../features/index"
 
 export const store = configureStore({
 	reducer: {
-		themeSlice: themeSliceReducer,
 		boardsSlice: boardsSliceReducer,
+		columnsSlice: columnsSliceReducer,
+		dropdownSlice: dropDownSliceReducer,
+		editingBoardSlice: editingBoardSliceReducer,
 		popupSlice: popupSliceReducer,
 		sidebarSlice: sidebarSliceReducer,
-		columnsSlice: columnsSliceReducer,
-		tasksSlice: tasksSliceReducer, 
-		dropdownSlice: dropDownSliceReducer,
-		editingBoardSlice: editingBoardSliceReducer
+		subtaskSlice: subtaskSliceReducer,
+		tasksSlice: tasksSliceReducer,
+		themeSlice: themeSliceReducer,
 	},
-	
 })
 
 export type RootState = ReturnType<typeof store.getState>

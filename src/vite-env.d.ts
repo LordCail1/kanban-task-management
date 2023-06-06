@@ -84,10 +84,10 @@ type Subtask = {
 
 /**
  * individual tasks
- * @params {title} title of the task
- * @params {description} description of the task
- * @params {status} status of the task
- * @params {subtasks} IDs of all the subtasks belonging to this task
+ * @param title title of the task
+ * @param description description of the task
+ * @param status status of the task
+ * @param subtasks IDs of all the subtasks belonging to this task
  */
 type Task = {
 	title: string
