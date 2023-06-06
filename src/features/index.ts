@@ -4,7 +4,7 @@ export { default as themeSliceReducer } from "./themeSlice"
 export { addBoard, selectBoard, updateBoard } from "./boardsSlice"
 export { default as boardsSliceReducer } from "./boardsSlice"
 
-export { openPopup, closePopup } from "./popupSlice"
+export { openPopup, closePopup, openPopupWithId } from "./popupSlice"
 export { default as popupSliceReducer } from "./popupSlice"
 
 export { activateSidebar, deActivateSidebar } from "./sidebarSlice"

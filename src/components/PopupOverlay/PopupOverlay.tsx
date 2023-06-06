@@ -13,6 +13,7 @@ const PopupOverlay = ({
 	active: boolean
 	component: React.ComponentType<{ editing: boolean }>
 	editing: boolean
+	id?: string
 }) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)

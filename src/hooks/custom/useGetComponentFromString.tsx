@@ -8,7 +8,7 @@ import TaskManagerPopupWindow from "../../components/PopupOverlay/TaskManagerPop
  * @param component strings that represent the name of components.
  * @returns a component with the type of {editing: boolean} mataching the string that was passed in the 'component' argument
  */
-const useGetComponentFromString = (component: HOCComponents): ComponentType<{ editing: boolean }> => {
+const useGetComponentFromString = (component: HOCComponents): ComponentType<{ editing: boolean, id?: string }> => {
 	switch (component) {
 		case "BoardManagerPopupWindow":
 			return BoardManagerPopupWindow

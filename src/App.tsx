@@ -15,9 +15,9 @@ function App() {
 	const component = useGetComponentFromString(currentComponentString)
 
 	const themeStyle = useAppSelector((state) => state.themeSlice)
-	const mergedTheme = { ...theme, ...themeStyle }
 	const isPopupOpen = useAppSelector((state) => state.popupSlice.value.active)
-	const [isColumnsEmpty, setIsColumnsEmpty] = useState<boolean>(false)
+	const mergedTheme = { ...theme, ...themeStyle }
+	const [isColumnsEmpty, setIsColumnsEmpty] = useState(false)
 
 	return (
 		<ThemeProvider theme={mergedTheme}>

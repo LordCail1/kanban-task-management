@@ -5,6 +5,7 @@ type InitialState = {
 		active: boolean
 		component: HOCComponents
 		editing: boolean
+		id?: string
 	}
 }
 
@@ -13,6 +14,7 @@ const initialState: InitialState = {
 		active: false,
 		component: "BoardManagerPopupWindow",
 		editing: false,
+		id: "",
 	},
 }
 
@@ -26,14 +28,22 @@ const popupSlice = createSlice({
 			state.value.component = action.payload.HOCComponent
 			state.value.editing = action.payload.editing
 		},
+		openPopupWithId: (state, action: PayloadAction<{ HOCComponent: HOCComponents; editing: boolean, id: string }>) => {
+			const {HOCComponent, editing, id}  = action.payload
+			state.value.active = true
+			state.value.component = HOCComponent
+			state.value.editing = editing
+			state.value.id = id
+		},
 		// Define the closePopup reducer
 		closePopup: (state) => {
 			state.value.active = false
 			state.value.editing = false
+			state.value.id = ""
 		},
 	},
 })
 
-export const { openPopup, closePopup } = popupSlice.actions
+export const { openPopup, closePopup, openPopupWithId } = popupSlice.actions
 
 export default popupSlice.reducer

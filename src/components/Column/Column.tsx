@@ -44,6 +44,7 @@ const Column = ({ id }: { id: string }) => {
 				thisColumnTasks.map((task) => (
 					<Task
 						key={task.id}
+						id={task.id}
 						title={task.title}
 						numOfSubtasks={task.subtasks.length}
 					/>
