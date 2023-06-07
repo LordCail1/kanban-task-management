@@ -1,27 +1,14 @@
 import StyledDropdownArrow from "./DropdownArrow.styled"
 import StyledDropdownArrowBtn from "./DropdownArrowBtn.styled"
-import {
-	activateDropdown,
-	deActivateDropdown,
-} from "../../../features/dropdownMenuSlice"
-import {
-	useAppDispatch,
-	useAppSelector,
-} from "../../../hooks/redux/reduxHooks"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import { openPopup } from "../../../features"
 
 const DropdownArrow = () => {
 	const dispatch = useAppDispatch()
-	const isDropdownActive = useAppSelector(
-		(state) => state.dropdownSlice.active
-	)
+	const isDropdownActive = useAppSelector((state) => state.dropdownSlice.active)
 
 	return (
-		<StyledDropdownArrowBtn
-			onClick={() =>
-				dispatch(openPopup({HOCComponent: "DropdownMenu", editing: false}))
-			}
-		>
+		<StyledDropdownArrowBtn onClick={() => dispatch(openPopup({ HOCComponent: "DropdownMenu", editing: false }))}>
 			<StyledDropdownArrow
 				width="9"
 				height="7"
