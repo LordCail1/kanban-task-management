@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const StyledTaskManagerViewerPopupSubtaskListItem = styled.li<{ checked: boolean }>`
 	padding: 13px 12px;
-	background-color: ${({ theme}) => theme.colors.very_dark_grey};
+	background-color: ${({ theme}) => theme.style === 'dark' ? theme.colors.very_dark_grey : theme.colors.light_grey};
 	border-radius: 4px;
 	margin-bottom: 8px;
 	list-style: none;

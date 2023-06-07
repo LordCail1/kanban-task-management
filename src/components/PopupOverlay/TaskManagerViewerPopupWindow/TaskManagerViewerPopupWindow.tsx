@@ -14,19 +14,33 @@ import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.s
  */
 
 const TaskManagerViewerPopupWindow = ({ id }: { id?: string }) => {
-	//the task that is selected using the ID
-	const thisTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task) => task.id === id))
-
-	//all the subtasks in the redux store
+	/**
+	 *all the subtasks in the redux store
+	 */
 	const allSubtasks = useAppSelector((state) => state.subtaskSlice.value.subtasks)
 
-	//all the columns in the redux store
+	/**
+	 * all the columns in the redux store
+	 */
 	const allColumns = useAppSelector((state) => state.columnsSlice.value.columns)
 
-	//the currently selected board
+	/**
+	 * the currently selected board
+	 */
 	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board) => board.selected === true))
 
+	/**
+	 *the task that is selected using the ID
+	 */
+	const thisTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task) => task.id === id))
+
+	/**
+	 * the list of subtasks belonging to the current task
+	 */
 	let listOfSubtasks: Subtask[] = []
+	/**
+	 * The list of columns belonging to this current selected board
+	 */
 	let listOfColumns: Column[] = []
 
 	if (thisTask) {
@@ -39,16 +53,21 @@ const TaskManagerViewerPopupWindow = ({ id }: { id?: string }) => {
 		listOfColumns = allColumns.filter((column) => setOfIds.has(column.id))
 	}
 
-	const amountOfCompletedSubtasks = listOfSubtasks.filter(subtask => subtask.isCompleted === true)
+	const amountOfCompletedSubtasks = listOfSubtasks.filter((subtask) => subtask.isCompleted === true)
 
 	return (
 		<StyledTaskManagerViewerPopupWindow>
 			<StyledTaskManagerViewerPopupTitle>{thisTask?.title}</StyledTaskManagerViewerPopupTitle>
 			<StyledTaskManagerViewerPopupDescription>{thisTask?.description}</StyledTaskManagerViewerPopupDescription>
-			<StyledTaskManagerViewerPopupSubtasksNum>Subtasks ({amountOfCompletedSubtasks.length} of {thisTask?.subtasks.length})</StyledTaskManagerViewerPopupSubtasksNum>
+			<StyledTaskManagerViewerPopupSubtasksNum>
+				Subtasks ({amountOfCompletedSubtasks.length} of {thisTask?.subtasks.length})
+			</StyledTaskManagerViewerPopupSubtasksNum>
 			<StyledTaskManagerViewerPopupSubtaskList>
 				{listOfSubtasks.map((item) => (
-					<TaskManagerViewerPopupSubtaskListItem key={item.id} {...item}/>
+					<TaskManagerViewerPopupSubtaskListItem
+						{...item}
+						key={item.id}
+					/>
 				))}
 			</StyledTaskManagerViewerPopupSubtaskList>
 			<StyledTaskManagerViewerPopupStatusTitle>Current Status</StyledTaskManagerViewerPopupStatusTitle>
