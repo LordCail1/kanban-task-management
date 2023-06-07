@@ -100,6 +100,7 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 			<StyledTaskManagerViewerPopupStatusTitle>Current Status</StyledTaskManagerViewerPopupStatusTitle>
 
 			<TaskManagerViewerPopupStatusDropdown
+				id={id}
 				thisColumn={thisColumn}
 				listOfColumns={listOfColumns}
 			/>

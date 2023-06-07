@@ -121,8 +121,12 @@ const columnsSlice = createSlice({
 			const deletedColumnIds = new Set(deletedColumns.map((column) => column.id))
 			state.value.columns = state.value.columns.filter((column) => !deletedColumnIds.has(column.id))
 		},
+		switchTaskFromColumn: (state, action: PayloadAction<{ thisColumn: Column, thisTaskId: string, newColumnId: string}>) => {
+			console.log(action.payload)
+			return state
+		}
 	},
 })
 
 export default columnsSlice.reducer
-export const { addColumnsEdit, deleteColumns, updateColumns, addColumnsCreate } = columnsSlice.actions
+export const { addColumnsEdit, deleteColumns, updateColumns, addColumnsCreate, switchTaskFromColumn } = columnsSlice.actions
