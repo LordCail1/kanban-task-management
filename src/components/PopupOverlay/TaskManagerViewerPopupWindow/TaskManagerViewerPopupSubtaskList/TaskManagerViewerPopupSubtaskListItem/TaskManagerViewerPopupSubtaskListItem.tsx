@@ -8,11 +8,14 @@ import { checkSubtask } from "../../../../../features"
 const TaskManagerViewerPopupSubtaskListItem = ({ id, isCompleted, title }: Subtask) => {
 	const dispatch = useAppDispatch()
 
+  
+
 	return (
 		<StyledTaskManagerViewerPopupSubtaskListItem onClick={() => dispatch(checkSubtask(id))} checked={isCompleted}>
 			<StyledTaskManagerViewerPopupSubtaskCheckbox
 				type="checkbox"
 				checked={isCompleted}
+				onChange={() => dispatch(checkSubtask(id))}
 			/>
             <TaskManagerViewerPopupSubtaskCustomCheckbox checked={isCompleted}/>
 

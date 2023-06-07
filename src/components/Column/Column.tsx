@@ -47,6 +47,7 @@ const Column = ({ id }: { id: string }) => {
 						id={task.id}
 						title={task.title}
 						numOfSubtasks={task.subtasks.length}
+						task={task}
 					/>
 				))
 			) : (
