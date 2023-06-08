@@ -1,6 +1,6 @@
-import useValidateField from "../../../hooks/react-form-hook/useValidateField"
-import StyledCrossIcon from "../../Icon/CrossIcon.styled"
-import StyledBoardManagerUserInputBoxShort from "./BoardManagerUserInputBoxShort.styled"
+import useValidateField from "../../../../hooks/react-form-hook/useValidateField"
+import StyledCrossIcon from "../../../Icon/CrossIcon.styled"
+import StyledBoardManagerUserInputBoxShort from "../BoardManagerUserInputBoxShort/BoardManagerUserInputBoxShort.styled"
 import StyledBoardManagerUserInputItem from "./BoardManagerUserInputItem.styled"
 import { UseFormRegister, FieldErrors, UseFieldArrayRemove, FieldArrayWithId } from "react-hook-form"
 

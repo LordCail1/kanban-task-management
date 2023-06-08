@@ -59,7 +59,7 @@ const Column = ({ thisColumn }: { thisColumn: Column }) => {
 				quantity={thisColumnTasks.length}
 			/>
 			{columnIsEmpty ? (
-				<StyledEmptyColumnWarning onClick={() => dispatch(openPopup({ HOCComponent: "TaskManagerPopupWindow", editing: false }))}>
+				<StyledEmptyColumnWarning onClick={() => dispatch(openPopup({ HOCComponent: "TaskManagerCreatorPopupWindow", editing: false }))}>
 					+ Add Task
 				</StyledEmptyColumnWarning>
 			) : (

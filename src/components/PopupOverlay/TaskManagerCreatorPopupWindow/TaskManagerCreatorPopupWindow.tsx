@@ -1,8 +1,14 @@
+import StyledTaskManagerCreatorPopupTitle from "./TaskManagerCreatorPopupTitle/TaskManagerCreatorPopupTitle.styled"
+import StyledTaskManagerCreatorPopupWindow from "./TaskManagerCreatorPopupWindow.styled"
 
 const TaskManagerCreatorPopupWindow = () => {
-  return (
-    <div>TaskManagerCreatorPopupWindow</div>
-  )
+	return (
+		<>
+			<StyledTaskManagerCreatorPopupWindow>
+				<StyledTaskManagerCreatorPopupTitle>Add New Task</StyledTaskManagerCreatorPopupTitle>
+			</StyledTaskManagerCreatorPopupWindow>
+		</>
+	)
 }
 
 export default TaskManagerCreatorPopupWindow

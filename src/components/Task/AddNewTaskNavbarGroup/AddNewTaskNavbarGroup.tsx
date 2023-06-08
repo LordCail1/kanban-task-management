@@ -30,7 +30,7 @@ const AddNewTaskNavbarGroup = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) 
 	return (
 		<StyledAddNewTaskNavbarGroup>
 			<StyledAddNewTaskBtn
-				onClick={() => dispatch(openPopup({HOCComponent: "TaskManagerPopupWindow", editing: false}))}
+				onClick={() => dispatch(openPopup({HOCComponent: "TaskManagerCreatorPopupWindow", editing: false}))}
 				disabled={isColumnsEmpty}
 				disabledBtn={isColumnsEmpty}
 			>

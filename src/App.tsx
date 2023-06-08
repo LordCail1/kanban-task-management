@@ -10,7 +10,9 @@ import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 import { useState } from "react"
 import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
 
+
 function App() {
+	
 	const { component: currentComponentString, editing, id } = useAppSelector((state) => state.popupSlice.value)
 	const component = useGetComponentFromString(currentComponentString)
 

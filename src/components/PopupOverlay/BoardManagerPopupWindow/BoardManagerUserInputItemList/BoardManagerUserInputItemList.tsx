@@ -1,6 +1,6 @@
-import BoardManagerUserInputItem from "./BoardManagerUserInputItem"
+import BoardManagerUserInputItem from "../BoardManagerUserInputItem/BoardManagerUserInputItem"
 import StyledBoardManagerUserInputItemList from "./BoardManagerUserInputItemList.styled"
-import StyledBoardManagerUserInputTitle from "./BoardManagerUserInputTitle.styled"
+import StyledBoardManagerUserInputTitle from "../BoardManagerUserInputTitle/BoardManagerUserInputTitle.styled"
 import { UseFormRegister, FieldArrayWithId, FieldErrors, UseFieldArrayRemove } from "react-hook-form"
 
 const BoardManagerUserInputItemList = ({
