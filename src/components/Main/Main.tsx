@@ -7,21 +7,31 @@ import NewColumnBtn from "../NewColumnBtn/NewColumnBtn"
 import StyledMainContainer from "./MainContainer.styled"
 import { setEditableBoard } from "../../features"
 
-const Main = ({
-	setIsColumnsEmpty,
-}: {
-	setIsColumnsEmpty: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
-	// Determines whether the sidebar is active or not
+/**
+ * container holds the entire right section of the screen. This is what is
+ * - underneath the navbar
+ * - holding the columns
+ * - on the right of the sidebar
+ * @param setIsColumnsEmpty setter function for a 'useState' hook. This function is used to set the boolean
+ * value of this state. This boolean value tells if there are any columns in the 'Main' section or not.
+ */
+const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.SetStateAction<boolean>> }) => {
+	const dispatch = useAppDispatch()
+
+	/**
+	 * boolean value telling if the sidebar is active or not.
+	 */
 	const sidebarActivated = useAppSelector((state) => state.sidebarSlice.active)
 
-	// Retrieves all columns from the Redux store
+	/**
+	 * All the columns from the redux store
+	 */
 	const allColumns = useAppSelector((state) => state.columnsSlice.value.columns)
-	// Retrieves the selected board from the Redux store
-	const selectedBoard = useAppSelector((state) =>
-		state.boardsSlice.value.boards.find((board) => board.selected === true)
-	)
-	const dispatch = useAppDispatch()
+
+	/**
+	 * The board from the redux store that is active
+	 */
+	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board) => board.selected === true))
 
 	// Sets whether the columns are empty or not based on the filteredColumn array
 	useEffect(() => {
@@ -42,15 +52,19 @@ const Main = ({
 	}, [selectedBoard])
 
 	// Filters the columns based on the selected board
-	const filteredColumns: Column[] = []
+	let filteredColumns: Column[] = []
+
 
 	if (selectedBoard) {
+		const allColumnIds: Record<string, Column> = {}
+		//loop through each column and add it to the 'allColumnIds' object as a {[key]: value} pair
 		allColumns.forEach((column) => {
-			selectedBoard.columns.forEach((boardColumn) => {
-				if (boardColumn === column.id) filteredColumns.push(column)
-			})
+			allColumnIds[column.id] = column
 		})
+
+		filteredColumns = selectedBoard.columns.map((columnId) => allColumnIds[columnId]).filter((column) => Boolean(column))
 	}
+
 
 	return (
 		<StyledMainContainer activated={sidebarActivated}>

@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components"
 
 /**
- * This is the part of the dropdown menu that the user sees when he clicks on it.
+ * This is the part of the dropdown menu that the user sees when he clicks on it. 
+ * In other words, this is the area that is expanded and the user can finally see when activated
  */
 const StyledTaskManagerViewerPopupStatusDropdown = styled.div<{ activated: boolean }>`
 	background-color: ${({theme}) => theme.style === 'dark' ? theme.colors.very_dark_grey : theme.colors.white};

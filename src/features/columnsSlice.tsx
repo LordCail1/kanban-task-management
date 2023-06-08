@@ -115,16 +115,44 @@ const columnsSlice = createSlice({
 				}
 			}
 		},
+		/**
+		 * takes in an array of columns that were deleted during editing
+		 * @param action.payload.deletedColumns array of columns that were deleted during the editing
+		 */
 		deleteColumns: (state, action: PayloadAction<UpdatingColumnsType>) => {
 			const { deletedColumns } = action.payload
 
 			const deletedColumnIds = new Set(deletedColumns.map((column) => column.id))
 			state.value.columns = state.value.columns.filter((column) => !deletedColumnIds.has(column.id))
 		},
-		switchTaskFromColumn: (state, action: PayloadAction<{ thisColumn: Column, thisTaskId: string, newColumnId: string}>) => {
-			console.log(action.payload)
-			return state
-		}
+
+		/**
+		 * this reducer removes the task from the column it was in, and pushes it into the new column that was chosen
+		 * @param action.payload.thisColumn The column in which the task belonged to before dispatching
+		 * @param action.payload.thisTaskId The ID number of the task that is concerned
+		 * @param action.payload.newColumnId The ID number of the new column that has been selected
+		 * @returns
+		 */
+		switchTaskFromColumn: (state, action: PayloadAction<{ thisColumn: Column; thisTaskId: string; newColumnId: string }>) => {
+			const { newColumnId, thisColumn, thisTaskId } = action.payload
+
+			removeTaskFromOldColumn(thisColumn, thisTaskId)
+			addTaskToNewColumn(newColumnId, thisTaskId)
+
+			function removeTaskFromOldColumn(thisColumn: Column, thisTaskId: string) {
+				const thisColumnInState = state.value.columns.find((column) => column.id === thisColumn.id)
+				if (thisColumnInState) {
+					thisColumnInState.tasks = thisColumnInState.tasks.filter((id) => id !== thisTaskId)
+				}
+			}
+			function addTaskToNewColumn(newColumnId: string, thisTaskId: string) {
+				const newColumnInState = state.value.columns.find((column) => column.id === newColumnId)
+
+				if (newColumnInState) {
+					newColumnInState.tasks.push(thisTaskId)
+				}
+			}
+		},
 	},
 })
 

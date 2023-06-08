@@ -6,6 +6,11 @@ import ColumnTitle from "./ColumnTitle/ColumnTitle"
 import StyledEmptyColumnWarning from "./EmptyColumnWarning/EmptyColumnWarning.styled"
 import { openPopup } from "../../features"
 
+
+
+
+
+
 const Column = ({ id }: { id: string }) => {
 	// Get the current column from the Redux store
 	const thisColumn = useAppSelector((state) =>

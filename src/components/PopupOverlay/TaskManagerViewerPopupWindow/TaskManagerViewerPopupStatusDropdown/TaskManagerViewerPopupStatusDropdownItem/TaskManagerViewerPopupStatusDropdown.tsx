@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import StyledTaskManagerViewerPopupStatusDropdown from "../TaskManagerViewerPopupStatusDropdown.styled"
 import StyledTaskManagerViewerPopupStatusDropdownDisplay from "../TaskManagerViewerPopupStatusDropdownDisplay/TaskManagerViewerPopupStatusDropdownDisplay.styled"
 import StyledTaskManagerViewerPopupStatusDropdownItem from "./TaskManagerViewerPopupStatusDropdownItem.styled"
@@ -16,9 +16,8 @@ import { switchTaskFromColumn } from "../../../../../features"
  * this value will also determine what the 'status' is in the dropdown
  * @param id the id of the current task that is on screen
  */
-const TaskManagerViewerPopupStatusDropdown = ({ listOfColumns, thisColumn, id }: { listOfColumns: Column[]; thisColumn: Column, id: string }) => {
-    const dispatch = useAppDispatch()
-	const [selectedValue, setSelectedValue] = useState()
+const TaskManagerViewerPopupStatusDropdown = ({ listOfColumns, thisColumn, id: thisTaskId }: { listOfColumns: Column[]; thisColumn: Column; id: string }) => {
+	const dispatch = useAppDispatch()
 	const [activated, setActivated] = useState(false)
 	return (
 		<StyledTaskManagerViewerPopupStatusDropdownDisplay onClick={() => setActivated((preValue) => !preValue)}>
@@ -26,7 +25,12 @@ const TaskManagerViewerPopupStatusDropdown = ({ listOfColumns, thisColumn, id }:
 			<TaskManagerViewerPopupStatusDropdownDisplayArrow />
 			<StyledTaskManagerViewerPopupStatusDropdown activated={activated}>
 				{listOfColumns.map((column) => (
-					<StyledTaskManagerViewerPopupStatusDropdownItem key={column.id} onClick={() => dispatch(switchTaskFromColumn({thisColumn: thisColumn, thisTaskId: id, newColumnId: column.id}))}>{column.name}</StyledTaskManagerViewerPopupStatusDropdownItem>
+					<StyledTaskManagerViewerPopupStatusDropdownItem
+						key={column.id}
+						onClick={() => dispatch(switchTaskFromColumn({ thisColumn, thisTaskId, newColumnId: column.id }))}
+					>
+						{column.name}
+					</StyledTaskManagerViewerPopupStatusDropdownItem>
 				))}
 			</StyledTaskManagerViewerPopupStatusDropdown>
 		</StyledTaskManagerViewerPopupStatusDropdownDisplay>

@@ -19,7 +19,7 @@ const CustomDropdown = () => {
   ];
 
   const onSubmit = data => {
-    console.log(data);
+    //do something here with the data
   };
 
   return (
