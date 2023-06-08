@@ -72,7 +72,7 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 				? filteredColumns.map((column) => (
 						<Column
 							key={column.id}
-							id={column.id}
+							thisColumn={column}
 						/>
 				  ))
 				: null}
