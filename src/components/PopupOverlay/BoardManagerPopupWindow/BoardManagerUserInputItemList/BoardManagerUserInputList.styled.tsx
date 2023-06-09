@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const StyledBoardManagerUserInputItemList = styled.ul`
+const StyledBoardManagerUserInputList = styled.ul`
 	overflow-y: scroll;
 	max-height: 50vh;
 	::-webkit-scrollbar {
@@ -8,4 +8,4 @@ const StyledBoardManagerUserInputItemList = styled.ul`
 	}
 `
 
-export default StyledBoardManagerUserInputItemList
+export default StyledBoardManagerUserInputList

@@ -1,9 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect, useState } from "react"
-import AddNewColumnPopupBtn from "../../PopupButton/AddNewColumnPopupBtn"
-import CreateNewBoardPopupInputBtn from "../../PopupButton/CreateNewBoardPopupInputBtn"
-import BoardManagerUserInputItemList from "./BoardManagerUserInputItemList/BoardManagerUserInputItemList.tsx"
-import BoardManagerUserInputShort from "./BoardManagerUserInputShort/BoardManagerUserInputShort.tsx"
+import BoardManagerUserInputList from "./BoardManagerUserInputItemList/BoardManagerUserInputList.tsx"
+import BoardManagerUserInput from "./BoardManagerUserInput/BoardManagerUserInput.tsx"
 import StyledBoardManagerPopupTitle from "./BoardManagerPopupTitle/BoardManagerPopupTitle.styled.tsx"
 import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
 import { useFieldArray, useForm } from "react-hook-form"
@@ -14,8 +12,13 @@ import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boards
 import { nanoid } from "nanoid"
 import BoardManagerPopupWindowEditerFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowEditerFormHook.tsx"
 import BoardManagerSchema from "../../../forms/BoardManager/BoardManagerSchema.ts"
+import { useTheme } from "styled-components"
+import StyledBoardManagerPopupBtnPrimary from "./BoardManagerPopupBtnPrimary/BoardManagerPopupBtnPrimary.styled.tsx"
+import StyledBoardManagerPopupBtnSecondary from "./BoardManagerPopupBtnSecondary/BoardManagerPopupBtnSecondary.styled.tsx"
 
 const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
+	const theme = useTheme()
+
 	const dispatch = useAppDispatch()
 
 	//grabbing the state of the board currently being edited
@@ -96,24 +99,48 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
 			<StyledBoardManagerPopupTitle>{editing ? "Edit Board" : "Add New Board"}</StyledBoardManagerPopupTitle>
-			<BoardManagerUserInputShort
+			<BoardManagerUserInput
 				title="Board Name"
 				placeHolder="e.g Web Design"
 				register={register}
 				errors={errors}
 			/>
-			<BoardManagerUserInputItemList
+			<BoardManagerUserInputList
 				title={columnFields.length !== 0 ? "Board Columns" : ""}
 				register={register}
 				columnFields={columnFields}
 				errors={errors}
 				remove={remove}
 			/>
-			<AddNewColumnPopupBtn
-				text="+Add New Column"
-				handleClick={handleAddNewColumnRow}
-			/>
-			<CreateNewBoardPopupInputBtn text={editing ? "Save Changes" : "Create New Board"} />
+			<StyledBoardManagerPopupBtnSecondary
+				backgroundDarkColor={theme.colors.white}
+				backgroundHoverDarkColor={theme.colors.light_grey}
+				backgroundHoverLightColor={theme.colors.main_purple_hover}
+				backgroundLightColor={theme.colors.main_purple_hover2}
+				textDarkColor={theme.colors.main_purple}
+				textHoverDarkColor={theme.colors.main_purple}
+				textHoverLightColor={theme.colors.main_purple}
+				textLightColor={theme.colors.main_purple}
+				fontSize="0.813rem"
+				fontWeight={700}
+				onClick={handleAddNewColumnRow}
+			>
+				+Add New Column
+			</StyledBoardManagerPopupBtnSecondary>
+			<StyledBoardManagerPopupBtnPrimary
+				backgroundDarkColor={theme.colors.main_purple}
+				backgroundHoverDarkColor={theme.colors.main_purple_hover}
+				backgroundHoverLightColor={theme.colors.main_purple_hover}
+				backgroundLightColor={theme.colors.main_purple}
+				fontSize="0.813rem"
+				textDarkColor={theme.colors.white}
+				textHoverDarkColor={theme.colors.white}
+				textHoverLightColor={theme.colors.white}
+				textLightColor={theme.colors.white}
+				fontWeight={700}
+			>
+				{editing ? "Save Changes" : "Create New Board"}
+			</StyledBoardManagerPopupBtnPrimary>
 		</StyledBoardManagerPopupWindow>
 	)
 }

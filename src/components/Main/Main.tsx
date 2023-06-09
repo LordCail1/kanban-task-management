@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
 import Column from "../Column/Column"
-import EmptyBoardWarningContainer from "../EmptyBoardWarningContainer/EmptyBoardWarningContainer"
+import EmptyBoardWarningContainer from "../EmptyBoardWarningContainer/EmptyBoardWarningContainer/EmptyBoardWarningContainer"
 import NewColumnBtn from "../NewColumnBtn/NewColumnBtn"
 import StyledMainContainer from "./MainContainer.styled"
 import { setEditableBoard } from "../../features"
@@ -54,7 +54,6 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 	// Filters the columns based on the selected board
 	let filteredColumns: Column[] = []
 
-
 	if (selectedBoard) {
 		const allColumnIds: Record<string, Column> = {}
 		//loop through each column and add it to the 'allColumnIds' object as a {[key]: value} pair
@@ -64,7 +63,6 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 
 		filteredColumns = selectedBoard.columns.map((columnId) => allColumnIds[columnId]).filter((column) => Boolean(column))
 	}
-
 
 	return (
 		<StyledMainContainer activated={sidebarActivated}>

@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 
+
 type Active = {
 	active: boolean
 }
@@ -44,7 +45,7 @@ type UserInput = {
 }
 
 type UserInputTitle = {
-	title: string
+	title: stringh
 }
 
 /**
@@ -103,7 +104,7 @@ type Task = {
  * @param id id of the column
  * @param color hex color assigned to the column
  * @param tasks IDs of all the tasks belonging to this column
- * 
+ *
  */
 type Column = {
 	name: string
@@ -123,7 +124,6 @@ type BoardData = {
 	boards: Board[]
 }
 
-
 /**
  * Different places where we can get the menu that is normally visible in the sidebar
  * @params {menuArea} areas where menu can be visible
@@ -132,13 +132,18 @@ type MenuArea = {
 	menuArea: "sidebar" | "dropdown"
 }
 
-
-
-
-
-
-
-
-
-
+type Button = {
+	text?: string
+	handleClick?: () => void
+	backgroundDarkColor:string
+	backgroundLightColor:string
+	backgroundHoverDarkColor: string
+	backgroundHoverLightColor: string
+	textDarkColor: string
+	textLightColor: string
+	textHoverDarkColor: string
+	textHoverLightColor: string
+	fontSize?: string
+	fontWeight?: number
+}
 

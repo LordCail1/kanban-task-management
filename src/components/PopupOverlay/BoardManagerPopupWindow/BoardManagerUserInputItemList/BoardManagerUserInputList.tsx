@@ -1,9 +1,9 @@
-import BoardManagerUserInputItem from "../BoardManagerUserInputItem/BoardManagerUserInputItem"
-import StyledBoardManagerUserInputItemList from "./BoardManagerUserInputItemList.styled"
-import StyledBoardManagerUserInputTitle from "../BoardManagerUserInputTitle/BoardManagerUserInputTitle.styled"
+import BoardManagerUserInputListItem from "../BoardManagerUserInputListItem/BoardManagerUserInputItem"
+import StyledBoardManagerUserInputList from "./BoardManagerUserInputList.styled"
 import { UseFormRegister, FieldArrayWithId, FieldErrors, UseFieldArrayRemove } from "react-hook-form"
+import StyledBoardManagerUserInputListTitle from "../BoardManagerUserInputListTitle/BoardManagerUserInputListTitle.styled"
 
-const BoardManagerUserInputItemList = ({
+const BoardManagerUserInputList = ({
 	errors,
 	columnFields,
 	register,
@@ -16,11 +16,11 @@ const BoardManagerUserInputItemList = ({
 	remove: UseFieldArrayRemove
 }) => {
 	return (
-		<StyledBoardManagerUserInputItemList>
-			<StyledBoardManagerUserInputTitle>{title}</StyledBoardManagerUserInputTitle>
+		<StyledBoardManagerUserInputList>
+			<StyledBoardManagerUserInputListTitle>{title}</StyledBoardManagerUserInputListTitle>
 
 			{columnFields.map((field, index) => (
-				<BoardManagerUserInputItem
+				<BoardManagerUserInputListItem
 					placeHolder="e.g Todo"
 					key={field.id}
 					register={register}
@@ -30,8 +30,8 @@ const BoardManagerUserInputItemList = ({
 					field={field}
 				/>
 			))}
-		</StyledBoardManagerUserInputItemList>
+		</StyledBoardManagerUserInputList>
 	)
 }
 
-export default BoardManagerUserInputItemList
+export default BoardManagerUserInputList
