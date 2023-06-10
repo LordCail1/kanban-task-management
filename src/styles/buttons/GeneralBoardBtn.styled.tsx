@@ -14,11 +14,8 @@ const StyledGeneralBoardBtn = styled.button`
 	transition: background-color ${({ theme }) => theme.transitionTimes.fast};
 	width: 92%;
 	&:hover {
-				background-color: ${({ theme }) =>
-					theme.style === "dark"
-						? theme.colors.white
-						: theme.colors.main_purple_hover2};
-			}
+		background-color: ${({ theme }) => (theme.style === "dark" ? theme.colors.white : theme.colors.main_purple_hover2)};
+	}
 `
 
 export default StyledGeneralBoardBtn

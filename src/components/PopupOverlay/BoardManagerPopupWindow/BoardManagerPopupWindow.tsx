@@ -1,21 +1,24 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import { useEffect, useState } from "react"
-import BoardManagerUserInputList from "./BoardManagerUserInputItemList/BoardManagerUserInputList.tsx"
-import BoardManagerUserInput from "./BoardManagerUserInput/BoardManagerUserInput.tsx"
-import StyledBoardManagerPopupTitle from "./BoardManagerPopupTitle/BoardManagerPopupTitle.styled.tsx"
-import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
-import { useFieldArray, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { addBoard, addColumns, addColumnsCreate, closePopup, deleteColumns, updateBoard, updateColumns } from "../../../features"
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
-import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
 import { nanoid } from "nanoid"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
+import { useEffect, useState } from "react"
+import { useFieldArray, useForm } from "react-hook-form"
+import { useTheme } from "styled-components"
+import { zodResolver } from "@hookform/resolvers/zod"
+import BoardManagerPopupUserInput from "./BoardManagerPopupUserInput/BoardManagerPopupUserInput.tsx"
+import BoardManagerPopupUserInputList from "./BoardManagerPopupUserInputList/BoardManagerPopupUserInputList.tsx"
+import BoardManagerPopupWindowCreaterFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowCreaterFormHook.tsx"
 import BoardManagerPopupWindowEditerFormHook from "../../../hooks/custom/boardsManagement/BoardManagerPopupWindowEditerFormHook.tsx"
 import BoardManagerSchema from "../../../forms/BoardManager/BoardManagerSchema.ts"
-import { useTheme } from "styled-components"
 import StyledBoardManagerPopupBtnPrimary from "./BoardManagerPopupBtnPrimary/BoardManagerPopupBtnPrimary.styled.tsx"
 import StyledBoardManagerPopupBtnSecondary from "./BoardManagerPopupBtnSecondary/BoardManagerPopupBtnSecondary.styled.tsx"
+import StyledBoardManagerPopupTitle from "./BoardManagerPopupTitle/BoardManagerPopupTitle.styled.tsx"
+import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
 
+/**
+ * This component
+ */
 const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	const theme = useTheme()
 
@@ -27,25 +30,25 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	//settings the default values depending on if editing or not
 	const [defaultValues, setDefaultValues] = useState<BoardManagerPopupWindowFormData>({
 		board: {
-			boardName: "",
+			name: "",
 			id: "",
 		},
-		columns: [{ columnName: "", id: "" }],
+		columns: [{ name: "", id: "" }],
 	})
 
 	useEffect(() => {
 		if (editing) {
 			setDefaultValues({
 				board: {
-					boardName: editingBoard.board.boardName,
+					name: editingBoard.board.name,
 					id: editingBoard.board.id,
 				},
 				columns: editingBoard.columns,
 			})
 		} else {
 			setDefaultValues({
-				board: { boardName: "", id: nanoid(10) },
-				columns: [{ columnName: "", id: nanoid(10) }],
+				board: { name: "", id: nanoid(10) },
+				columns: [{ name: "", id: nanoid(10) }],
 			})
 		}
 	}, [])
@@ -75,6 +78,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	})
 
 	function submitData(boardData: BoardManagerPopupWindowFormData) {
+		console.log("data")
 		// Reset the form and close the popup
 		reset(defaultValues)
 		dispatch(closePopup())
@@ -93,19 +97,19 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	}
 
 	function handleAddNewColumnRow() {
-		return append({ columnName: "", id: nanoid(10) })
+		return append({ name: "", id: nanoid(10) })
 	}
 
 	return (
 		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
 			<StyledBoardManagerPopupTitle>{editing ? "Edit Board" : "Add New Board"}</StyledBoardManagerPopupTitle>
-			<BoardManagerUserInput
+			<BoardManagerPopupUserInput
 				title="Board Name"
 				placeHolder="e.g Web Design"
 				register={register}
 				errors={errors}
 			/>
-			<BoardManagerUserInputList
+			<BoardManagerPopupUserInputList
 				title={columnFields.length !== 0 ? "Board Columns" : ""}
 				register={register}
 				columnFields={columnFields}
@@ -138,6 +142,8 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				textHoverLightColor={theme.colors.white}
 				textLightColor={theme.colors.white}
 				fontWeight={700}
+				type="submit"
+				text={editing ? "Save Changes" : "Create New Board"}
 			>
 				{editing ? "Save Changes" : "Create New Board"}
 			</StyledBoardManagerPopupBtnPrimary>

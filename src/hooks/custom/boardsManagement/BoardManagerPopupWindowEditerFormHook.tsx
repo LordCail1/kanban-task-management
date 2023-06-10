@@ -9,12 +9,15 @@ import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
  * @returns an object that provides the proper structure to send the information to a redux reducer. what is inside this object
  * can be used as payload for updating the redux store
  */
+let test: ColumnFormData
+
+
 const BoardManagerPopupWindowEditerFormHook = (
-	{ board: { boardName: rawBoardName, id: boardId }, columns: rawColumns }: BoardManagerPopupWindowFormData,
+	{ board: { name: rawBoardName, id: boardId }, columns: rawColumns }: BoardManagerPopupWindowFormData,
 	editingBoard: BoardManagerPopupWindowFormData
 ): BoardManagerEditingPayload => {
-	const preStructuredColumns: ColumnFormData[] = rawColumns.map((column) => ({
-		columnName: capitalizeAndTrim(column.columnName),
+	const preStructuredColumns: ColumnFormData[] = rawColumns.map((column: ColumnFormData) => ({
+		name: capitalizeAndTrim(column.name),
 		id: column.id,
 	}))
 
@@ -23,7 +26,7 @@ const BoardManagerPopupWindowEditerFormHook = (
 	 * @param columnArray array of columns
 	 * @returns array of columns that are not empty
 	 */
-	const removeEmptyOnes = (columnArray: ColumnFormData[]) => columnArray.filter((column) => column.columnName !== "")
+	const removeEmptyOnes = (columnArray: ColumnFormData[]) => columnArray.filter((column: ColumnFormData) => column.name !== "")
 
 	const structuredColumns: ColumnFormData[] = removeEmptyOnes(preStructuredColumns)
 

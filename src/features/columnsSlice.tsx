@@ -79,7 +79,7 @@ const columnsSlice = createSlice({
 			const { newColumns } = action.payload
 			const newColumnArray: Column[] = newColumns.map((column) => {
 				return {
-					name: column.columnName,
+					name: column.name,
 					id: column.id,
 					color: randomColor(),
 					tasks: [],
@@ -109,7 +109,7 @@ const columnsSlice = createSlice({
 				for (let i = 0; i < allColsFromState.length; i++) {
 					for (let j = 0; j < colsFromPayloadToUpdate.length; j++) {
 						if (allColsFromState[i].id === colsFromPayloadToUpdate[j].id) {
-							allColsFromState[i].name = colsFromPayloadToUpdate[j].columnName
+							allColsFromState[i].name = colsFromPayloadToUpdate[j].name
 						}
 					}
 				}

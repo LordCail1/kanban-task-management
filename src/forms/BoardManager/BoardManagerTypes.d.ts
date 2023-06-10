@@ -1,15 +1,12 @@
-
-
-
 /**
  * object representing the structure needed for managing boards and their columns
- * @param board.boardName name of the board 
+ * @param board.name name of the board
  * @param board.id id of the board
- * @param columns array of columns 
+ * @param columns array of columns
  */
 type BoardManagerPopupWindowFormData = {
 	board: {
-		boardName: string
+		name: string
 		id: string
 	}
 	columns: ColumnFormData[]
@@ -20,11 +17,9 @@ type BoardManagerPopupWindowFormData = {
  * @param columnName name of the column that will be created
  */
 type ColumnFormData = {
-	columnName: string
+	name: string
 	id: string
 }
-
-
 
 //////////////////////////////
 

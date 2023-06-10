@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import StyledGeneralUserInputTitle from "../../../../styles/userInput/GeneralUserInputTitle.styled"
 
-const StyledBoardManagerUserInputTitle = styled(StyledGeneralUserInputTitle)``
+const StyledBoardManagerPopupUserInputTitle = styled(StyledGeneralUserInputTitle)``
 
-export default StyledBoardManagerUserInputTitle
+export default StyledBoardManagerPopupUserInputTitle

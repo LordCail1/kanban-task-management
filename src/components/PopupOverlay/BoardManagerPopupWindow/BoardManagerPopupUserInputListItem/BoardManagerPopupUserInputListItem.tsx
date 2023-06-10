@@ -1,12 +1,10 @@
 import useValidateField from "../../../../hooks/react-form-hook/useValidateField"
 import CrossIcon from "../../../Icon/CrossIcon/CrossIcon"
-import StyledBoardManagerUserInputListItemInputBox from "../BoardManagerUserInputListItemInputBox/BoardManagerUserInputListItemInputBox.styled"
-import StyledBoardManagerUserInputListItem from "./BoardManagerUserInputListItem.styled"
+import StyledBoardManagerPopupUserInputListItemInputBox from "../BoardManagerPopupUserInputListItemInputBox/BoardManagerUserInputListItemInputBox.styled"
+import StyledBoardManagerPopupUserInputListItem from "./BoardManagerPopupUserInputListItem.styled"
 import { UseFormRegister, FieldErrors, UseFieldArrayRemove, FieldArrayWithId } from "react-hook-form"
 
-
-
-const BoardManagerUserInputListItem = ({
+const BoardManagerPopupUserInputListItem = ({
 	errors,
 	index,
 	placeHolder,
@@ -20,16 +18,16 @@ const BoardManagerUserInputListItem = ({
 	remove: UseFieldArrayRemove
 	field: FieldArrayWithId<BoardManagerPopupWindowFormData>
 }) => {
-	const { isFieldValid } = useValidateField(errors.columns?.[index]?.columnName?.message)
+	const { isFieldValid } = useValidateField(errors.columns?.[index]?.name?.message)
 
 	return (
-		<StyledBoardManagerUserInputListItem>
-			<StyledBoardManagerUserInputListItemInputBox
+		<StyledBoardManagerPopupUserInputListItem>
+			<StyledBoardManagerPopupUserInputListItemInputBox
 				placeholder={placeHolder}
 				valid={isFieldValid}
 				type="text"
-				{...register(`columns.${index}.columnName`)}
-				defaultValue={field.columnName}
+				{...register(`columns.${index}.name`)}
+				defaultValue={field.name}
 			/>
 			<CrossIcon
 				height={15}
@@ -37,8 +35,8 @@ const BoardManagerUserInputListItem = ({
 				index={index}
 				remove={remove}
 			/>
-		</StyledBoardManagerUserInputListItem>
+		</StyledBoardManagerPopupUserInputListItem>
 	)
 }
 
-export default BoardManagerUserInputListItem
+export default BoardManagerPopupUserInputListItem

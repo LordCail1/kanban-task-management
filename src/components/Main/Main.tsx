@@ -32,7 +32,6 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 	 * The board from the redux store that is active
 	 */
 	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board) => board.selected === true))
-
 	// Sets whether the columns are empty or not based on the filteredColumn array
 	useEffect(() => {
 		setIsColumnsEmpty(filteredColumns.length < 1)
