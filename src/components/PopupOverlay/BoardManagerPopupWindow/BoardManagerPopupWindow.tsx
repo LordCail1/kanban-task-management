@@ -143,7 +143,6 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				textLightColor={theme.colors.white}
 				fontWeight={700}
 				type="submit"
-				text={editing ? "Save Changes" : "Create New Board"}
 			>
 				{editing ? "Save Changes" : "Create New Board"}
 			</StyledBoardManagerPopupBtnPrimary>

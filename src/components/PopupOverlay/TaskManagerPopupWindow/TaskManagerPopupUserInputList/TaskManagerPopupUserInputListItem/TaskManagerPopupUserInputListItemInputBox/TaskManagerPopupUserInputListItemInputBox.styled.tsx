@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import StyledGeneralUserInputBox from "../../../../styles/userInput/GeneralUserInputBox.styled";
-
+import StyledGeneralUserInputBox from "../../../../../../styles/userInput/GeneralUserInputBox.styled";
 
 const StyledTaskManagerPopupUserInputListItemInputBox = styled(StyledGeneralUserInputBox)``
 

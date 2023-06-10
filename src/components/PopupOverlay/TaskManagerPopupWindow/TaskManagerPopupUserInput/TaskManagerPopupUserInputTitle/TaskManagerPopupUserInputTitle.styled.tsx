@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledGeneralUserInputTitle from "../../../../styles/userInput/GeneralUserInputTitle.styled";
+import StyledGeneralUserInputTitle from "../../../../../styles/userInput/GeneralUserInputTitle.styled";
 
 const StyledTaskManagerUserInputTitle = styled(StyledGeneralUserInputTitle)`
 

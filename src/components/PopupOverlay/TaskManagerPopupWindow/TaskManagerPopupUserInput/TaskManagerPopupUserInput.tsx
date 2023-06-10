@@ -1,16 +1,13 @@
-import StyledTaskManagerPopupUserInputListItemInputBox from "../StyledTaskManagerPopupUserInputListItemInputBox/StyledTaskManagerPopupUserInputListItemInputBox.styled"
-import StyledTaskManagerUserInputTitle from "../TaskManagerPopupUserInputTitle/TaskManagerPopupUserInputTitle.styled"
 import StyledTaskManagerPopupUserInput from "./TaskManagerPopupUserInput.styled"
-
-
-const TaskManagementPopupUserInput = () => {
-    return (
-        <StyledTaskManagerPopupUserInput>
-            <StyledTaskManagerUserInputTitle>test</StyledTaskManagerUserInputTitle>
-            <StyledTaskManagerPopupUserInputListItemInputBox valid={true}/>
-            
-        </StyledTaskManagerPopupUserInput>
-    )
+import StyledTaskManagerPopupUserInputListItemInputBox from "./TaskManagerPopupUserInputListItemInputBox/TaskManagerPopupUserInputListItemInputBox.styled"
+import StyledTaskManagerUserInputTitle from "./TaskManagerPopupUserInputTitle/TaskManagerPopupUserInputTitle.styled"
+const TaskManagerPopupUserInput = () => {
+	return (
+		<StyledTaskManagerPopupUserInput>
+			<StyledTaskManagerUserInputTitle>Title</StyledTaskManagerUserInputTitle>
+			<StyledTaskManagerPopupUserInputListItemInputBox valid={true} />
+		</StyledTaskManagerPopupUserInput>
+	)
 }
 
-export default TaskManagementPopupUserInput 
+export default TaskManagerPopupUserInput
