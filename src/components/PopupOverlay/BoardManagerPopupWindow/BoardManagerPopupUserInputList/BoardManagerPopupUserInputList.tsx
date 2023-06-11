@@ -1,6 +1,6 @@
+import { UseFormRegister, FieldArrayWithId, FieldErrors, UseFieldArrayRemove } from "react-hook-form"
 import BoardManagerPopupUserInputListItem from "../BoardManagerPopupUserInputListItem/BoardManagerPopupUserInputListItem"
 import StyledBoardManagerPopupUserInputList from "./BoardManagerPopupUserInputList.styled"
-import { UseFormRegister, FieldArrayWithId, FieldErrors, UseFieldArrayRemove } from "react-hook-form"
 import StyledBoardManagerPopupUserInputListTitle from "../BoardManagerPopupUserInputListTitle/BoardManagerPopupUserInputListTitle.styled"
 
 const BoardManagerPopupUserInputList = ({
@@ -21,13 +21,13 @@ const BoardManagerPopupUserInputList = ({
 
 			{columnFields.map((field, index) => (
 				<BoardManagerPopupUserInputListItem
-					placeHolder="e.g Todo"
-					key={field.id}
-					register={register}
-					index={index}
 					errors={errors}
-					remove={remove}
 					field={field}
+					index={index}
+					key={field.id}
+					placeHolder="e.g Todo"
+					register={register}
+					remove={remove}
 				/>
 			))}
 		</StyledBoardManagerPopupUserInputList>

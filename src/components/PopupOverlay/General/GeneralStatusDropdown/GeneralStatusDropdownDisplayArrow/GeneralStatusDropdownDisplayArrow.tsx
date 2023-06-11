@@ -1,9 +1,7 @@
-
-
 /**
  * dropdown svg that fits inside the dropdown menu display section
  */
-const TaskManagerViewerPopupStatusDropdownDisplayArrow = () => {
+const GeneralStatusDropdownDisplayArrow = () => {
 	return (
 		<svg
 			width="9"
@@ -21,4 +19,4 @@ const TaskManagerViewerPopupStatusDropdownDisplayArrow = () => {
 	)
 }
 
-export default TaskManagerViewerPopupStatusDropdownDisplayArrow
+export default GeneralStatusDropdownDisplayArrow

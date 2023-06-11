@@ -6,7 +6,7 @@ import TaskManagerViewerPopupSubtaskListItem from "./TaskManagerViewerPopupSubta
 import StyledTaskManagerViewerPopupSubtasksNum from "./TaskManagerViewerPopupSubtasksNum/TaskManagerViewerPopupSubtasksNum.styled"
 import StyledTaskManagerViewerPopupTitle from "./TaskManagerViewerPopupTitle/TaskManagerViewerPopupTitle.styled"
 import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.styled"
-import TaskManagerViewerPopupStatusDropdown from "./TaskManagerViewerPopupStatusDropdown/TaskManagerViewerPopupStatusDropdownItem/TaskManagerViewerPopupStatusDropdown"
+import GeneralStatusDropdown from "../General/GeneralStatusDropdown/GeneralStatusDropdown"
 
 /**
  * The popup window that allows the user to view the information related to a task.
@@ -99,7 +99,7 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 			</StyledTaskManagerViewerPopupSubtaskList>
 			<StyledTaskManagerViewerPopupStatusTitle>Current Status</StyledTaskManagerViewerPopupStatusTitle>
 
-			<TaskManagerViewerPopupStatusDropdown
+			<GeneralStatusDropdown
 				id={id}
 				thisColumn={thisColumn}
 				listOfColumns={listOfColumns}

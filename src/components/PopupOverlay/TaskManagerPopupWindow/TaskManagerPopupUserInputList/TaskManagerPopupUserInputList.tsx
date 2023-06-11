@@ -5,8 +5,8 @@ import StyledTaskManagerPopupUserInputListTitle from "./TaskManagerPopupUserInpu
 const TaskManagerPopupUserInputList = () => {
   return (
     <StyledTaskManagerPopupUserInputList>
-        <StyledTaskManagerPopupUserInputListTitle>List</StyledTaskManagerPopupUserInputListTitle>
-        <TaskManagerPopupUserInputListItem />
+        <StyledTaskManagerPopupUserInputListTitle>Subtasks</StyledTaskManagerPopupUserInputListTitle>
+        <TaskManagerPopupUserInputListItem />z
     </StyledTaskManagerPopupUserInputList>
   )
 }

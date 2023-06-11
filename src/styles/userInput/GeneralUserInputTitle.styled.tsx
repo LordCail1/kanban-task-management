@@ -7,6 +7,7 @@ const StyledGeneralUserInputTitle = styled.label`
 			: theme.colors.medium_grey};
 	font-size: 12px;
 	margin-bottom: 8px;
+	font-weight: 700;
 `
 
 export default StyledGeneralUserInputTitle
