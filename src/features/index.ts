@@ -24,3 +24,6 @@ export { default as editingBoardSliceReducer } from "./editingBoardSlice"
 
 export { addSubtask, checkSubtask } from "./subtaskSlice"
 export { default as subtaskSliceReducer } from "./subtaskSlice"
+
+export {openKebabMenu} from './kebabMenuSlice'
+export {default as kebabMenuSliceReducer} from './kebabMenuSlice'

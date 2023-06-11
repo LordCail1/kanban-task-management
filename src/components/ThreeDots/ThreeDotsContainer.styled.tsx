@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const StyledThreeDotsContainer = styled.div`
+const StyledThreeDotsContainer = styled.a`
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -6,10 +6,11 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
  * @param editing boolean value representing if the invoked popup is for editing or not
  * @param id this is an optional id that could be used if the goal is for editing something
  */
+
 type InitialState = {
 	value: {
 		active: boolean
-		component: HOCComponents
+		component: PopupHOCComponents
 		editing: boolean
 		id?: string
 	}
@@ -29,12 +30,12 @@ const popupSlice = createSlice({
 	initialState,
 	reducers: {
 		// Define the openPopup reducer
-		openPopup: (state, action: PayloadAction<{ HOCComponent: HOCComponents; editing: boolean }>) => {
+		openPopup: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponents; editing: boolean }>) => {
 			state.value.active = true
 			state.value.component = action.payload.HOCComponent
 			state.value.editing = action.payload.editing
 		},
-		openPopupWithId: (state, action: PayloadAction<{ HOCComponent: HOCComponents; editing: boolean; id: string }>) => {
+		openPopupWithId: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponents; editing: boolean; id: string }>) => {
 			const { HOCComponent, editing, id } = action.payload
 			state.value.active = true
 			state.value.component = HOCComponent

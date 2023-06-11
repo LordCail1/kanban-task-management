@@ -1,6 +1,5 @@
 /// <reference types="vite/client" />
 
-
 type Active = {
 	active: boolean
 }
@@ -52,7 +51,10 @@ type UserInputTitle = {
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
 
-type HOCComponents = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerPopupWindow" | "TaskManagerCreatorPopupWindow"
+type PopupHOCComponents = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerPopupWindow" | "TaskManagerCreatorPopupWindow" 
+
+type KebabMenuComponents = "KebabMenu"
+
 
 type Popup = {
 	active: boolean
@@ -135,8 +137,8 @@ type MenuArea = {
 type Button = {
 	text?: string
 	handleClick?: () => void
-	backgroundDarkColor:string
-	backgroundLightColor:string
+	backgroundDarkColor: string
+	backgroundLightColor: string
 	backgroundHoverDarkColor: string
 	backgroundHoverLightColor: string
 	textDarkColor: string
@@ -146,4 +148,3 @@ type Button = {
 	fontSize?: string
 	fontWeight?: number
 }
-

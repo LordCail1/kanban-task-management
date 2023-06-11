@@ -28,7 +28,7 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 	 */
 	const allColumns = useAppSelector((state) => state.columnsSlice.value.columns)
 
-	/**
+	/**P
 	 * The board from the redux store that is active
 	 */
 	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board) => board.selected === true))
@@ -43,7 +43,7 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 		if (selectedBoard) {
 			dispatch(
 				setEditableBoard({
-					board: { boardName: selectedBoard.name, id: selectedBoard.id },
+					board: { name: selectedBoard.name, id: selectedBoard.id },
 					columns: filteredColumns,
 				})
 			) // Dispatches the setEditableBoardName action with the selected board's name
@@ -60,7 +60,7 @@ const Main = ({ setIsColumnsEmpty }: { setIsColumnsEmpty: React.Dispatch<React.S
 			allColumnIds[column.id] = column
 		})
 
-		filteredColumns = selectedBoard.columns.map((columnId) => allColumnIds[columnId]).filter((column) => Boolean(column))
+		filteredColumns = selectedBoard.columns.map((columnId: string) => allColumnIds[columnId]).filter((column: Column) => Boolean(column))
 	}
 
 	return (

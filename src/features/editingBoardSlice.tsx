@@ -18,8 +18,8 @@ const editingBoardSlice = createSlice({
 	name: "editingBoard_slice",
 	initialState,
 	reducers: {
-		setEditableBoard: (state, action: PayloadAction<{ board: { boardName: string; id: string }; columns: Column[] }>) => {
-			state.value.board.name = action.payload.board.boardName
+		setEditableBoard: (state, action: PayloadAction<{ board: { name: string; id: string }; columns: Column[] }>) => {
+			state.value.board.name = action.payload.board.name
 			state.value.board.id = action.payload.board.id
 			state.value.columns = []
 			action.payload.columns.forEach((col) => {
