@@ -9,51 +9,82 @@ import TaskManagerPopupUserInputList from "./TaskManagerPopupUserInputList/TaskM
 import GeneralStatusDropdown from "../General/GeneralStatusDropdown/GeneralStatusDropdown"
 import randomColor from "randomcolor"
 import StyledTaskManagerPopupDropdownTitle from "./TaskManagerPopupDropdownTitle/TaskManagerPopupDropdownTitle.styled"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
+import { useFieldArray, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import TaskManagerSchema from "../../../forms/TaskManager/TaskManagerSchema"
+import { useState } from "react"
 
 const TaskManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	const theme = useTheme()
+	const dispatch = useAppDispatch()
+
+	const editingBoard = useAppSelector((state) => state.editingBoardSlice.value)
 
 	const handleAddNewColumnRow = () => {
 		console.log("adding a new row")
 	}
 
+	const [defaultValues, setDefaultValues] = useState<TaskManagerPopupWindowFormData>({
+		task: {
+			title: "",
+			description: "",
+		},
+		subtasks: [{ title: "", id: "", isCompleted: false }],
+		columns: [{ name: "", color: "", id: "", tasks: [] }],
+	})
 
+	const {
+		register,
+		handleSubmit,
+		control,
+		formState: { errors },
+		reset,
+	} = useForm<TaskManagerPopupWindowFormData>({
+		resolver: zodResolver(TaskManagerSchema),
+	})
+
+	const {
+		append,
+		remove,
+		fields: subtasksFields,
+	} = useFieldArray({
+		control,
+		name: "subtasks",
+	})
+
+	
 
 	/**
 	 * This is dummy data so that I have time to create my code with no typescript alarms
 	 */
 	const column: Column = {
 		color: randomColor(),
-		id: 'Column1',
+		id: "Column1",
 		name: "ColumnName1",
-		tasks: ["test1", "test2", "test3"]
+		tasks: ["test1", "test2", "test3"],
 	}
 	const columnArray: Column[] = [
 		{
 			color: randomColor(),
-			id: 'columnArray1',
+			id: "columnArray1",
 			name: "columnArrayName1",
-			tasks: ["test1", "test2"]
-		}, 
+			tasks: ["test1", "test2"],
+		},
 		{
 			color: randomColor(),
 			id: "columnArray2",
 			name: "columnArrayName2",
-			tasks: ["test2", "test3"]
-		}
+			tasks: ["test2", "test3"],
+		},
 	]
-
-
-
-
-
 
 	return (
 		<StyledTaskManagerPopupWindow>
 			<StyledTaskManagerPopupTitle>{editing ? "Edit Task" : "Add New Task"}</StyledTaskManagerPopupTitle>
 			<TaskManagerPopupUserInput />
 			<TaskManagerPopupUserInputDescription />
-			<TaskManagerPopupUserInputList />
+			<TaskManagerPopupUserInputList subtasksFields={subtasksFields}/>
 			<StyledTaskManagerPopupBtnSecondary
 				backgroundDarkColor={theme.colors.white}
 				backgroundHoverDarkColor={theme.colors.light_grey}
@@ -66,10 +97,16 @@ const TaskManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				textHoverDarkColor={theme.colors.main_purple}
 				textHoverLightColor={theme.colors.main_purple}
 				textLightColor={theme.colors.main_purple}
-			>+ Add New Subtask</StyledTaskManagerPopupBtnSecondary>
+			>
+				+ Add New Subtask
+			</StyledTaskManagerPopupBtnSecondary>
 
 			<StyledTaskManagerPopupDropdownTitle>Status</StyledTaskManagerPopupDropdownTitle>
-			<GeneralStatusDropdown id="test" thisColumn={column} listOfColumns={columnArray}/>
+			<GeneralStatusDropdown
+				id="test"
+				thisColumn={column}
+				listOfColumns={columnArray}
+			/>
 
 			<StyledTaskManagerPopupBtnPrimary
 				backgroundDarkColor={theme.colors.main_purple}
@@ -84,7 +121,7 @@ const TaskManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				textLightColor={theme.colors.white}
 				type="submit"
 			>
-				{editing? "Save Changes" : "Create Task"}
+				{editing ? "Save Changes" : "Create Task"}
 			</StyledTaskManagerPopupBtnPrimary>
 		</StyledTaskManagerPopupWindow>
 	)

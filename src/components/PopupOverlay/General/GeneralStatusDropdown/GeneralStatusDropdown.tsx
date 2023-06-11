@@ -19,7 +19,10 @@ import { switchTaskFromColumn } from "../../../../features"
 const GeneralStatusDropdown = ({ listOfColumns, thisColumn, id: thisTaskId }: { listOfColumns: Column[]; thisColumn: Column; id: string }) => {
 	const dispatch = useAppDispatch()
 	const [activated, setActivated] = useState(false)
+	
+
 	return (
+		//this is a div
 		<StyledGeneralStatusDropdownDisplay onClick={() => setActivated((preValue) => !preValue)}>
 			<StyledTaskManagerViewerPopupStatusDropdownDisplayName>{thisColumn.name}</StyledTaskManagerViewerPopupStatusDropdownDisplayName>
 			<GeneralStatusDropdownDisplayArrow />
