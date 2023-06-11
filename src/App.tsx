@@ -8,13 +8,12 @@ import { useAppSelector } from "./hooks/redux/reduxHooks"
 import { theme } from "./styles/Global.styled"
 import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 import { useState } from "react"
-import useGetComponentFromString from "./hooks/custom/useGetComponentFromString"
-
+import useGetPopupHOCComponents from "./hooks/custom/useGetPopupHOCComponents"
+import KebabMenu from "./components/KebabMenu/KebabMenu"
 
 function App() {
-	
 	const { component: currentComponentString, editing, id } = useAppSelector((state) => state.popupSlice.value)
-	const component = useGetComponentFromString(currentComponentString)
+	const component = useGetPopupHOCComponents(currentComponentString)
 
 	const themeStyle = useAppSelector((state) => state.themeSlice)
 	const isPopupOpen = useAppSelector((state) => state.popupSlice.value.active)
@@ -36,6 +35,9 @@ function App() {
 				editing={editing}
 				id={id}
 			/>
+			<KebabMenu
+			/>
+
 		</ThemeProvider>
 	)
 }
