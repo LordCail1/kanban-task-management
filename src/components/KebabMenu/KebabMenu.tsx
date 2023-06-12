@@ -1,6 +1,6 @@
+import { useTheme } from "styled-components"
 import StyledKebabMenu from "./KebabMenu.styled"
 import StyledKebabMenuItem from "./KebabMenuItem/KebabMenuItem.styled"
-import { useTheme } from "styled-components"
 
 const KebabMenu = () => {
     const theme = useTheme()

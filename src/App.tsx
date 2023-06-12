@@ -1,15 +1,15 @@
-import { ThemeProvider } from "styled-components"
 import { GlobalStyle } from "./styles"
+import { theme } from "./styles/Global.styled"
+import { ThemeProvider } from "styled-components"
+import { useAppSelector } from "./hooks/redux/reduxHooks"
+import { useState } from "react"
+import KebabMenu from "./components/KebabMenu/KebabMenu"
 import Main from "./components/Main/Main"
 import Navbar from "./components/Navbar/Navbar"
+import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
 import Sidebar from "./components/Sidebar/Sidebar"
 import StyledAppContainer from "./styles/StyledAppContainer.styled"
-import { useAppSelector } from "./hooks/redux/reduxHooks"
-import { theme } from "./styles/Global.styled"
-import PopupOverlay from "./components/PopupOverlay/PopupOverlay"
-import { useState } from "react"
 import useGetPopupHOCComponents from "./hooks/custom/useGetPopupHOCComponents"
-import KebabMenu from "./components/KebabMenu/KebabMenu"
 
 function App() {
 	const { component: currentComponentString, editing, id } = useAppSelector((state) => state.popupSlice.value)
