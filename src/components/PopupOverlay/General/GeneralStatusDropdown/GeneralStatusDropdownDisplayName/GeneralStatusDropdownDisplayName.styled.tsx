@@ -5,6 +5,7 @@ import styled from "styled-components";
  */
 const StyledGeneralStatusDropdownDisplayName = styled.h5`
     font-size: 0.813rem;
+    letter-spacing: 1px;
     color: ${({theme}) => theme.style === 'dark' ? theme.colors.white : theme.colors.black};
 
 `

@@ -12,6 +12,9 @@ const StyledTaskManagerPopupUserInputDescriptionContent = styled.textarea<InputF
 	resize: none;
 	transition: all ease-in-out ${({ theme }) => theme.transitionTimes.fast};
     height: 112px;
+	font-family: 'Plus Jakarta Sans', sans-serif;
+	line-height: 23px;
+	letter-spacing: 1px;
 	&:focus {
 		${({ valid }) =>
 			valid &&

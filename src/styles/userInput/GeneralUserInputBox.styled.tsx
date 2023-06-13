@@ -10,6 +10,7 @@ const StyledGeneralUserInputBox = styled.input<InputFieldValidation>`
 	outline: none;
 	padding: 15px;
 	transition: all ease-in-out ${({ theme }) => theme.transitionTimes.fast};
+	letter-spacing: 1px;
 	&:focus {
 		${({ valid }) =>
 			valid &&

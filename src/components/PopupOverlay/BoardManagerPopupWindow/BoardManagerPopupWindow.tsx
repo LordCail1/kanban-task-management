@@ -78,7 +78,6 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	})
 
 	function submitData(boardData: BoardManagerPopupWindowFormData) {
-		console.log("data")
 		// Reset the form and close the popup
 		reset(defaultValues)
 		dispatch(closePopup())

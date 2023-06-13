@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../hooks/redux/reduxHooks"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import StyledTaskManagerViewerPopupDescription from "./TaskManagerViewerPopupDescription/TaskManagerViewerPopupDescription.styled"
 import StyledTaskManagerViewerPopupStatusTitle from "./TaskManagerViewerPopupStatusTitle/TaskManagerViewerPopupStatusTitle.styled"
 import StyledTaskManagerViewerPopupSubtaskList from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskList.styled"
@@ -7,13 +7,21 @@ import StyledTaskManagerViewerPopupSubtasksNum from "./TaskManagerViewerPopupSub
 import StyledTaskManagerViewerPopupTitle from "./TaskManagerViewerPopupTitle/TaskManagerViewerPopupTitle.styled"
 import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.styled"
 import GeneralStatusDropdown from "../General/GeneralStatusDropdown/GeneralStatusDropdown"
+import ThreeDots from "../../ThreeDots/ThreeDots"
+import { useState } from "react"
+import KebabMenu from "../../KebabMenu/KebabMenu"
+import { openPopup } from "../../../features"
 
 /**
  * The popup window that allows the user to view the information related to a task.
- * @param id id of the task that is selected
+ * @param {string} id ID of the task that is selected
  */
 
 const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
+	const [isKebabActive, setIsKebabActive] = useState(false)
+	const dispatch = useAppDispatch()
+
+
 	/**
 	 *all the subtasks in the redux store
 	 */
@@ -73,6 +81,38 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 	 * @param listOfColumns the list of columns in this currently selected board
 	 * @returns the column in which the current task belongs to
 	 */
+
+	function handleThreeDotsClick() {
+		setIsKebabActive(!isKebabActive)
+	}
+
+
+	/**
+	 * handles when user clicks on an item in the kebab menu
+	 */
+	function handleKebabMenuClick(e: React.MouseEvent<HTMLLIElement>) {
+		const data = e.currentTarget.dataset.action
+		type DeleteOrEdit = "edit" | "delete"
+		switch (data as DeleteOrEdit) {
+			case "delete":
+				console.log("you are deleting")
+				break
+			case "edit":
+				dispatch(openPopup({HOCComponent: "TaskManagerPopupWindow", editing: true}))
+				console.log("you are editing")
+				break
+			default:
+				console.log("nothing")
+		}
+	}
+
+
+	/**
+	 * Finds the column in which the current task belongs to.
+	 * @param {string} id - The ID of the current task.
+	 * @param {Column[]} listOfColumns - The list of columns in the currently selected board.
+	 * @returns {Column} - The column in which the current task belongs to.
+	 */
 	function findCurrentColumn(id: string, listOfColumns: Column[]): Column {
 		for (const column of listOfColumns) {
 			if (column.tasks.includes(id)) {
@@ -98,11 +138,23 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 				))}
 			</StyledTaskManagerViewerPopupSubtaskList>
 			<StyledTaskManagerViewerPopupStatusTitle>Current Status</StyledTaskManagerViewerPopupStatusTitle>
-
 			<GeneralStatusDropdown
 				id={id}
 				thisColumn={thisColumn}
 				listOfColumns={listOfColumns}
+			/>
+			<ThreeDots
+				handleThreeDotsClick={handleThreeDotsClick}
+				position="absolute"
+				right="0px"
+				top="22px"
+			/>
+			<KebabMenu
+				handleKebabMenuClick={handleKebabMenuClick}
+				isKebabActive={isKebabActive}
+				subject="Task"
+				right="40px"
+				top="60px"
 			/>
 		</StyledTaskManagerViewerPopupWindow>
 	)

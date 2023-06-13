@@ -15,9 +15,9 @@ const useGetPopupHOCComponents = (component: PopupHOCComponents): ComponentType<
 			return BoardManagerPopupWindow
 		case "DropdownMenu":
 			return DropdownMenu
-		case "TaskManagerPopupWindow":
+		case "TaskManagerViewerPopupWindow":
 			return TaskManagerViewerPopupWindow
-		case "TaskManagerCreatorPopupWindow":
+		case "TaskManagerPopupWindow":
 			return TaskManagerPopupWindow
 		default:
 			return BoardManagerPopupWindow

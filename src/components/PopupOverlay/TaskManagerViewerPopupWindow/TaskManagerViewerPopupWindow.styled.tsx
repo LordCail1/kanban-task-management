@@ -6,6 +6,7 @@ const StyledTaskManagerViewerPopupWindow = styled(StyledGeneralPopupWindow)`
 	display: flex;
 	flex-direction: column;
 	width: 480px;
+	position: relative;
 	@media screen and (max-width: ${({ theme }) => theme.mediaQueries.tablet}) {
 		width: 343px;
 	}

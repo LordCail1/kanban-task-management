@@ -36,7 +36,6 @@ const Column = ({ thisColumn }: { thisColumn: Column }) => {
 	 */
 	let thisColumnTasks: Task[] = []
 
-
 	const allTasksIds: Record<string, Task> = {}
 
 	/**
@@ -49,7 +48,7 @@ const Column = ({ thisColumn }: { thisColumn: Column }) => {
 	/**
 	 * looping through all the tasks that belong to this column, and grabbing the task that matches the ids
 	 */
-	thisColumnTasks = thisColumn.tasks.map(taskId => allTasksIds[taskId]).filter(task => Boolean(task))
+	thisColumnTasks = thisColumn.tasks.map((taskId) => allTasksIds[taskId]).filter((task) => Boolean(task))
 
 	return (
 		<StyledColumn>
@@ -59,7 +58,7 @@ const Column = ({ thisColumn }: { thisColumn: Column }) => {
 				quantity={thisColumnTasks.length}
 			/>
 			{columnIsEmpty ? (
-				<StyledEmptyColumnWarning onClick={() => dispatch(openPopup({ HOCComponent: "TaskManagerCreatorPopupWindow", editing: false }))}>
+				<StyledEmptyColumnWarning onClick={() => dispatch(openPopup({ HOCComponent: "TaskManagerPopupWindow", editing: false }))}>
 					+ Add Task
 				</StyledEmptyColumnWarning>
 			) : (

@@ -1,9 +1,26 @@
 import StyledIndividualDot from "./IndividualDot.styled"
 import StyledThreeDotsContainer from "./ThreeDotsContainer.styled"
 
-const ThreeDots = () => {
+const ThreeDots = ({
+	bottom,
+	handleThreeDotsClick,
+	left,
+	position,
+	right,
+	top,
+}: {
+	handleThreeDotsClick: () => void
+	position: "static" | "absolute"
+} & Direction) => {
 	return (
-		<StyledThreeDotsContainer>
+		<StyledThreeDotsContainer
+			bottom={bottom}
+			left={left}
+			onClick={handleThreeDotsClick}
+			position={position}
+			right={right}
+			top={top}
+		>
 			<StyledIndividualDot />
 			<StyledIndividualDot />
 			<StyledIndividualDot />

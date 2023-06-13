@@ -51,10 +51,9 @@ type UserInputTitle = {
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
 
-type PopupHOCComponents = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerPopupWindow" | "TaskManagerCreatorPopupWindow" 
+type PopupHOCComponents = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerViewerPopupWindow" | "TaskManagerPopupWindow"
 
 type KebabMenuComponents = "KebabMenu"
-
 
 type Popup = {
 	active: boolean
@@ -147,4 +146,15 @@ type Button = {
 	textHoverLightColor: string
 	fontSize?: string
 	fontWeight?: number
+}
+
+/**
+ * Flexible CSS properties
+ */
+
+type Direction = {
+	left?: string | "auto"
+	right?: string | "auto"
+	top?: string | "auto"
+	bottom?: string | "auto"
 }
