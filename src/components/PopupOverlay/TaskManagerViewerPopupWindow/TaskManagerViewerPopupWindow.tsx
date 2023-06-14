@@ -1,16 +1,16 @@
+import { openPopup } from "../../../features"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
+import { useState } from "react"
+import TaskManagerViewerPopupStatusDropdown from "./TaskManagerViewerPopupStatusDropdown/TaskManagerViewerPopupStatusDropdown"
+import KebabMenu from "../../KebabMenu/KebabMenu"
 import StyledTaskManagerViewerPopupDescription from "./TaskManagerViewerPopupDescription/TaskManagerViewerPopupDescription.styled"
 import StyledTaskManagerViewerPopupStatusTitle from "./TaskManagerViewerPopupStatusTitle/TaskManagerViewerPopupStatusTitle.styled"
 import StyledTaskManagerViewerPopupSubtaskList from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskList.styled"
-import TaskManagerViewerPopupSubtaskListItem from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskListItem/TaskManagerViewerPopupSubtaskListItem"
 import StyledTaskManagerViewerPopupSubtasksNum from "./TaskManagerViewerPopupSubtasksNum/TaskManagerViewerPopupSubtasksNum.styled"
 import StyledTaskManagerViewerPopupTitle from "./TaskManagerViewerPopupTitle/TaskManagerViewerPopupTitle.styled"
 import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.styled"
-import GeneralStatusDropdown from "../General/GeneralStatusDropdown/GeneralStatusDropdown"
+import TaskManagerViewerPopupSubtaskListItem from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskListItem/TaskManagerViewerPopupSubtaskListItem"
 import ThreeDots from "../../ThreeDots/ThreeDots"
-import { useState } from "react"
-import KebabMenu from "../../KebabMenu/KebabMenu"
-import { openPopup } from "../../../features"
 
 /**
  * The popup window that allows the user to view the information related to a task.
@@ -20,7 +20,6 @@ import { openPopup } from "../../../features"
 const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 	const [isKebabActive, setIsKebabActive] = useState(false)
 	const dispatch = useAppDispatch()
-
 
 	/**
 	 *all the subtasks in the redux store
@@ -86,7 +85,6 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 		setIsKebabActive(!isKebabActive)
 	}
 
-
 	/**
 	 * handles when user clicks on an item in the kebab menu
 	 */
@@ -98,14 +96,13 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 				console.log("you are deleting")
 				break
 			case "edit":
-				dispatch(openPopup({HOCComponent: "TaskManagerPopupWindow", editing: true}))
+				dispatch(openPopup({ HOCComponent: "TaskManagerPopupWindow", editing: true }))
 				console.log("you are editing")
 				break
 			default:
 				console.log("nothing")
 		}
 	}
-
 
 	/**
 	 * Finds the column in which the current task belongs to.
@@ -138,7 +135,7 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 				))}
 			</StyledTaskManagerViewerPopupSubtaskList>
 			<StyledTaskManagerViewerPopupStatusTitle>Current Status</StyledTaskManagerViewerPopupStatusTitle>
-			<GeneralStatusDropdown
+			<TaskManagerViewerPopupStatusDropdown
 				id={id}
 				thisColumn={thisColumn}
 				listOfColumns={listOfColumns}

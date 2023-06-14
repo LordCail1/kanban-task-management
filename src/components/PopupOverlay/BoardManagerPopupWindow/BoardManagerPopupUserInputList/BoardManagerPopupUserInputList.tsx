@@ -4,7 +4,7 @@ import StyledBoardManagerPopupUserInputList from "./BoardManagerPopupUserInputLi
 import StyledBoardManagerPopupUserInputListTitle from "../BoardManagerPopupUserInputListTitle/BoardManagerPopupUserInputListTitle.styled"
 
 const BoardManagerPopupUserInputList = ({
-	columnFields,
+	columnFields,//
 	errors,
 	register,
 	remove,

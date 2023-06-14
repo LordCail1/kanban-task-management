@@ -1,13 +1,13 @@
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
-import { useFieldArray, useForm } from "react-hook-form"
+import { nanoid } from "nanoid"
+import { useAppDispatch } from "../../../hooks/redux/reduxHooks"
 import { useEffect, useState } from "react"
+import { Controller, useFieldArray, useForm } from "react-hook-form"
 import { useTheme } from "styled-components"
 import { zodResolver } from "@hookform/resolvers/zod"
-import GeneralStatusDropdown from "../General/GeneralStatusDropdown/GeneralStatusDropdown"
 import randomColor from "randomcolor"
 import StyledTaskManagerPopupBtnPrimary from "./TaskManagerPopupBtnPrimary/TaskManagerPopupBtnPrimary.styled"
 import StyledTaskManagerPopupBtnSecondary from "./TaskManagerPopupBtnSecondary/TaskManagerPopupBtnSecondary.styled"
-import StyledTaskManagerPopupDropdownTitle from "./TaskManagerPopupDropdownTitle/TaskManagerPopupDropdownTitle.styled"
+import StyledTaskManagerPopupStatusDropdownTitle from "./TaskManagerPopupStatusDropdownTitle/TaskManagerPopupStatusDropdownTitle.styled"
 import StyledTaskManagerPopupTitle from "./TaskManagerPopupTitle/TaskManagerPopupTitle.styled"
 import StyledTaskManagerPopupWindow from "./TaskManagerPopupWindow.styled"
 import TaskManagerPopupUserInput from "./TaskManagerPopupUserInput/TaskManagerPopupUserInput"
@@ -15,8 +15,13 @@ import TaskManagerPopupUserInputDescription from "./TaskManagerPopupUserInputDes
 import TaskManagerPopupUserInputList from "./TaskManagerPopupUserInputList/TaskManagerPopupUserInputList"
 import TaskManagerSchema from "../../../forms/TaskManager/TaskManagerSchema"
 import useGetEditingTask from "../../../features/task/hooks/GetEditingTask"
-import { nanoid } from "nanoid"
+import TaskManagerPopupStatusDropdown from "./TaskManagerPopupStatusDropdown/TaskManagerPopupStatusDropdown"
 
+/**
+ * This is a component that manages 'editing' or 'creating' a task.
+ * @param editing if the task is being edited or not
+ * @param id the id of the task if being edited
+ */
 const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string }) => {
 	const theme = useTheme()
 	const dispatch = useAppDispatch()
@@ -25,6 +30,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 		task: {
 			title: "",
 			description: "",
+			id: "",
 		},
 		subtasks: [{ title: "", id: "", isCompleted: false }],
 		columns: [{ name: "", color: "", id: "", tasks: [] }],
@@ -43,6 +49,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 				task: {
 					title: "",
 					description: "",
+					id: nanoid(10),
 				},
 				columns: [{ color: randomColor(), id: nanoid(10), name: "", tasks: [] }],
 				subtasks: [{ title: "", id: nanoid(10), isCompleted: false }],
@@ -65,7 +72,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 	})
 
 	const {
-		append,
+		append: appendSubtaskField,
 		remove: removeSubtaskField,
 		fields: subtasksFields,
 	} = useFieldArray({
@@ -73,8 +80,12 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 		name: "subtasks",
 	})
 
-	const handleAddNewColumnRow = () => {
-		console.log("adding a new row")
+	function handleAddNewColumnRow() {
+		appendSubtaskField({ title: "", id: nanoid(10), isCompleted: false })
+	}
+
+	function handleSubmitData() {
+		console.log("you submitted the data")
 	}
 
 	/**
@@ -102,19 +113,24 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 	]
 
 	return (
-		<StyledTaskManagerPopupWindow>
+		<StyledTaskManagerPopupWindow onSubmit={handleSubmit(handleSubmitData)}>
 			<StyledTaskManagerPopupTitle>{editing ? "Edit Task" : "Add New Task"}</StyledTaskManagerPopupTitle>
 			<TaskManagerPopupUserInput
 				register={register}
 				errors={errors}
+				placeHolder="e.g. Take coffee break"
 			/>
 			<TaskManagerPopupUserInputDescription
 				register={register}
 				errors={errors}
+				placeHoder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
 			/>
 			<TaskManagerPopupUserInputList
 				removeSubtaskField={removeSubtaskField}
 				subtasksFields={subtasksFields}
+				errors={errors}
+				register={register}
+				placeHolder="e.g. Make coffee"
 			/>
 			<StyledTaskManagerPopupBtnSecondary
 				backgroundDarkColor={theme.colors.white}
@@ -132,11 +148,13 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 				+ Add New Subtask
 			</StyledTaskManagerPopupBtnSecondary>
 
-			<StyledTaskManagerPopupDropdownTitle>Status</StyledTaskManagerPopupDropdownTitle>
-			<GeneralStatusDropdown
-				id="test"
-				thisColumn={column}
-				listOfColumns={columnArray}
+			<StyledTaskManagerPopupStatusDropdownTitle>Status</StyledTaskManagerPopupStatusDropdownTitle>
+
+			<Controller
+				name="columns"
+				control={control}
+				defaultValue={defaultValues.columns}
+				render={({ field }) => <TaskManagerPopupStatusDropdown value={field.value} onChange={field.onChange}/>}
 			/>
 
 			<StyledTaskManagerPopupBtnPrimary

@@ -4,20 +4,24 @@ import StyledTaskManagerPopupUserInputDescriptionContent from "./TaskManagerPopu
 import StyledTaskManagerPopupUserInputDescriptionTitle from "./TaskManagerPopupUserInputDescriptionTitle/TaskManagerPopupUserInputDescriptionTitle.styled"
 
 const TaskManagerPopupUserInputDescription = ({
-	register,
 	errors,
+	placeHoder,
+	register,
 }: {
-	register: UseFormRegister<TaskManagerPopupWindowFormData>
 	errors: FieldErrors<TaskManagerPopupWindowFormData>
+	placeHoder: string
+	register: UseFormRegister<TaskManagerPopupWindowFormData>
 }) => {
-
-  const isFieldValid = Boolean(!errors.task?.description?.message)
-
+	const isFieldValid = Boolean(!errors.task?.description?.message)
 
 	return (
 		<StyledTaskManagerPopupUserInputDescription>
 			<StyledTaskManagerPopupUserInputDescriptionTitle>Description</StyledTaskManagerPopupUserInputDescriptionTitle>
-			<StyledTaskManagerPopupUserInputDescriptionContent valid={isFieldValid} {...register("task.description")}/>
+			<StyledTaskManagerPopupUserInputDescriptionContent
+				{...register("task.description")}
+				placeholder={placeHoder}
+				valid={isFieldValid}
+			/>
 		</StyledTaskManagerPopupUserInputDescription>
 	)
 }

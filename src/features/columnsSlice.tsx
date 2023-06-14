@@ -94,7 +94,6 @@ const columnsSlice = createSlice({
 		addColumnsCreate: (state, action: PayloadAction<Column[]>) => {
 			state.value.columns.push(...action.payload)
 		},
-		
 
 		updateColumns: (state, action: PayloadAction<UpdatingColumnsType>) => {
 			const { columnsToUpdate } = action.payload

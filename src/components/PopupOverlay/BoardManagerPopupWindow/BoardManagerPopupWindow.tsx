@@ -17,7 +17,8 @@ import StyledBoardManagerPopupTitle from "./BoardManagerPopupTitle/BoardManagerP
 import StyledBoardManagerPopupWindow from "./BoardManagerPopupWindow.styled.tsx"
 
 /**
- * This component
+ * This component manages the 'editing' or the 'creating' of boards.
+ * @param editing if the board is being 'edited' or not
  */
 const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	const theme = useTheme()
@@ -77,7 +78,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 		name: "columns",
 	})
 
-	function submitData(boardData: BoardManagerPopupWindowFormData) {
+	function handleSubmitData(boardData: BoardManagerPopupWindowFormData) {
 		// Reset the form and close the popup
 		reset(defaultValues)
 		dispatch(closePopup())
@@ -100,7 +101,7 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 	}
 
 	return (
-		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(submitData)}>
+		<StyledBoardManagerPopupWindow onSubmit={handleSubmit(handleSubmitData)}>
 			<StyledBoardManagerPopupTitle>{editing ? "Edit Board" : "Add New Board"}</StyledBoardManagerPopupTitle>
 			<BoardManagerPopupUserInput
 				title="Board Name"
@@ -136,11 +137,11 @@ const BoardManagerPopupWindow = ({ editing }: { editing: boolean }) => {
 				backgroundHoverLightColor={theme.colors.main_purple_hover}
 				backgroundLightColor={theme.colors.main_purple}
 				fontSize="0.813rem"
+				fontWeight={700}
 				textDarkColor={theme.colors.white}
 				textHoverDarkColor={theme.colors.white}
 				textHoverLightColor={theme.colors.white}
 				textLightColor={theme.colors.white}
-				fontWeight={700}
 				type="submit"
 			>
 				{editing ? "Save Changes" : "Create New Board"}

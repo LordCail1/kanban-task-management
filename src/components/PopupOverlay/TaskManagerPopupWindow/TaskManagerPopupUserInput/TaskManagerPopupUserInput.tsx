@@ -3,21 +3,24 @@ import StyledTaskManagerPopupUserInput from "./TaskManagerPopupUserInput.styled"
 import StyledTaskManagerPopupUserInputListItemInputBox from "./TaskManagerPopupUserInputListItemInputBox/TaskManagerPopupUserInputListItemInputBox.styled"
 import StyledTaskManagerUserInputTitle from "./TaskManagerPopupUserInputTitle/TaskManagerPopupUserInputTitle.styled"
 const TaskManagerPopupUserInput = ({
-	register,
 	errors,
+	placeHolder,
+	register,
 }: {
-	register: UseFormRegister<TaskManagerPopupWindowFormData>
 	errors: FieldErrors<TaskManagerPopupWindowFormData>
+	placeHolder: string
+	register: UseFormRegister<TaskManagerPopupWindowFormData>
 }) => {
-
 	const isFieldValid = Boolean(!errors.task?.title?.message)
-
-
 
 	return (
 		<StyledTaskManagerPopupUserInput>
 			<StyledTaskManagerUserInputTitle>Title</StyledTaskManagerUserInputTitle>
-			<StyledTaskManagerPopupUserInputListItemInputBox valid={isFieldValid} {...register("task.title")}/>
+			<StyledTaskManagerPopupUserInputListItemInputBox
+				{...register("task.title")}
+				placeholder={placeHolder}
+				valid={isFieldValid}
+			/>
 		</StyledTaskManagerPopupUserInput>
 	)
 }
