@@ -4,8 +4,8 @@ import { useState } from "react"
 import GeneralStatusDropdownDisplayArrow from "../../General/GeneralStatusDropdownDisplayArrow"
 import StyledTaskManagerViewerPopupStatusDropdown from "./TaskManagerViewerPopupStatusDropdown.styled"
 import StyledTaskManagerViewerPopupStatusDropdownDisplay from "./TaskManagerViewerPopupStatusDropdownDisplay/TaskManagerViewerPopupStatusDropdownDisplay.styled"
-import StyledTaskManagerViewerPopupStatusDropdownItem from "./TaskManagerViewerPopupStatusDropdownItem/TaskManagerViewerPopupStatusDropdownItem.styled"
 import StyledTaskManagerViewerPopupStatusDropdownDisplayName from "./TaskManagerViewerPopupStatusDopdownDisplayName/TaskManagerViewerPopupStatusDropdownDisplayName.styled"
+import StyledTaskManagerViewerPopupStatusDropdownItem from "./TaskManagerViewerPopupStatusDropdownItem/TaskManagerViewerPopupStatusDropdownItem.styled"
 
 /**
  * this is a custom dropdown menu created. I say 'custom' beause it re-creates what a regular
@@ -16,6 +16,8 @@ import StyledTaskManagerViewerPopupStatusDropdownDisplayName from "./TaskManager
  * this value will also determine what the 'status' is in the dropdown
  * @param id the id of the current task that is on screen
  */
+
+
 const TaskManagerViewerPopupStatusDropdown = ({
 	listOfColumns,
 	thisColumn,
@@ -34,7 +36,7 @@ const TaskManagerViewerPopupStatusDropdown = ({
 			<StyledTaskManagerViewerPopupStatusDropdownDisplayName>{thisColumn.name}</StyledTaskManagerViewerPopupStatusDropdownDisplayName>
 			<GeneralStatusDropdownDisplayArrow />
 			<StyledTaskManagerViewerPopupStatusDropdown activated={activated}>
-				{listOfColumns.map((column) => (
+				{listOfColumns.map((column: Column) => (
 					<StyledTaskManagerViewerPopupStatusDropdownItem
 						key={column.id}
 						onClick={() => dispatch(switchTaskFromColumn({ thisColumn, thisTaskId, newColumnId: column.id }))}

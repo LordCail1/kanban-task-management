@@ -1,7 +1,7 @@
-import { nanoid } from "nanoid"
-import { useAppDispatch } from "../../../hooks/redux/reduxHooks"
-import { useEffect, useState } from "react"
 import { Controller, useFieldArray, useForm } from "react-hook-form"
+import { nanoid } from "nanoid"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
+import { useEffect, useState } from "react"
 import { useTheme } from "styled-components"
 import { zodResolver } from "@hookform/resolvers/zod"
 import randomColor from "randomcolor"
@@ -10,12 +10,12 @@ import StyledTaskManagerPopupBtnSecondary from "./TaskManagerPopupBtnSecondary/T
 import StyledTaskManagerPopupStatusDropdownTitle from "./TaskManagerPopupStatusDropdownTitle/TaskManagerPopupStatusDropdownTitle.styled"
 import StyledTaskManagerPopupTitle from "./TaskManagerPopupTitle/TaskManagerPopupTitle.styled"
 import StyledTaskManagerPopupWindow from "./TaskManagerPopupWindow.styled"
+import TaskManagerPopupStatusDropdown from "./TaskManagerPopupStatusDropdown/TaskManagerPopupStatusDropdown"
 import TaskManagerPopupUserInput from "./TaskManagerPopupUserInput/TaskManagerPopupUserInput"
 import TaskManagerPopupUserInputDescription from "./TaskManagerPopupUserInputDescription/TaskManagerPopupUserInputDescription"
 import TaskManagerPopupUserInputList from "./TaskManagerPopupUserInputList/TaskManagerPopupUserInputList"
 import TaskManagerSchema from "../../../forms/TaskManager/TaskManagerSchema"
 import useGetEditingTask from "../../../features/task/hooks/GetEditingTask"
-import TaskManagerPopupStatusDropdown from "./TaskManagerPopupStatusDropdown/TaskManagerPopupStatusDropdown"
 
 /**
  * This is a component that manages 'editing' or 'creating' a task.
@@ -25,6 +25,10 @@ import TaskManagerPopupStatusDropdown from "./TaskManagerPopupStatusDropdown/Tas
 const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string }) => {
 	const theme = useTheme()
 	const dispatch = useAppDispatch()
+
+	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board: Board) => board.selected === true))
+
+	const allColumns =  useAppSelector((state) => state.columnsSlice.value.columns)
 
 	const [defaultValues, setDefaultValues] = useState<TaskManagerPopupWindowFormData>({
 		task: {
@@ -61,6 +65,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 		reset(defaultValues)
 	}, [defaultValues])
 
+
 	const {
 		register,
 		handleSubmit,
@@ -79,6 +84,25 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 		control,
 		name: "subtasks",
 	})
+
+
+	let listOfColumns: Column[] = []
+
+
+
+	if (selectedBoard) {
+		const setOfIds = new Set(selectedBoard.columns)
+		listOfColumns = allColumns.filter((column: Column) => setOfIds.has(column.id))
+	}
+
+
+
+
+
+
+
+
+
 
 	function handleAddNewColumnRow() {
 		appendSubtaskField({ title: "", id: nanoid(10), isCompleted: false })
@@ -154,7 +178,12 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 				name="columns"
 				control={control}
 				defaultValue={defaultValues.columns}
-				render={({ field }) => <TaskManagerPopupStatusDropdown value={field.value} onChange={field.onChange}/>}
+				render={({ field }) => (
+					<TaskManagerPopupStatusDropdown
+						value={field.value}
+						onChange={field.onChange}
+					/>
+				)}
 			/>
 
 			<StyledTaskManagerPopupBtnPrimary

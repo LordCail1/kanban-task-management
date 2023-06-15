@@ -1,7 +1,6 @@
 import { openPopup } from "../../../features"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import { useState } from "react"
-import TaskManagerViewerPopupStatusDropdown from "./TaskManagerViewerPopupStatusDropdown/TaskManagerViewerPopupStatusDropdown"
 import KebabMenu from "../../KebabMenu/KebabMenu"
 import StyledTaskManagerViewerPopupDescription from "./TaskManagerViewerPopupDescription/TaskManagerViewerPopupDescription.styled"
 import StyledTaskManagerViewerPopupStatusTitle from "./TaskManagerViewerPopupStatusTitle/TaskManagerViewerPopupStatusTitle.styled"
@@ -9,6 +8,7 @@ import StyledTaskManagerViewerPopupSubtaskList from "./TaskManagerViewerPopupSub
 import StyledTaskManagerViewerPopupSubtasksNum from "./TaskManagerViewerPopupSubtasksNum/TaskManagerViewerPopupSubtasksNum.styled"
 import StyledTaskManagerViewerPopupTitle from "./TaskManagerViewerPopupTitle/TaskManagerViewerPopupTitle.styled"
 import StyledTaskManagerViewerPopupWindow from "./TaskManagerViewerPopupWindow.styled"
+import TaskManagerViewerPopupStatusDropdown from "./TaskManagerViewerPopupStatusDropdown/TaskManagerViewerPopupStatusDropdown"
 import TaskManagerViewerPopupSubtaskListItem from "./TaskManagerViewerPopupSubtaskList/TaskManagerViewerPopupSubtaskListItem/TaskManagerViewerPopupSubtaskListItem"
 import ThreeDots from "../../ThreeDots/ThreeDots"
 
@@ -34,12 +34,12 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 	/**
 	 * the currently selected board
 	 */
-	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board) => board.selected === true))
+	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board: Board) => board.selected === true))
 
 	/**
 	 *the task that is selected using the ID
 	 */
-	const thisTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task) => task.id === id))
+	const thisTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task: Task) => task.id === id))
 
 	/**
 	 * the list of subtasks belonging to the current task
@@ -53,13 +53,13 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 	//doing the calculations to get the list of subtasks that belong to this task
 	if (thisTask) {
 		const setOfIds = new Set(thisTask.subtasks)
-		listOfSubtasks = allSubtasks.filter((subtask) => setOfIds.has(subtask.id))
+		listOfSubtasks = allSubtasks.filter((subtask: Subtask) => setOfIds.has(subtask.id))
 	}
 
 	//doing the calculations to get the list of columns that belong to this board
 	if (selectedBoard) {
 		const setOfIds = new Set(selectedBoard.columns)
-		listOfColumns = allColumns.filter((column) => setOfIds.has(column.id))
+		listOfColumns = allColumns.filter((column: Column) => setOfIds.has(column.id))
 	}
 
 	/**
