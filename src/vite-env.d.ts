@@ -75,8 +75,8 @@ type InputFieldValidation = {
 
 /**
  * individual subtasks
- * @params {title} title of the subtask
- * @params {isCompleted} if subtask is completed or not
+ * @param title title of the subtask
+ * @param isCompleted if subtask is completed or not
  */
 type Subtask = {
 	title: string

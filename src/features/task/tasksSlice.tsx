@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 type InitialState = {
 	value: {
@@ -161,7 +161,8 @@ const initialState: InitialState = {
 			{
 				title: "Review early feedback and plan next steps for roadmap",
 				id: "xrCLqcTcXz",
-				description: "Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
+				description:
+					"Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
 				status: "",
 				subtasks: ["wQYU4Z7DLx", "NfR3r86D_O", "SyixquakCn"],
 			},
@@ -173,8 +174,15 @@ const tasksSlice = createSlice({
 	name: "tasks_slice",
 	initialState,
 	reducers: {
-		addTask: (state) => {
-			return state
+		addTask: (state, action: PayloadAction<TaskManagerPopupWindowFormData>) => {
+			const { task, column, subtasks } = action.payload
+			state.value.tasks.push({
+				title: task.title,
+				id: task.id,
+				description: task.description,
+				status: column.name,
+				subtasks: subtasks.map((subtask: Subtask) => subtask.id),
+			})
 		},
 		deleteTask: (state) => {
 			return state

@@ -9,8 +9,6 @@ import capitalizeAndTrim from "../../../utils/capitalizeAndTrim"
  * @returns an object that provides the proper structure to send the information to a redux reducer. what is inside this object
  * can be used as payload for updating the redux store
  */
-let test: ColumnFormData
-
 
 const BoardManagerPopupWindowEditerFormHook = (
 	{ board: { name: rawBoardName, id: boardId }, columns: rawColumns }: BoardManagerPopupWindowFormData,

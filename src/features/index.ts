@@ -10,7 +10,7 @@ export { default as popupSliceReducer } from "./popupSlice"
 export { activateSidebar, deActivateSidebar } from "./sidebarSlice"
 export { default as sidebarSliceReducer } from "./sidebarSlice"
 
-export { addColumnsEdit as addColumns, updateColumns, deleteColumns, addColumnsCreate, switchTaskFromColumn } from "./columnsSlice"
+export { addColumnsEdit as addColumns, updateColumns, deleteColumns, addColumnsCreate, switchTaskFromColumn, updateTasksArray } from "./columnsSlice"
 export { default as columnsSliceReducer } from "./columnsSlice"
 
 export { addTask, deleteTask } from "./task/tasksSlice"
@@ -22,6 +22,5 @@ export { default as dropDownSliceReducer } from "./dropdownMenuSlice"
 export { setEditableBoard } from "./editingBoardSlice"
 export { default as editingBoardSliceReducer } from "./editingBoardSlice"
 
-export { addSubtask, checkSubtask } from "./subtaskSlice"
+export { addSubtasks, checkSubtask, updateSubtasks } from "./subtaskSlice"
 export { default as subtaskSliceReducer } from "./subtaskSlice"
-

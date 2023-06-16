@@ -1,10 +1,10 @@
+import { addSubtasks, addTask, closePopup, updateSubtasks, updateTasksArray } from "../../../features"
 import { Controller, useFieldArray, useForm } from "react-hook-form"
 import { nanoid } from "nanoid"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import { useEffect, useState } from "react"
 import { useTheme } from "styled-components"
 import { zodResolver } from "@hookform/resolvers/zod"
-import randomColor from "randomcolor"
 import StyledTaskManagerPopupBtnPrimary from "./TaskManagerPopupBtnPrimary/TaskManagerPopupBtnPrimary.styled"
 import StyledTaskManagerPopupBtnSecondary from "./TaskManagerPopupBtnSecondary/TaskManagerPopupBtnSecondary.styled"
 import StyledTaskManagerPopupStatusDropdownTitle from "./TaskManagerPopupStatusDropdownTitle/TaskManagerPopupStatusDropdownTitle.styled"
@@ -28,7 +28,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 
 	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board: Board) => board.selected === true))
 
-	const allColumns =  useAppSelector((state) => state.columnsSlice.value.columns)
+	const allColumns = useAppSelector((state) => state.columnsSlice.value.columns)
 
 	const [defaultValues, setDefaultValues] = useState<TaskManagerPopupWindowFormData>({
 		task: {
@@ -37,7 +37,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 			id: "",
 		},
 		subtasks: [{ title: "", id: "", isCompleted: false }],
-		columns: [{ name: "", color: "", id: "", tasks: [] }],
+		column: { name: "", color: "", id: "", tasks: [] },
 	})
 
 	const editingTaskInfo = useGetEditingTask(id)
@@ -55,8 +55,8 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 					description: "",
 					id: nanoid(10),
 				},
-				columns: [{ color: randomColor(), id: nanoid(10), name: "", tasks: [] }],
 				subtasks: [{ title: "", id: nanoid(10), isCompleted: false }],
+				column: listOfColumns[0],
 			})
 		}
 	}, [])
@@ -64,7 +64,6 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 	useEffect(() => {
 		reset(defaultValues)
 	}, [defaultValues])
-
 
 	const {
 		register,
@@ -85,56 +84,27 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 		name: "subtasks",
 	})
 
-
 	let listOfColumns: Column[] = []
-
-
 
 	if (selectedBoard) {
 		const setOfIds = new Set(selectedBoard.columns)
 		listOfColumns = allColumns.filter((column: Column) => setOfIds.has(column.id))
 	}
 
+	function handleSubmitData(taskData: TaskManagerPopupWindowFormData) {
+		reset(defaultValues)
+		dispatch(closePopup())
 
+		if (editing) {
+			dispatch(updateSubtasks({ taskManagerPopupWindowFormData: taskData, subtasksBeforeDispatch: defaultValues.subtasks }))
+		} else {
+			dispatch(updateTasksArray(taskData))
+			dispatch(addTask(taskData))
+			dispatch(addSubtasks(taskData))
+		}
 
-
-
-
-
-
-
-
-	function handleAddNewColumnRow() {
-		appendSubtaskField({ title: "", id: nanoid(10), isCompleted: false })
+		console.log("you submitted the data", taskData)
 	}
-
-	function handleSubmitData() {
-		console.log("you submitted the data")
-	}
-
-	/**
-	 * This is dummy data so that I have time to create my code with no typescript alarms
-	 */
-	const column: Column = {
-		color: randomColor(),
-		id: "Column1",
-		name: "ColumnName1",
-		tasks: ["test1", "test2", "test3"],
-	}
-	const columnArray: Column[] = [
-		{
-			color: randomColor(),
-			id: "columnArray1",
-			name: "columnArrayName1",
-			tasks: ["test1", "test2"],
-		},
-		{
-			color: randomColor(),
-			id: "columnArray2",
-			name: "columnArrayName2",
-			tasks: ["test2", "test3"],
-		},
-	]
 
 	return (
 		<StyledTaskManagerPopupWindow onSubmit={handleSubmit(handleSubmitData)}>
@@ -147,7 +117,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 			<TaskManagerPopupUserInputDescription
 				register={register}
 				errors={errors}
-				placeHoder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
+				placeHoder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little."
 			/>
 			<TaskManagerPopupUserInputList
 				removeSubtaskField={removeSubtaskField}
@@ -163,7 +133,7 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 				backgroundLightColor={theme.colors.main_purple_hover2}
 				fontSize="0.813rem"
 				fontWeight={700}
-				onClick={handleAddNewColumnRow}
+				onClick={() => appendSubtaskField({ title: "", id: nanoid(10), isCompleted: false })}
 				textDarkColor={theme.colors.main_purple}
 				textHoverDarkColor={theme.colors.main_purple}
 				textHoverLightColor={theme.colors.main_purple}
@@ -175,13 +145,14 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 			<StyledTaskManagerPopupStatusDropdownTitle>Status</StyledTaskManagerPopupStatusDropdownTitle>
 
 			<Controller
-				name="columns"
+				name="column"
 				control={control}
-				defaultValue={defaultValues.columns}
+				defaultValue={defaultValues.column}
 				render={({ field }) => (
 					<TaskManagerPopupStatusDropdown
 						value={field.value}
 						onChange={field.onChange}
+						listOfColumns={listOfColumns}
 					/>
 				)}
 			/>

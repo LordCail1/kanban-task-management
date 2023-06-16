@@ -5,5 +5,5 @@ type TaskManagerPopupWindowFormData = {
         id: string
     }
     subtasks: Subtask[]
-    columns: Column[]
+    column: Column
 }

@@ -97,7 +97,6 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 				break
 			case "edit":
 				dispatch(openPopup({ HOCComponent: "TaskManagerPopupWindow", editing: true }))
-				console.log("you are editing")
 				break
 			default:
 				console.log("nothing")

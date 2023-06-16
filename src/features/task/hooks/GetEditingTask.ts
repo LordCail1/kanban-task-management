@@ -7,10 +7,10 @@ import { useAppSelector } from "../../../hooks/redux/reduxHooks"
  * task with all of the necessary fields in the form.
  */
 const useGetEditingTask = (id?: string): { taskData: TaskManagerPopupWindowFormData; thisColumn: Column } | undefined => {
-	const currentTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task) => task.id === id))
+	const currentTask = useAppSelector((state) => state.tasksSlice.value.tasks.find((task: Task) => task.id === id))
 	const allSubtasks = useAppSelector((state) => state.subtaskSlice.value.subtasks)
 	const allColumns = useAppSelector((state) => state.columnsSlice.value.columns)
-	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board) => board.selected === true))
+	const selectedBoard = useAppSelector((state) => state.boardsSlice.value.boards.find((board: Board) => board.selected === true))
 
 	if (!currentTask || !id || !selectedBoard) return undefined
 
@@ -32,8 +32,8 @@ const useGetEditingTask = (id?: string): { taskData: TaskManagerPopupWindowFormD
 	let currentTaskSubtasks: Subtask[] = []
 	let currentBoardColumns: Column[] = []
 
-	currentTaskSubtasks = allSubtasks.filter((subtask) => currentTask.subtasks.includes(subtask.id))
-	currentBoardColumns = allColumns.filter((column) => selectedBoard.columns.includes(column.id))
+	currentTaskSubtasks = allSubtasks.filter((subtask: Subtask) => currentTask.subtasks.includes(subtask.id))
+	currentBoardColumns = allColumns.filter((column: Column) => selectedBoard.columns.includes(column.id))
 
 	const thisColumn: Column | undefined = currentBoardColumns.find((column: Column) => column.tasks.includes(id))
 	if (!thisColumn) return undefined
@@ -46,7 +46,7 @@ const useGetEditingTask = (id?: string): { taskData: TaskManagerPopupWindowFormD
 				id: taskId,
 			},
 			subtasks: currentTaskSubtasks,
-			columns: currentBoardColumns,
+			column: thisColumn,
 		},
 		thisColumn,
 	}

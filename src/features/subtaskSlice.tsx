@@ -1,11 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-type Subtask = {
-	title: string
-	id: string
-	isCompleted: boolean
-}
-
 type InitialState = {
 	value: {
 		subtasks: Subtask[]
@@ -293,18 +287,131 @@ const subtaskSlice = createSlice({
 	name: "subtask_slice",
 	initialState,
 	reducers: {
-		addSubtask: (state) => {
-			return state
+		addSubtasks: (state, action: PayloadAction<TaskManagerPopupWindowFormData>) => {
+			const { subtasks } = action.payload
+			state.value.subtasks.push(...subtasks)
 		},
 		checkSubtask: (state, action: PayloadAction<string>) => {
 			const id = action.payload
-			const selectedSubtask = state.value.subtasks.find(subtask => subtask.id === id)
+			const selectedSubtask = state.value.subtasks.find((subtask) => subtask.id === id)
 			if (selectedSubtask) {
 				selectedSubtask.isCompleted = !selectedSubtask.isCompleted
+			}
+		},
+		updateSubtasks: (
+			state,
+			action: PayloadAction<{ taskManagerPopupWindowFormData: TaskManagerPopupWindowFormData; subtasksBeforeDispatch: Subtask[] }>
+		) => {
+			const { taskManagerPopupWindowFormData, subtasksBeforeDispatch } = action.payload
+			const { task, subtasks: subtasksAfterDispatch, column } = taskManagerPopupWindowFormData
+
+			const deletedSubtaskIds = findDeletedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
+			const addedSubtaskIds = findAddedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
+			const modifiedSubtaskIds = findModifiedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
+
+
+
+
+
+			deleteSubTasks(deletedSubtaskIds)
+			addSubtasks(addedSubtaskIds)
+
+
+
+
+
+
+
+
+
+
+
+			function deleteSubTasks(idArray: (string | undefined)[]) {
+				const deleteSetOfIds = new Set(idArray)
+				state.value.subtasks = state.value.subtasks.filter((subtask) => !deleteSetOfIds.has(subtask.id))
+			}
+			function addSubtasks(subtasks: (Subtask | undefined)[]) {
+				console.log('you ran this')
+				subtasks.forEach(subtask => {
+					if (subtask) {
+						state.value.subtasks.push(subtask)
+					}
+				})
+			}
+
+			function modifySubtasks() {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			console.log("deleted subtasks: ", deletedSubtaskIds)
+			console.log("added subtasks: ", addedSubtaskIds)
+			console.log("modified subtasks: ", modifiedSubtaskIds)
+
+			function findDeletedSubtasks(subtasksBeforeDispatch: Subtask[], subtasksAfterDispatch: Subtask[]): (string | undefined)[] {
+				const subtasksAfterDispatchRecord: Record<string, Subtask> = {}
+				subtasksAfterDispatch.forEach((subtask: Subtask) => (subtasksAfterDispatchRecord[subtask.id] = subtask))
+
+				return subtasksBeforeDispatch
+					.map((subtask: Subtask) => {
+						if (!subtasksAfterDispatchRecord[subtask.id]) {
+							return subtask.id
+						}
+					})
+					.filter((id: string | undefined) => Boolean(id))
+			}
+			function findAddedSubtasks(subtasksBeforeDispatch: Subtask[], subtasksAfterDispatch: Subtask[]): (Subtask | undefined)[] {
+				const subtasksBeforeDispatchRecord: Record<string, Subtask> = {}
+				subtasksBeforeDispatch.forEach((subtask: Subtask) => (subtasksBeforeDispatchRecord[subtask.id] = subtask))
+
+				return subtasksAfterDispatch
+					.map((subtask: Subtask) => {
+						if (!subtasksBeforeDispatchRecord[subtask.id]) {
+							return subtask
+						}
+					})
+					.filter((subtask: Subtask | undefined) => Boolean(subtask))
+			}
+			function findModifiedSubtasks(subtasksBeforeDispatch: Subtask[], subtasksAfterDispatch: Subtask[]) {
+				const subtasksAfterDispatchRecord: Record<string, Subtask> = {}
+				subtasksAfterDispatch.forEach((subtask: Subtask) => (subtasksAfterDispatchRecord[subtask.id] = subtask))
+
+				return subtasksBeforeDispatch
+					.map((subtask: Subtask) => {
+						if (subtasksAfterDispatchRecord[subtask.id]) {
+							return subtask.id
+						}
+					})
+					.filter((id: string | undefined) => Boolean(id))
 			}
 		},
 	},
 })
 
 export default subtaskSlice.reducer
-export const { addSubtask, checkSubtask } = subtaskSlice.actions
+export const { addSubtasks, checkSubtask, updateSubtasks } = subtaskSlice.actions

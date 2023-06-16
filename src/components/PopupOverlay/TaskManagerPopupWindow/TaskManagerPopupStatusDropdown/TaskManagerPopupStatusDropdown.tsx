@@ -6,16 +6,31 @@ import StyledTaskManagerPopupStatusDropdownDisplay from "./TaskManagerPopupStatu
 import StyledTaskManagerPopupStatusDropdownDisplayName from "./TaskManagerPopupStatusDropdownDisplayName/TaskManagerPopupStatusDropdownDisplayName.styled"
 import StyledTaskManagerPopupStatusDropdownItem from "./TaskManagerPopupStatusDropdownItem/TaskManagerPopupStatusDropdownItem.styled"
 
-const TaskManagerPopupStatusDropdown = ({ value, onChange }: { value: Column[]; onChange: (...event: any[]) => void }) => {
+const TaskManagerPopupStatusDropdown = ({
+	value,
+	onChange,
+	listOfColumns,
+}: {
+	value: Column
+	onChange: (...event: any[]) => void
+	listOfColumns: Column[]
+}) => {
 	const dispatch = useAppDispatch()
 	const [activated, setActivated] = useState(false)
 
 	return (
 		<StyledTaskManagerPopupStatusDropdownDisplay onClick={() => setActivated((preValue) => !preValue)}>
-			<StyledTaskManagerPopupStatusDropdownDisplayName></StyledTaskManagerPopupStatusDropdownDisplayName>
+			<StyledTaskManagerPopupStatusDropdownDisplayName>{value.name}</StyledTaskManagerPopupStatusDropdownDisplayName>
 			<GeneralStatusDropdownDisplayArrow />
 			<StyledTaskManagerPopupStatusDropdown activated={activated}>
-				<StyledTaskManagerPopupStatusDropdownItem></StyledTaskManagerPopupStatusDropdownItem>
+				{listOfColumns.map((column: Column) => (
+					<StyledTaskManagerPopupStatusDropdownItem
+						key={column.id}
+						onClick={() => onChange(column)}
+					>
+						{column.name}
+					</StyledTaskManagerPopupStatusDropdownItem>
+				))}
 			</StyledTaskManagerPopupStatusDropdown>
 		</StyledTaskManagerPopupStatusDropdownDisplay>
 	)

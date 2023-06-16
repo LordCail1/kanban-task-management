@@ -1,6 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import randomColor from "randomcolor"
 
+
+
+
 type InitialState = {
 	value: {
 		columns: Column[]
@@ -77,7 +80,7 @@ const columnsSlice = createSlice({
 		 */
 		addColumnsEdit: (state, action: PayloadAction<UpdatingColumnsType>) => {
 			const { newColumns } = action.payload
-			const newColumnArray: Column[] = newColumns.map((column) => {
+			const newColumnArray: Column[] = newColumns.map((column: ColumnFormData) => {
 				return {
 					name: column.name,
 					id: column.id,
@@ -94,6 +97,7 @@ const columnsSlice = createSlice({
 		addColumnsCreate: (state, action: PayloadAction<Column[]>) => {
 			state.value.columns.push(...action.payload)
 		},
+
 
 		updateColumns: (state, action: PayloadAction<UpdatingColumnsType>) => {
 			const { columnsToUpdate } = action.payload
@@ -122,7 +126,7 @@ const columnsSlice = createSlice({
 		deleteColumns: (state, action: PayloadAction<UpdatingColumnsType>) => {
 			const { deletedColumns } = action.payload
 
-			const deletedColumnIds = new Set(deletedColumns.map((column) => column.id))
+			const deletedColumnIds = new Set(deletedColumns.map((column: ColumnFormData) => column.id))
 			state.value.columns = state.value.columns.filter((column) => !deletedColumnIds.has(column.id))
 		},
 
@@ -142,7 +146,7 @@ const columnsSlice = createSlice({
 			function removeTaskFromOldColumn(thisColumn: Column, thisTaskId: string) {
 				const thisColumnInState = state.value.columns.find((column) => column.id === thisColumn.id)
 				if (thisColumnInState) {
-					thisColumnInState.tasks = thisColumnInState.tasks.filter((id) => id !== thisTaskId)
+					thisColumnInState.tasks = thisColumnInState.tasks.filter((id: string) => id !== thisTaskId)
 				}
 			}
 			function addTaskToNewColumn(newColumnId: string, thisTaskId: string) {
@@ -153,8 +157,24 @@ const columnsSlice = createSlice({
 				}
 			}
 		},
+		/**
+		 * This reducer updates the array that is in the 'tasks' property. It adds the ID of the task that
+		 * has just been created 
+		 * @param action.payload object containing the data from the form when it was submitted
+		 */
+		updateTasksArray: (state, action: PayloadAction<TaskManagerPopupWindowFormData>) => {
+			const {task, column} = action.payload
+
+			const thatColumn = state.value.columns.find((col: Column) => col.id === column.id)
+
+			if (thatColumn) {
+				thatColumn.tasks.push(task.id)
+			}
+
+
+		}
 	},
 })
 
 export default columnsSlice.reducer
-export const { addColumnsEdit, deleteColumns, updateColumns, addColumnsCreate, switchTaskFromColumn } = columnsSlice.actions
+export const { addColumnsEdit, deleteColumns, updateColumns, addColumnsCreate, switchTaskFromColumn, updateTasksArray } = columnsSlice.actions

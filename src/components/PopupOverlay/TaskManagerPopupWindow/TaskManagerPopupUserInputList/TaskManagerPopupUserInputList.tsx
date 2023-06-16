@@ -16,6 +16,11 @@ const TaskManagerPopupUserInputList = ({
 	removeSubtaskField: UseFieldArrayRemove
 	subtasksFields: FieldArrayWithId<TaskManagerPopupWindowFormData, "subtasks", "id">[]
 }) => {
+		
+
+
+
+
 	return (
 		<StyledTaskManagerPopupUserInputList>
 			<StyledTaskManagerPopupUserInputListTitle>Subtasks</StyledTaskManagerPopupUserInputListTitle>
@@ -26,6 +31,8 @@ const TaskManagerPopupUserInputList = ({
 					index={index}
 					register={register}
 					placeHolder={placeHolder}
+					errors={errors}
+					key={subtask.id}
 				/>
 			))}
 		</StyledTaskManagerPopupUserInputList>

@@ -1,25 +1,29 @@
-import { FieldArrayWithId, UseFieldArrayRemove, UseFormRegister } from "react-hook-form"
+import { FieldArrayWithId, FieldErrors, UseFieldArrayRemove, UseFormRegister } from "react-hook-form"
 import CrossIcon from "../../../../Icon/CrossIcon/CrossIcon"
 import StyledTaskManagerPopupUserInputListItem from "./TaskManagerPopupUserInputListItem.styled"
 import StyledTaskManagerPopupUserInputListItemInputBox from "./TaskManagerPopupUserInputListItemInputBox/TaskManagerPopupUserInputListItemInputBox.styled"
 
 const TaskManagerPopupUserInputListItem = ({
+	errors,
 	index,
+	placeHolder,
 	register,
 	removeSubtaskField,
 	subtask,
-	placeHolder,
 }: {
+	errors: FieldErrors<TaskManagerPopupWindowFormData>
 	index: number
+	placeHolder: string
 	register: UseFormRegister<TaskManagerPopupWindowFormData>
 	removeSubtaskField: UseFieldArrayRemove
 	subtask: FieldArrayWithId<TaskManagerPopupWindowFormData, "subtasks", "id">
-	placeHolder: string
 }) => {
+	const isFieldValid = Boolean(!errors.subtasks?.[index]?.title?.message)
+
 	return (
 		<StyledTaskManagerPopupUserInputListItem>
 			<StyledTaskManagerPopupUserInputListItemInputBox
-				valid={true}
+				valid={isFieldValid}
 				{...register(`subtasks.${index}.title`)}
 				defaultValue={subtask.title}
 				placeholder={placeHolder}
