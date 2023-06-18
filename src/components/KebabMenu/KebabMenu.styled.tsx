@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components"
 
 const StyledKebabMenu = styled.ul<Active & Direction>`
-	background-color: ${({ theme }) => theme.colors.very_dark_grey};
+	background-color: ${({ theme }) => (theme.style === "dark" ? theme.colors.very_dark_grey : theme.colors.white)};
 	border-radius: 8px;
-	border: 1px solid ${({ theme }) => `${theme.colors.lines_dark}`};
+	border: 1px solid ${({ theme }) => theme.style === "dark" ? theme.colors.lines_dark : theme.colors.lines_light};
 	bottom: ${({ bottom }) => bottom};
+	color: ${({ theme }) => theme.colors.very_dark_grey};
 	cursor: pointer;
 	height: 94px;
 	left: ${({ left }) => left};
@@ -14,9 +15,8 @@ const StyledKebabMenu = styled.ul<Active & Direction>`
 	top: ${({ top }) => top};
 	transform-origin: 100% 0;
 	transform: scale(0);
+	transition: transform ease-in-out ${({ theme }) => theme.transitionTimes.medium},visibility ease-in-out ${({ theme }) => theme.transitionTimes.medium};
 	visibility: hidden;
-	transition: transform ease-in-out ${({ theme }) => theme.transitionTimes.medium},
-		visibility ease-in-out ${({ theme }) => theme.transitionTimes.medium};
 	width: 192px;
 	z-index: 1;
 	${({ active }) =>

@@ -14,7 +14,7 @@ const TaskManagerSchema: ZodType<TaskManagerPopupWindowFormData> = z.object({
 		})
 	),
 	column: z.object({
-		name: z.string().min(3).max(30),
+		name: z.string().min(3).max(60),
 		id: z.string().min(3).max(30),
 		color: z.string().min(3).max(30),
 		tasks: z.array(z.string()),

@@ -51,9 +51,11 @@ type UserInputTitle = {
  * Those are all strings that represent components that can be passes as popup components for the popupSlice
  */
 
-type PopupHOCComponents = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerViewerPopupWindow" | "TaskManagerPopupWindow"
+type PopupHOCComponent = "BoardManagerPopupWindow" | "DropdownMenu" | "TaskManagerViewerPopupWindow" | "TaskManagerPopupWindow" | "DeletePopupWindow"
 
-type KebabMenuComponents = "KebabMenu"
+type KebabMenuComponent = "KebabMenu"
+
+type DeletePopupStyle = "Task" | "Board"
 
 type Popup = {
 	active: boolean

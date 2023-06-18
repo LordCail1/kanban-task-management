@@ -22,7 +22,6 @@ const KebabMenu = ({
 			top={top}
 		>
 			<StyledKebabMenuItem
-				color={theme.colors.white}
 				data-action="edit"
 				onClick={handleKebabMenuClick}
 			>

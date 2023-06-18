@@ -13,8 +13,6 @@ const TaskManagerPopupUserInput = ({
 	register: UseFormRegister<TaskManagerPopupWindowFormData>
 }) => {
 	const isFieldValid = Boolean(!errors.task?.title?.message)
-	// console.log('isFieldValid', isFieldValid)
-	// console.log('error message: ', errors.task?.title?.message)
 
 	return (
 		<StyledTaskManagerPopupUserInput>

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
-import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
-import Task from "../Task/Task"
-import StyledColumn from "./Column.styled"
-import ColumnTitle from "./ColumnTitle/ColumnTitle"
-import StyledEmptyColumnWarning from "./EmptyColumnWarning/EmptyColumnWarning.styled"
 import { openPopup } from "../../features"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux/reduxHooks"
+import { useEffect, useState } from "react"
+import ColumnTitle from "./ColumnTitle/ColumnTitle"
+import StyledColumn from "./Column.styled"
+import StyledEmptyColumnWarning from "./EmptyColumnWarning/EmptyColumnWarning.styled"
+import Task from "../Task/Task"
 
 const Column = ({ thisColumn }: { thisColumn: Column }) => {
 	const dispatch = useAppDispatch()
@@ -41,15 +41,12 @@ const Column = ({ thisColumn }: { thisColumn: Column }) => {
 	/**
 	 * looping through all the tasks, and assigning it's id as the key, and the actual task as the value
 	 */
-	allTasks.forEach((task: Task) => {
-		allTasksIds[task.id] = task
-	})
+	allTasks.forEach((task: Task) => (allTasksIds[task.id] = task))
 
 	/**
 	 * looping through all the tasks that belong to this column, and grabbing the task that matches the ids
 	 */
 	thisColumnTasks = thisColumn.tasks.map((taskId: string) => allTasksIds[taskId]).filter((task: Task) => Boolean(task))
-
 
 	return (
 		<StyledColumn>

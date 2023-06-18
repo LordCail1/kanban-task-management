@@ -1,4 +1,4 @@
-import { openPopup } from "../../../features"
+import { deleteTask, openDeletePopup, openPopup } from "../../../features"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
 import { useState } from "react"
 import KebabMenu from "../../KebabMenu/KebabMenu"
@@ -93,7 +93,8 @@ const TaskManagerViewerPopupWindow = ({ id }: { id: string }) => {
 		type DeleteOrEdit = "edit" | "delete"
 		switch (data as DeleteOrEdit) {
 			case "delete":
-				console.log("you are deleting")
+				console.log("pepepe")
+				dispatch(openDeletePopup({ HOCComponent: "DeletePopupWindow", style: "Task", id: id }))
 				break
 			case "edit":
 				dispatch(openPopup({ HOCComponent: "TaskManagerPopupWindow", editing: true }))

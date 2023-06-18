@@ -306,84 +306,55 @@ const subtaskSlice = createSlice({
 			const { task, subtasks: subtasksAfterDispatch, column } = taskManagerPopupWindowFormData
 
 			const deletedSubtaskIds = findDeletedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
-			const addedSubtaskIds = findAddedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
-			const modifiedSubtaskIds = findModifiedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
-
-
-
-
+			const addedSubtasks = findAddedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
+			const modifiedSubtasks = findModifiedSubtasks(subtasksBeforeDispatch, subtasksAfterDispatch)
 
 			deleteSubTasks(deletedSubtaskIds)
-			addSubtasks(addedSubtaskIds)
+			addSubtasks(addedSubtasks)
+			modifySubtasks(modifiedSubtasks)
 
-
-
-
-
-
-
-
-
-
-
-			function deleteSubTasks(idArray: (string | undefined)[]) {
-				const deleteSetOfIds = new Set(idArray)
+			function deleteSubTasks(deletedSubtaskIds: (string | undefined)[]) {
+				const deleteSetOfIds = new Set(deletedSubtaskIds)
 				state.value.subtasks = state.value.subtasks.filter((subtask) => !deleteSetOfIds.has(subtask.id))
 			}
-			function addSubtasks(subtasks: (Subtask | undefined)[]) {
-				console.log('you ran this')
-				subtasks.forEach(subtask => {
+			function addSubtasks(addedSubtasks: (Subtask | undefined)[]) {
+				addedSubtasks.forEach((subtask: Subtask | undefined) => {
 					if (subtask) {
 						state.value.subtasks.push(subtask)
 					}
 				})
 			}
 
-			function modifySubtasks() {}
+			function modifySubtasks(modifiedSubtasks: (Subtask | undefined)[]) {
+				console.log(modifiedSubtasks)
+				const truthySubtasks: Subtask[] = []
+				modifiedSubtasks.forEach((subtask) => {
+					if (subtask) {
+						truthySubtasks.push(subtask)
+					}
+				})
+				const subtasksToBeModified: Record<string, Subtask> = {}
+				truthySubtasks.forEach((subtask: Subtask) => subtasksToBeModified[subtask.id] = subtask)
+
+				state.value.subtasks.forEach((subtask) => {
+					if (subtasksToBeModified[subtask.id]) {
+						subtask.title = subtasksToBeModified[subtask.id].title
+					}
+				})
 
 
+			}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			console.log("deleted subtasks: ", deletedSubtaskIds)
-			console.log("added subtasks: ", addedSubtaskIds)
-			console.log("modified subtasks: ", modifiedSubtaskIds)
-
-			function findDeletedSubtasks(subtasksBeforeDispatch: Subtask[], subtasksAfterDispatch: Subtask[]): (string | undefined)[] {
+			function findDeletedSubtasks(subtasksBeforeDispatch: Subtask[], subtasksAfterDispatch: Subtask[]) {
 				const subtasksAfterDispatchRecord: Record<string, Subtask> = {}
 				subtasksAfterDispatch.forEach((subtask: Subtask) => (subtasksAfterDispatchRecord[subtask.id] = subtask))
 
-				return subtasksBeforeDispatch
-					.map((subtask: Subtask) => {
-						if (!subtasksAfterDispatchRecord[subtask.id]) {
-							return subtask.id
-						}
-					})
-					.filter((id: string | undefined) => Boolean(id))
+				return subtasksBeforeDispatch.map((subtask: Subtask) => {
+					if (!subtasksAfterDispatchRecord[subtask.id]) {
+						return subtask.id
+					}
+				}).filter((id: string | undefined) => Boolean(id))
 			}
 			function findAddedSubtasks(subtasksBeforeDispatch: Subtask[], subtasksAfterDispatch: Subtask[]): (Subtask | undefined)[] {
 				const subtasksBeforeDispatchRecord: Record<string, Subtask> = {}
@@ -404,10 +375,10 @@ const subtaskSlice = createSlice({
 				return subtasksBeforeDispatch
 					.map((subtask: Subtask) => {
 						if (subtasksAfterDispatchRecord[subtask.id]) {
-							return subtask.id
+							return subtasksAfterDispatchRecord[subtask.id]
 						}
 					})
-					.filter((id: string | undefined) => Boolean(id))
+					.filter((subtask: Subtask | undefined) => Boolean(subtask))
 			}
 		},
 	},

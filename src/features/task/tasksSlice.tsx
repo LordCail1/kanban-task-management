@@ -184,11 +184,28 @@ const tasksSlice = createSlice({
 				subtasks: subtasks.map((subtask: Subtask) => subtask.id),
 			})
 		},
-		deleteTask: (state) => {
-			return state
+		deleteTask: (state, action: PayloadAction<{ id: string }>) => {
+			const { id } = action.payload
+			state.value.tasks = state.value.tasks.filter(task => task.id !== id)
+		},
+		updateSubtasksArray: (state, action: PayloadAction<TaskManagerPopupWindowFormData>) => {
+			const { task, subtasks } = action.payload
+			const thisTask = state.value.tasks.find((tsk) => tsk.id === task.id)
+			if (thisTask) {
+				thisTask.subtasks = subtasks.map((subtask: Subtask) => subtask.id)
+			}
+		},
+		updateTask: (state, action: PayloadAction<TaskManagerPopupWindowFormData>) => {
+			const { task } = action.payload
+			state.value.tasks.forEach((tsk) => {
+				if (tsk.id === task.id) {
+					tsk.title = task.title
+					tsk.description = task.description
+				}
+			})
 		},
 	},
 })
 
 export default tasksSlice.reducer
-export const { addTask, deleteTask } = tasksSlice.actions
+export const { addTask, deleteTask, updateSubtasksArray, updateTask } = tasksSlice.actions

@@ -11,7 +11,7 @@ import StyledAppContainer from "./styles/StyledAppContainer.styled"
 import useGetPopupHOCComponents from "./hooks/custom/useGetPopupHOCComponents"
 
 function App() {
-	const { component: currentComponentString, editing, id, active: isPopupActive } = useAppSelector((state) => state.popupSlice.value)
+	const { component: currentComponentString, editing, id, active: isPopupActive, style } = useAppSelector((state) => state.popupSlice.value)
 	const component = useGetPopupHOCComponents(currentComponentString)
 
 	const themeStyle = useAppSelector((state) => state.themeSlice)
@@ -32,6 +32,7 @@ function App() {
 				component={component}
 				editing={editing}
 				id={id}
+				style={style}
 			/>
 
 		</ThemeProvider>

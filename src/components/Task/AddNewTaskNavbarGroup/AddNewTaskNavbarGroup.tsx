@@ -1,4 +1,4 @@
-import { openPopup } from "../../../features"
+import { openDeletePopup, openPopup } from "../../../features"
 import { useDispatch } from "react-redux"
 import React, { useEffect, useState } from "react"
 import { useTheme } from "styled-components"
@@ -22,6 +22,8 @@ const AddNewTaskNavbarGroup = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) 
 	const theme = useTheme()
 	//state from store to keep track of popup is active on screen or not
 	const isPopupActive = useAppSelector((state) => state.popupSlice.value.active)
+
+	const selectedboard = useAppSelector((state) => state.boardsSlice.value.boards.find((board: Board) => board.selected === true))
 
 	/**
 	 * This effect sets the viewport width state when the window is resized.
@@ -59,7 +61,7 @@ const AddNewTaskNavbarGroup = ({ isColumnsEmpty }: { isColumnsEmpty: boolean }) 
 		type DeleteOrEdit = "edit" | "delete"
 		switch (data as DeleteOrEdit) {
 			case "delete":
-				console.log("you are deleting")
+				dispatch(openDeletePopup({HOCComponent: "DeletePopupWindow", id: selectedboard?.id, style: "Board"}))
 				break
 			case "edit":
 				dispatch(openPopup({ HOCComponent: "BoardManagerPopupWindow", editing: true }))

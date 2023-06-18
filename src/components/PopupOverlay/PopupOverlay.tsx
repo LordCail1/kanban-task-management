@@ -18,11 +18,13 @@ const PopupOverlay = ({
 	component: Component,
 	editing,
 	id,
+	style
 }: {
 	active: boolean
-	component: React.ComponentType<{ editing: boolean; id?: string }>
+	component: React.ComponentType<{ editing: boolean; id?: string, style?: DeletePopupStyle }>
 	editing: boolean
 	id?: string
+	style?: DeletePopupStyle
 }) => {
 	const dispatch = useAppDispatch()
 	const overlayRef = useRef<HTMLDivElement>(null)
@@ -43,6 +45,7 @@ const PopupOverlay = ({
 					editing={editing}
 					key={nanoid()}
 					id={id}
+					style={style}
 				/>
 			</StyledPopupOverlayHOCWrapper>
 		</StyledPopupOverlay>

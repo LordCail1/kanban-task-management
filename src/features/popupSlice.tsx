@@ -10,9 +10,10 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 type InitialState = {
 	value: {
 		active: boolean
-		component: PopupHOCComponents
+		component: PopupHOCComponent
 		editing: boolean
 		id?: string
+		style?: DeletePopupStyle
 	}
 }
 
@@ -30,17 +31,26 @@ const popupSlice = createSlice({
 	initialState,
 	reducers: {
 		// Define the openPopup reducer
-		openPopup: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponents; editing: boolean }>) => {
+		openPopup: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponent; editing: boolean }>) => {
 			state.value.active = true
 			state.value.component = action.payload.HOCComponent
 			state.value.editing = action.payload.editing
 		},
-		openPopupWithId: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponents; editing: boolean; id: string }>) => {
+		openPopupWithId: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponent; editing: boolean; id: string }>) => {
 			const { HOCComponent, editing, id } = action.payload
 			state.value.active = true
 			state.value.component = HOCComponent
 			state.value.editing = editing
 			state.value.id = id
+		},
+		openDeletePopup: (state, action: PayloadAction<{ HOCComponent: PopupHOCComponent; id?: string; style: DeletePopupStyle }>) => {
+			const { style, id, HOCComponent } = action.payload
+			state.value.active = true
+			state.value.component = HOCComponent
+			state.value.style = style
+			if (id) {
+				state.value.id = id
+			}
 		},
 		// Define the closePopup reducer
 		closePopup: (state) => {
@@ -51,6 +61,6 @@ const popupSlice = createSlice({
 	},
 })
 
-export const { openPopup, closePopup, openPopupWithId } = popupSlice.actions
+export const { openPopup, closePopup, openPopupWithId, openDeletePopup } = popupSlice.actions
 
 export default popupSlice.reducer

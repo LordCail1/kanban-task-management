@@ -54,8 +54,18 @@ const boardsSlice = createSlice({
 				boardToUpdate.columns = action.payload.columns
 			}
 		},
+		deleteBoard: (state, action: PayloadAction<{ id: string }>) => {
+			const { id } = action.payload
+			const thisBoard = state.value.boards.find((board: Board) => board.id === id)
+			if (thisBoard) {
+				thisBoard.selected = false
+				state.value.boards = state.value.boards.filter((board: Board) => board.id !== id)
+			}
+
+			state.value.boards[0].selected = true
+		},
 	},
 })
 
-export const { addBoard, selectBoard, updateBoard } = boardsSlice.actions
+export const { addBoard, selectBoard, updateBoard, deleteBoard } = boardsSlice.actions
 export default boardsSlice.reducer

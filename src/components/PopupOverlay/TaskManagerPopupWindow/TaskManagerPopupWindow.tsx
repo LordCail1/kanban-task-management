@@ -1,4 +1,4 @@
-import { addSubtasks, addTask, closePopup, updateSubtasks, updateTasksArray } from "../../../features"
+import { addSubtasks, addTask, closePopup, updateSubtasks, updateSubtasksArray, updateTask, updateTasksArray } from "../../../features"
 import { Controller, useFieldArray, useForm } from "react-hook-form"
 import { nanoid } from "nanoid"
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/reduxHooks"
@@ -97,13 +97,14 @@ const TaskManagerPopupWindow = ({ editing, id }: { editing: boolean; id?: string
 
 		if (editing) {
 			dispatch(updateSubtasks({ taskManagerPopupWindowFormData: taskData, subtasksBeforeDispatch: defaultValues.subtasks }))
+			dispatch(updateSubtasksArray(taskData))
+			dispatch(updateTask(taskData))
 		} else {
 			dispatch(updateTasksArray(taskData))
 			dispatch(addTask(taskData))
 			dispatch(addSubtasks(taskData))
 		}
 
-		console.log("you submitted the data", taskData)
 	}
 
 	return (
