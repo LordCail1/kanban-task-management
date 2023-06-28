@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react"
 import BoardBtn from "./BoardBtn"
-import { Provider } from "react-redux"
 
 describe("BoardBtn", () => {
 	const board: Board = {
@@ -12,7 +11,11 @@ describe("BoardBtn", () => {
 	const menuChoice: "dropdown" | "sidebar" = "dropdown"
 
 	test("renders correctly", () => {
-		render( <BoardBtn {...board} menuArea={menuChoice}/>, {wrapper: Provider}
+		render(
+			<BoardBtn
+				{...board}
+				menuArea={menuChoice}
+			/>
 		)
 	})
 })
